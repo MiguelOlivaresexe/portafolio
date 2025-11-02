@@ -1,0 +1,70 @@
+/* Animaciones suaves para aparición de secciones */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+header, section {
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+/* Efecto de gradiente en botones */
+.btn-gradient {
+  background: linear-gradient(135deg, #7F5AF0, #657DF0);
+  color: white;
+  font-weight: 600;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.btn-gradient:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+/* Hover suave en tarjetas */
+.card-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 25px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+/* Avatar circular con sombra */
+.avatar {
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 16rem; /* w-64 */
+  height: 16rem; /* h-64 */
+}
+.avatar:hover {
+  transform: scale(1.05);
+  box-shadow: 0 20px 30px rgba(0,0,0,0.2);
+}
+
+/* Posicionar recorte de imagen hacia la parte superior */
+.object-top {
+  object-position: top;
+}
+
+/* Encadre para que se vea de la cintura hacia arriba */
+.object-waist {
+  object-position: center 60%;
+}
+
+/* Texto destacado */
+.text-gradient {
+  background: linear-gradient(90deg, #7F5AF0, #657DF0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.text-gradient-secondary {
+  background: linear-gradient(90deg, #F07F5A, #F0657D);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

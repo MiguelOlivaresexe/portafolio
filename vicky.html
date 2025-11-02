@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Miguel Angel Olivares Hernandez - Desarrollador Full-Stack & DevOps</title>
+  
+  <!-- ========================================
+       META TAGS PARA SEO Y REDES SOCIALES
+       Mejora el posicionamiento en buscadores y
+       la apariencia al compartir en redes sociales
+       ======================================== -->
+  <meta name="description" content="Portfolio de Miguel Angel Olivares - Desarrollador Full-Stack especializado en DevOps, Cloud, Blockchain e Inteligencia Artificial">
+  <meta name="keywords" content="desarrollador full-stack, DevOps, cloud, blockchain, React, Node.js, Python, C#">
+  <meta name="author" content="Miguel Angel Olivares Hernandez">
+  
+  <!-- Open Graph para redes sociales (Facebook, LinkedIn, etc) -->
+  <meta property="og:title" content="Miguel Angel Olivares - Portfolio">
+  <meta property="og:description" content="Desarrollador full-stack especializado en DevOps, Cloud y Blockchain">
+  <meta property="og:type" content="website">
+  
+  <!-- ========================================
+       FAVICON
+       Icono que aparece en la pestaña del navegador
+       ======================================== -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👨‍💻</text></svg>">
+  
+  <!-- ========================================
+       PRECONEXIONES A CDNs
+       Mejora el rendimiento al cargar recursos externos
+       ======================================== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.tailwindcss.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  
+  <!-- ========================================
+       LIBRERÍA DE ICONOS - RemixIcon
+       Iconos modernos y personalizables
+       ======================================== -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
+  
+  <!-- ========================================
+       TAILWIND CSS
+       Framework de CSS para estilos rápidos y responsivos
+       ======================================== -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- ========================================
+       FUENTES DE GOOGLE FONTS
+       Manrope: Fuente principal del sitio
+       Ubuntu Mono: Fuente para código y descripción hero
+       ======================================== -->
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=Ubuntu+Mono:wght@400;700&display=swap" rel="stylesheet">
+  
+  <!-- ========================================
+       ESTILOS PERSONALIZADOS
+       CSS adicional para animaciones y tema oscuro
+       ======================================== -->
+  <style>
+    /* Aplicar fuentes personalizadas */
+    body { 
+      font-family: 'Manrope', sans-serif;
+    }
+    code, pre { 
+      font-family: 'Ubuntu Mono', monospace; 
+    }
+    /* Fuente monoespaciada para la descripción del hero */
+    .hero-description {
+      font-family: 'Ubuntu Mono', monospace;
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+    
+    /* Desplazamiento suave entre secciones */
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    /* Animación de entrada para elementos */
+    .fade-in {
+      animation: fadeIn 0.8s ease-in;
+    }
+    
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    /* ========================================
+         ESTILOS PARA MODO OSCURO
+         Cambia colores cuando se activa el tema oscuro
+         ======================================== */
+    .dark-mode {
+      background-color: #1a1a1a;
+      color: #e5e5e5;
+    }
+    
+    .dark-mode .bg-neutral-50 {
+      background-color: #1a1a1a;
+    }
+    
+    .dark-mode .bg-white {
+      background-color: #2a2a2a;
+    }
+    
+    .dark-mode .text-gray-800 {
+      color: #e5e5e5;
+    }
+    
+    .dark-mode .text-gray-600 {
+      color: #a0a0a0;
+    }
+    
+    .dark-mode .text-gray-500 {
+      color: #888;
+    }
+
+    /* Avatar: tamaño fijo para asegurar encuadre visible */
+    .avatar {
+      width: 20rem; /* ~320px */
+      height: 20rem; /* ~320px */
+    }
+    @media (max-width: 640px) {
+      .avatar {
+        width: 14rem;
+        height: 14rem;
+      }
+    }
+    /* Encadre para mostrar cintura hacia arriba */
+    .object-waist {
+      object-position: 50% 50%; /* Ajustado para centrar el rostro y cabello */
+    }
+  </style>
+</head>
+<body class="bg-neutral-50 text-gray-800 scroll-smooth">
+
+  <!-- ========================================
+       BARRA DE NAVEGACIÓN FIJA
+       Se mantiene visible al hacer scroll
+       Contiene: logo, menú de navegación y enlaces sociales
+       ======================================== -->
+  <nav class="fixed top-0 w-full bg-neutral-50/95 backdrop-blur-sm shadow-md z-50">
+    <div class="container mx-auto flex justify-between items-center py-4 px-6">
+      <!-- Logo/Marca personal -->
+      <a href="#" class="text-2xl font-bold hover:text-purple-600 transition-colors">Miguel.dev</a>
+      
+      <!-- Menú de navegación interna (solo visible en pantallas medianas+) -->
+      <div class="hidden md:flex gap-6 text-gray-600 font-medium">
+        <a href="#sobre-mi" class="hover:text-purple-600 transition-colors">Sobre mí</a>
+        <a href="#educacion" class="hover:text-purple-600 transition-colors">Educación</a>
+        <a href="#habilidades" class="hover:text-purple-600 transition-colors">Habilidades</a>
+        <a href="#proyectos" class="hover:text-purple-600 transition-colors">Proyectos</a>
+        <a href="#contacto" class="hover:text-purple-600 transition-colors">Contacto</a>
+      </div>
+      
+      <!-- Botones de tema oscuro y redes sociales -->
+      <div class="flex gap-4 text-gray-600">
+        <!-- Botón para cambiar entre tema claro y oscuro -->
+        <button id="darkModeToggle" class="hover:text-purple-600 transition-colors" aria-label="Cambiar tema">
+          <i class="ri-moon-line text-2xl"></i>
+        </button>
+        <!-- Enlaces a redes sociales con atributos de accesibilidad -->
+        <a href="https://www.linkedin.com/in/miguel-angel-olivares-hernandez-3130922a9/" target="_blank" rel="noopener noreferrer" class="hover:text-purple-600 transition-colors" aria-label="LinkedIn de Miguel Olivares">
+          <i class="ri-linkedin-box-line text-2xl"></i>
+        </a>
+        <a href="https://github.com/LucaMusashi69" target="_blank" rel="noopener noreferrer" class="hover:text-purple-600 transition-colors" aria-label="GitHub de Miguel Olivares">
+          <i class="ri-github-line text-2xl"></i>
+        </a>
+        <a href="mailto:utm22030690@utma.edu.mx" class="hover:text-purple-600 transition-colors" aria-label="Enviar email a Miguel Olivares">
+          <i class="ri-mail-line text-2xl"></i>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Espaciador para compensar la navegación fija -->
+  <div class="h-20"></div>
+
+  <!-- ========================================
+       SECCIÓN HERO / ENCABEZADO PRINCIPAL
+       Primera impresión: foto, nombre y descripción
+       Incluye botones de llamado a la acción (CTA)
+       ======================================== -->
+  <header class="py-20 bg-neutral-50 fade-in">
+    <div class="container mx-auto px-6">
+      <div class="flex flex-col items-center text-center max-w-3xl mx-auto gap-8">
+        <!-- Foto de perfil circular con borde decorativo -->
+        <div class="avatar rounded-full overflow-hidden shadow-lg ring-4 ring-purple-100">
+          <img src="./images/mike-IA.png" alt="Miguel Angel Olivares Hernandez" class="w-full h-full object-cover object-waist" loading="lazy" onerror="this.src='https://ui-avatars.com/api/?name=Miguel+Olivares&size=400&background=7c3aed&color=fff&bold=true'">
+        </div>
+        
+        <!-- Texto de presentación centrado -->
+        <div class="header-text">
+          <h1 class="text-4xl md:text-5xl font-bold mb-4">Hola, soy Miguel Angel Olivares Hernandez</h1>
+          <!-- Descripción con fuente Ubuntu Mono -->
+          <p class="hero-description text-gray-600 mb-6 leading-relaxed"> Soy desarrollador full-stack y especialista en DevOps, con sólida experiencia en testeo, cloud y blockchain, apasionado por integrar inteligencia artificial para diseñar soluciones tecnológicas innovadoras y eficientes. Me destaco por un enfoque orientado a resultados, capaz de transformar ideas complejas en sistemas funcionales y escalables.</p>
+          
+          <!-- Botón de llamado a la acción -->
+          <a href="#proyectos" class="inline-block bg-purple-600 text-white px-6 py-3 rounded-lg font-semibold shadow-md hover:bg-purple-700 hover:scale-105 transition-transform duration-300">Ver proyectos</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================
+       SECCIÓN: SOBRE MÍ
+       Información personal, historia y tecnologías
+       Incluye badges de tecnologías dominadas
+       ======================================== -->
+  <section id="sobre-mi" class="max-w-4xl mx-auto px-6 py-20 fade-in">
+    <h2 class="text-3xl font-semibold text-center mb-8">Sobre mí</h2>
+    <div class="bg-white rounded-2xl shadow-md p-8">
+      <!-- Párrafos narrativos sobre experiencia y pasiones -->
+      <p class="text-gray-600 leading-relaxed mb-4">
+         Mi viaje en la tecnología comenzó con la curiosidad de entender cómo funcionan las cosas. Desde entonces, he trabajado en proyectos que van desde aplicaciones móviles hasta sistemas empresariales complejos.
+      </p>
+      </p>
+      <p class="text-gray-600 leading-relaxed mb-4">
+        Me especializo en crear soluciones que no solo funcionan, sino que escalan. Mi experiencia abarca desde el desarrollo frontend con React hasta arquitecturas cloud complejas con Docker, pasando por inteligencia artificial con PyTorch y TensorFlow.
+      </p>
+      <p class="text-gray-600 leading-relaxed">
+        Actualmente me dedico a investigar tecnologías emergentes, con especial enfoque en Data Science, Deep Learning, Computer Vision y DevOps, siempre buscando integrar soluciones innovadoras que resuelvan problemas reales de manera eficiente.
+      </p>
+      
+      <!-- Badges de tecnologías: etiquetas visuales con colores -->
+      <div class="flex flex-wrap gap-2 mt-6">
+        <span class="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm font-medium">Python</span>
+        <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-medium">React</span>
+        <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-medium">Node.js</span>
+        <span class="bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-sm font-medium">TypeScript</span>
+        <span class="bg-cyan-100 text-cyan-700 px-3 py-1 rounded-full text-sm font-medium">Docker</span>
+        <span class="bg-orange-100 text-orange-700 px-3 py-1 rounded-full text-sm font-medium">TensorFlow</span>
+        <span class="bg-red-100 text-red-700 px-3 py-1 rounded-full text-sm font-medium">AWS</span>
+        <span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-sm font-medium">Blockchain</span>
+        <span class="bg-pink-100 text-pink-700 px-3 py-1 rounded-full text-sm font-medium">AI/ML</span>
+        <span class="bg-teal-100 text-teal-700 px-3 py-1 rounded-full text-sm font-medium">Swift</span>
+        <span class="bg-violet-100 text-violet-700 px-3 py-1 rounded-full text-sm font-medium">Kotlin</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================
+       SECCIÓN: EDUCACIÓN
+       Timeline de formación académica y certificaciones
+       Cada tarjeta tiene hover effects interactivos
+       ======================================== -->
+  <section id="educacion" class="max-w-4xl mx-auto px-6 py-20">
+    <h2 class="text-3xl font-semibold text-center mb-12">Educación</h2>
+    <div class="space-y-6">
+      
+      <!-- Tarjeta de educación 1: Ingeniería (En curso) -->
+      <div class="bg-white rounded-2xl shadow-md p-6 flex items-start gap-4 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border-l-4 border-purple-500">
+        <div class="w-12 h-12 rounded-full bg-purple-50 flex items-center justify-center text-purple-700 font-semibold text-lg">
+          <i class="ri-graduation-cap-line text-2xl"></i>
+        </div>
+        <div class="flex-1">
+          <div class="flex items-center gap-2 mb-1">
+            <div class="font-semibold text-gray-800 text-lg">Ingeniería en Tecnologías de la Información e Innovación Digital</div>
+            <span class="bg-purple-100 text-purple-700 px-2 py-1 rounded text-xs font-medium">En curso</span>
+          </div>
+          <div class="text-sm text-gray-500 mb-2">Universidad Tecnológica Metropolitana de Aguascalientes — 2025-2026 • Promedio: 9.5/10</div>
+          <!-- Tags de especialización -->
+          <div class="flex flex-wrap gap-2">
+            <span class="bg-purple-50 text-purple-600 px-2 py-1 rounded text-xs">Data Science</span>
+            <span class="bg-purple-50 text-purple-600 px-2 py-1 rounded text-xs">Deep Learning</span>
+            <span class="bg-purple-50 text-purple-600 px-2 py-1 rounded text-xs">Machine Learning</span>
+            <span class="bg-purple-50 text-purple-600 px-2 py-1 rounded text-xs">Computer Vision</span>
+            <span class="bg-purple-50 text-purple-600 px-2 py-1 rounded text-xs">DevOps</span>
+            <span class="bg-purple-50 text-purple-600 px-2 py-1 rounded text-xs">Agile PM</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tarjeta de educación 2: TSU -->
+      <div class="bg-white rounded-2xl shadow-md p-6 flex items-start gap-4 hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+        <div class="w-12 h-12 rounded-full bg-indigo-50 flex items-center justify-center text-indigo-700">
+          <i class="ri-code-box-line text-2xl"></i>
+        </div>
+        <div class="flex-1">
+          <div class="font-semibold text-gray-800 text-lg">TSU en Desarrollo de Software Multiplataforma</div>
+          <div class="text-sm text-gray-500 mb-2">Universidad Tecnológica Metropolitana de Aguascalientes — 2022-2024 • Promedio: 9.5/10</div>
+          <div class="flex flex-wrap gap-2">
+            <span class="bg-indigo-50 text-indigo-600 px-2 py-1 rounded text-xs">UX/UI Design</span>
+            <span class="bg-indigo-50 text-indigo-600 px-2 py-1 rounded text-xs">Full-Stack</span>
+            <span class="bg-indigo-50 text-indigo-600 px-2 py-1 rounded text-xs">IoT</span>
+            <span class="bg-indigo-50 text-indigo-600 px-2 py-1 rounded text-xs">SQL/NoSQL</span>
+            <span class="bg-indigo-50 text-indigo-600 px-2 py-1 rounded text-xs">Blockchain</span>
+            <span class="bg-indigo-50 text-indigo-600 px-2 py-1 rounded text-xs">Networking</span>
+            <span class="bg-indigo-50 text-indigo-600 px-2 py-1 rounded text-xs">Cybersecurity</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Certificaciones -->
+      <div class="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-2xl shadow-md p-6">
+        <h3 class="font-semibold text-xl mb-4 flex items-center gap-2">
+          <i class="ri-award-line text-purple-600"></i>
+          Certificaciones
+        </h3>
+        <div class="grid md:grid-cols-2 gap-3">
+          <div class="bg-white rounded-lg p-3 text-sm">
+            <div class="font-medium text-gray-800">Design Sprint Professional (DSPCTM)</div>
+            <div class="text-xs text-gray-500">2024</div>
+          </div>
+          <div class="bg-white rounded-lg p-3 text-sm">
+            <div class="font-medium text-gray-800">Practical Deep Learning with PyTorch</div>
+            <div class="text-xs text-gray-500">2024</div>
+          </div>
+          <div class="bg-white rounded-lg p-3 text-sm">
+            <div class="font-medium text-gray-800">Microsoft Azure - Databases</div>
+            <div class="text-xs text-gray-500">2024</div>
+          </div>
+          <div class="bg-white rounded-lg p-3 text-sm">
+            <div class="font-medium text-gray-800">Google Cloud Computing Foundations</div>
+            <div class="text-xs text-gray-500">2023</div>
+          </div>
+          <div class="bg-white rounded-lg p-3 text-sm">
+            <div class="font-medium text-gray-800">Blockchain Consultant Professional</div>
+            <div class="text-xs text-gray-500">2023</div>
+          </div>
+          <div class="bg-white rounded-lg p-3 text-sm">
+            <div class="font-medium text-gray-800">Solidity Bootcamp</div>
+            <div class="text-xs text-gray-500">2023</div>
+          </div>
+          <div class="bg-white rounded-lg p-3 text-sm">
+            <div class="font-medium text-gray-800">AI and Data Science Foundations</div>
+            <div class="text-xs text-gray-500">2023</div>
+          </div>
+          <div class="bg-white rounded-lg p-3 text-sm">
+            <div class="font-medium text-gray-800">Swift iOS App Development</div>
+            <div class="text-xs text-gray-500">2023</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================
+       SECCIÓN: HABILIDADES
+       Grid con categorías de tecnologías
+       ======================================== -->
+  <section id="habilidades" class="max-w-5xl mx-auto px-6 py-20">
+    <h2 class="text-3xl font-semibold text-center mb-12">Habilidades Técnicas</h2>
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      
+      <!-- Tarjeta: Lenguajes -->
+      <div class="p-6 bg-white rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+        <div class="bg-indigo-100 w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4">
+          <i class="ri-code-s-slash-line text-3xl text-indigo-600"></i>
+        </div>
+        <h3 class="font-semibold text-lg mb-3 text-center">Lenguajes</h3>
+        <div class="flex flex-wrap gap-2 justify-center text-xs">
+          <span class="bg-indigo-50 text-indigo-700 px-2 py-1 rounded">Python</span>
+          <span class="bg-indigo-50 text-indigo-700 px-2 py-1 rounded">Java</span>
+          <span class="bg-indigo-50 text-indigo-700 px-2 py-1 rounded">JavaScript</span>
+          <span class="bg-indigo-50 text-indigo-700 px-2 py-1 rounded">TypeScript</span>
+          <span class="bg-indigo-50 text-indigo-700 px-2 py-1 rounded">Swift</span>
+          <span class="bg-indigo-50 text-indigo-700 px-2 py-1 rounded">Kotlin</span>
+          <span class="bg-indigo-50 text-indigo-700 px-2 py-1 rounded">Solidity</span>
+          <span class="bg-indigo-50 text-indigo-700 px-2 py-1 rounded">PHP Laravel</span>
+        </div>
+      </div>
+      
+      <!-- Tarjeta: Frameworks -->
+      <div class="p-6 bg-white rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+        <div class="bg-purple-100 w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4">
+          <i class="ri-stack-line text-3xl text-purple-600"></i>
+        </div>
+        <h3 class="font-semibold text-lg mb-3 text-center">Frameworks</h3>
+        <div class="flex flex-wrap gap-2 justify-center text-xs">
+          <span class="bg-purple-50 text-purple-700 px-2 py-1 rounded">React</span>
+          <span class="bg-purple-50 text-purple-700 px-2 py-1 rounded">Node.js</span>
+          <span class="bg-purple-50 text-purple-700 px-2 py-1 rounded">Flask</span>
+          <span class="bg-purple-50 text-purple-700 px-2 py-1 rounded">Next.js</span>
+          <span class="bg-purple-50 text-purple-700 px-2 py-1 rounded">TensorFlow</span>
+          <span class="bg-purple-50 text-purple-700 px-2 py-1 rounded">PyTorch</span>
+          <span class="bg-purple-50 text-purple-700 px-2 py-1 rounded">Tailwind CSS</span>
+          <span class="bg-purple-50 text-purple-700 px-2 py-1 rounded">Pandas</span>
+        </div>
+      </div>
+      
+      <!-- Tarjeta: Bases de Datos -->
+      <div class="p-6 bg-white rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+        <div class="bg-teal-100 w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4">
+          <i class="ri-database-2-line text-3xl text-teal-600"></i>
+        </div>
+        <h3 class="font-semibold text-lg mb-3 text-center">Bases de Datos</h3>
+        <div class="flex flex-wrap gap-2 justify-center text-xs">
+          <span class="bg-teal-50 text-teal-700 px-2 py-1 rounded">MongoDB</span>
+          <span class="bg-teal-50 text-teal-700 px-2 py-1 rounded">MySQL</span>
+          <span class="bg-teal-50 text-teal-700 px-2 py-1 rounded">SQL Server</span>
+          <span class="bg-teal-50 text-teal-700 px-2 py-1 rounded">Redis</span>
+          <span class="bg-teal-50 text-teal-700 px-2 py-1 rounded">Cassandra</span>
+        </div>
+      </div>
+      
+      <!-- Tarjeta: Cloud & DevOps -->
+      <div class="p-6 bg-white rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+        <div class="bg-orange-100 w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4">
+          <i class="ri-cloud-line text-3xl text-orange-600"></i>
+        </div>
+        <h3 class="font-semibold text-lg mb-3 text-center">Cloud & DevOps</h3>
+        <div class="flex flex-wrap gap-2 justify-center text-xs">
+          <span class="bg-orange-50 text-orange-700 px-2 py-1 rounded">Google Cloud</span>
+          <span class="bg-orange-50 text-orange-700 px-2 py-1 rounded">Azure</span>
+          <span class="bg-orange-50 text-orange-700 px-2 py-1 rounded">AWS</span>
+          <span class="bg-orange-50 text-orange-700 px-2 py-1 rounded">Docker</span>
+          <span class="bg-orange-50 text-orange-700 px-2 py-1 rounded">Linux</span>
+          <span class="bg-orange-50 text-orange-700 px-2 py-1 rounded">Windows Server</span>
+          <span class="bg-orange-50 text-orange-700 px-2 py-1 rounded">GitHub</span>
+          <span class="bg-orange-50 text-orange-700 px-2 py-1 rounded">GitLab</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="soft-skills" class="max-w-5xl mx-auto px-6 py-20">
+    <h2 class="text-3xl font-semibold text-center mb-12">Habilidades Blandas</h2>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      
+      <!-- Tarjeta: Creatividad -->
+      <div class="p-6 bg-white rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+        <div class="bg-yellow-100 w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4">
+          <i class="ri-lightbulb-line text-3xl text-yellow-600"></i>
+        </div>
+        <h3 class="font-semibold text-lg mb-3 text-center">Creatividad</h3>
+        <p class="text-gray-600 text-center text-sm">Capacidad para generar ideas innovadoras y soluciones originales a problemas complejos.</p>
+      </div>
+      
+      <!-- Tarjeta: Pensamiento Crítico -->
+      <div class="p-6 bg-white rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+        <div class="bg-green-100 w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4">
+          <i class="ri-brain-line text-3xl text-green-600"></i>
+        </div>
+        <h3 class="font-semibold text-lg mb-3 text-center">Pensamiento Crítico</h3>
+        <p class="text-gray-600 text-center text-sm">Habilidad para analizar información de manera objetiva, identificar sesgos y tomar decisiones fundamentadas.</p>
+      </div>
+      
+      <!-- Tarjeta: Responsabilidad -->
+      <div class="p-6 bg-white rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+        <div class="bg-red-100 w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4">
+          <i class="ri-checkbox-circle-line text-3xl text-red-600"></i>
+        </div>
+        <h3 class="font-semibold text-lg mb-3 text-center">Responsabilidad</h3>
+        <p class="text-gray-600 text-center text-sm">Compromiso con las tareas asignadas, cumplimiento de plazos y asunción de las consecuencias de las acciones.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN: IDIOMAS -->
+  <section id="languages" class="max-w-5xl mx-auto px-6 py-20">
+    <h2 class="text-3xl font-semibold text-center mb-12">Idiomas</h2>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      
+      <!-- Tarjeta: Inglés -->
+      <div class="p-6 bg-white rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+        <div class="bg-blue-100 w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4">
+          <i class="ri-flag-uk-line text-3xl text-blue-600"></i>
+        </div>
+        <h3 class="font-semibold text-lg mb-3 text-center">Inglés</h3>
+        <p class="text-gray-600 text-center text-sm">Nivel B1 (Certificado ITEP)</p>
+      </div>
+      
+      <!-- Tarjeta: Francés -->
+      <div class="p-6 bg-white rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+        <div class="bg-red-100 w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4">
+          <i class="ri-flag-fr-line text-3xl text-red-600"></i>
+        </div>
+        <h3 class="font-semibold text-lg mb-3 text-center">Francés</h3>
+        <p class="text-gray-600 text-center text-sm">Nivel B1 (Certificación DELF y DALF en proceso)</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================
+       SECCIÓN: PROYECTOS DESTACADOS
+       Portafolio de trabajos realizados
+       ======================================== -->
+  <section id="proyectos" class="max-w-5xl mx-auto px-6 py-20">
+    <h2 class="text-3xl font-semibold text-center mb-12">Proyectos Destacados</h2>
+    <div class="grid md:grid-cols-3 gap-8">
+      
+      <!-- Proyecto 1: MRP Platform -->
+      <div class="p-6 bg-white rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+        <div class="bg-blue-100 w-14 h-14 rounded-xl flex items-center justify-center mb-4">
+          <i class="ri-bar-chart-box-line text-3xl text-blue-600"></i>
+        </div>
+        <h3 class="font-semibold text-xl mb-2">Plataforma MRP de Gestión de Inventarios</h3>
+        <p class="text-gray-500 text-sm mb-4">Sistema completo de gestión de inventarios que automatiza reportes y seguimiento de movimientos internos. Desarrollado durante mi internship en Pallet Tarimas y Cajones, logrando una reducción del 40% en tiempos de procesamiento.</p>
+        <div class="flex flex-wrap gap-2 mb-4">
+          <span class="bg-blue-50 text-blue-700 px-2 py-1 rounded text-xs">React</span>
+          <span class="bg-blue-50 text-blue-700 px-2 py-1 rounded text-xs">MongoDB</span>
+          <span class="bg-blue-50 text-blue-700 px-2 py-1 rounded text-xs">Flask</span>
+          <span class="bg-blue-50 text-blue-700 px-2 py-1 rounded text-xs">Electron</span>
+          <span class="bg-blue-50 text-blue-700 px-2 py-1 rounded text-xs">Tailwind</span>
+        </div>
+        <div class="flex gap-3">
+          <a href="#" class="text-purple-600 hover:text-purple-700 font-medium text-sm flex items-center gap-1">
+            Ver más <i class="ri-arrow-right-line"></i>
+          </a>
+        </div>
+      </div>
+      
+      <!-- Proyecto 2: Chatbot Swift (pendiente de completar) -->
+      <!-- Contenido de la tarjeta 2 se añadirá más adelante -->
+    </div>
+  </section>
+
+  <script src="./script.js" defer></script>
+ </body>
+ </html>
