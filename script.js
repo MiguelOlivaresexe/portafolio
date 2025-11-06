@@ -50,6 +50,30 @@
       btn.setAttribute('aria-pressed', String(document.body.classList.contains('dark-mode')));
     }
 
+    // Wire the translate button
+    const translateBtn = document.getElementById('translateToEnglish');
+    if (translateBtn) {
+      translateBtn.addEventListener('click', () => {
+        // Intento 1: usar el combo del widget si existe
+        const combo = document.querySelector('.goog-te-combo');
+        if (combo) {
+          combo.value = 'en';
+          combo.dispatchEvent(new Event('change'));
+          return;
+        }
+        // Intento 2: establecer cookie y recargar (funciona en http/https)
+        const from = 'es';
+        const to = 'en';
+        const host = window.location.hostname;
+        document.cookie = `googtrans=/${from}/${to}; path=/`;
+        if (host) {
+          document.cookie = `googtrans=/${from}/${to}; domain=${host}; path=/`;
+        }
+        // Recargar para que el widget aplique la traducción
+        window.location.reload();
+      });
+    }
+
     // React to system preference changes only if user hasn't chosen explicitly
     if (window.matchMedia) {
       const mql = window.matchMedia('(prefers-color-scheme: dark)');
@@ -61,6 +85,17 @@
       });
     }
   }
+
+  // Inicialización del widget de Google Translate
+  window.googleTranslateElementInit = function () {
+    if (window.google && window.google.translate) {
+      new window.google.translate.TranslateElement({
+        pageLanguage: 'es',
+        autoDisplay: false,
+        includedLanguages: 'en'
+      }, 'google_translate_element');
+    }
+  };
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);

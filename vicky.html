@@ -175,6 +175,10 @@
         <button id="darkModeToggle" class="hover:text-purple-300 transition-colors" aria-label="Cambiar tema">
           <i class="ri-moon-line text-2xl"></i>
         </button>
+        <!-- Botón para traducir automáticamente a inglés -->
+        <button id="translateToEnglish" class="hover:text-purple-300 transition-colors" aria-label="Traducir a Inglés">
+          <i class="ri-translate-2 text-2xl"></i>
+        </button>
         <!-- Enlaces a redes sociales con atributos de accesibilidad -->
         <a href="https://www.linkedin.com/in/miguel-angel-olivares-hernandez-3130922a9/" target="_blank" rel="noopener noreferrer" class="hover:text-purple-300 transition-colors" aria-label="LinkedIn de Miguel Olivares">
           <i class="ri-linkedin-box-line text-2xl"></i>
@@ -692,5 +696,9 @@
   </section>
 
   <script src="./script.js" defer></script>
+  <!-- Contenedor oculto para Google Translate Element -->
+  <div id="google_translate_element" style="display: none;"></div>
+  <!-- Script de Google Translate Element para traducción en página -->
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
  </body>
- </html>
+  </html>
