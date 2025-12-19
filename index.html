@@ -10,12 +10,12 @@
        Mejora el posicionamiento en buscadores y
        la apariencia al compartir en redes sociales
        ======================================== -->
-  <meta name="description" content="Portfolio de Miguel Angel Olivares - Desarrollador Full-Stack especializado en DevOps, Cloud, Blockchain e Inteligencia Artificial">
+  <meta name="description" content="Portfolio de Miguel Angel Olivares Hernandez - Desarrollador Full-Stack especializado en DevOps, Cloud, Blockchain e Inteligencia Artificial">
   <meta name="keywords" content="desarrollador full-stack, DevOps, cloud, blockchain, React, Node.js, Python, C#">
   <meta name="author" content="Miguel Angel Olivares Hernandez">
   
   <!-- Open Graph para redes sociales (Facebook, LinkedIn, etc) -->
-  <meta property="og:title" content="Miguel Angel Olivares - Portfolio">
+  <meta property="og:title" content="Miguel Angel Olivares Hernandez - Portfolio">
   <meta property="og:description" content="Desarrollador full-stack especializado en DevOps, Cloud y Blockchain">
   <meta property="og:type" content="website">
   
@@ -92,7 +92,168 @@
         transform: translateY(0);
       }
     }
+
+    @keyframes shimmer {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+
+    /* Animación del indicador de scroll */
+    @keyframes scrollWheel {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(8px); opacity: 0; }
+    }
+    @keyframes scrollBounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(10px); }
+    }
+    .glass-card-2025 {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 24px;
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .dark-mode .glass-card-2025 {
+      background: rgba(0, 0, 0, 0.2);
+      border-color: rgba(255, 255, 255, 0.05);
+    }
+
+    .glass-card-2025:hover {
+      transform: translateY(-5px) scale(1.01);
+      border-color: rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.05);
+      box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.3);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Scroll Indicator Modernization */
+    .mouse-scroll {
+      width: 24px;
+      height: 40px;
+      border: 2px solid rgba(255, 255, 255, 0.4);
+      border-radius: 20px;
+      position: relative;
+    }
+    .mouse-scroll::before {
+      content: '';
+      width: 4px;
+      height: 8px;
+      background: white;
+      position: absolute;
+      top: 6px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 2px;
+      animation: scrollWheel 1.5s infinite;
+    }
+    .scroll-container {
+      animation: scrollBounce 2s ease-in-out infinite;
+    }
     
+    /* ========================================
+       ESTILOS PARA SKILLS HUB (TEXTURAS Y ANIMACIONES)
+       ======================================== */
+    .skills-mesh {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.05) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, rgba(139, 92, 246, 0.05) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(236, 72, 153, 0.05) 0px, transparent 50%),
+        radial-gradient(at 0% 100%, rgba(34, 197, 94, 0.05) 0px, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .skills-grid-pattern {
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(#e5e7eb 0.5px, transparent 0.5px);
+      background-size: 24px 24px;
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+    .dark-mode .skills-grid-pattern {
+      background-image: radial-gradient(#374151 0.5px, transparent 0.5px);
+    }
+
+    .skill-card {
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      backdrop-filter: blur(8px);
+    }
+
+    .skill-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+      pointer-events: none;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 20px 40px -15px rgba(0,0,0,0.1);
+    }
+
+    .skill-badge {
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .skill-badge::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+      transform: rotate(45deg);
+      transition: 0.5s;
+      display: none;
+    }
+
+    .skill-badge:hover::after {
+      display: block;
+      left: 100%;
+    }
+
+    .tab-content {
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+
+    .animate-float {
+      animation: float 4s ease-in-out infinite;
+    }
+
     /* ========================================
          ESTILOS PARA MODO OSCURO
          Cambia colores cuando se activa el tema oscuro
@@ -141,123 +302,729 @@
       filter: brightness(1.05) contrast(1.05); /* Sutil mejora */
     }
 
-    .header-textured {
-      background-image: url('https://www.transparenttextures.com/patterns/cubes.png');
-      background-repeat: repeat;
-      background-size: 100px;
+    /* Efecto de partículas sutil */
+    .hero-particles {
+      background-image: 
+        radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.05) 0%, transparent 10%),
+        radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.05) 0%, transparent 10%),
+        radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.05) 0%, transparent 15%);
+      background-size: 100% 100%;
     }
+
+    /* Animación de gradiente de texto */
+    .text-gradient-animate {
+      background: linear-gradient(to right, #ffffff, #a5b4fc, #818cf8, #ffffff);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shine 3s linear infinite;
+    }
+
+    @keyframes shine {
+      to { background-position: 200% center; }
+    }
+
+    /* Flotado suave para elementos visuales */
+    .float-anim {
+      animation: floating 6s ease-in-out infinite;
+    }
+
+    @keyframes floating {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(5deg); }
+    }
+
+    .glass-nav {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .glass-nav:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .header-textured {
+      background: linear-gradient(135deg, #1e3a8a 0%, #312e81 50%, #4c1d95 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Mejora de partículas */
+    .hero-particles::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      opacity: 0.5;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #888;
+      border-radius: 5px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #555;
+    }
+
+    .dark-mode ::-webkit-scrollbar-track {
+      background: #1f2937;
+    }
+    .dark-mode ::-webkit-scrollbar-thumb {
+      background: #4b5563;
+    }
+
+    /* Skills Hub Styles */
+    .skill-card {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .skill-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+    .skill-progress {
+      height: 6px;
+      border-radius: 3px;
+      background: rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+    }
+    .dark-mode .skill-progress {
+      background: rgba(255, 255, 255, 0.1);
+    }
+    .skill-progress-bar {
+      height: 100%;
+      border-radius: 3px;
+      transition: width 1s ease-out;
+    }
+    
+    .tab-btn {
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    .tab-btn.active {
+      color: #3b82f6;
+    }
+    .tab-btn.active::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: #3b82f6;
+      border-radius: 2px;
+    }
+    
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 1.5rem;
+    }
+    
+    .category-card {
+      background: white;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      border-radius: 1.5rem;
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+    }
+    .dark-mode .category-card {
+      background: #2a2a2a;
+      border-color: rgba(255, 255, 255, 0.05);
+    }
+    
+    .section-header {
+      position: relative;
+      padding-bottom: 1rem;
+      margin-bottom: 3rem;
+    }
+    .section-header::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(to right, #3b82f6, #8b5cf6);
+      border-radius: 2px;
+    }
+
+    .header-textured::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url('https://www.transparenttextures.com/patterns/cubes.png');
+      opacity: 0.2;
+      pointer-events: none;
+    }
+
+    /* Mejora Proyectos: Glassmorphism y 3D Tilt */
+    .project-card {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+      transform-style: preserve-3d;
+      perspective: 1000px;
+    }
+
+    .project-card:hover {
+      transform: translateY(-10px) rotateX(2deg) rotateY(2deg);
+      border-color: rgba(255, 255, 255, 0.3);
+      background: rgba(255, 255, 255, 0.07);
+    }
+
+    .project-card .glow {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+      background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(255,255,255,0.1) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+    }
+
+    .project-card:hover .glow {
+      opacity: 1;
+    }
+
+    .dark-mode .project-card:not(.frutiger-card) {
+      background: rgba(17, 24, 39, 0.4);
+    }
+
+    /* Animación para el título de la sección */
+    .section-title {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 3rem;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(to right, #6366f1, #a855f7);
+      border-radius: 2px;
+      transition: width 0.3s ease;
+    }
+
+    .section-title:hover::after {
+      width: 100%;
+    }
+
+    /* Estilo para la sección Perfil profesional */
+    #sobre-mi p {
+      font-family: 'Ubuntu Mono', monospace;
+    }
+    .font-manrope {
+      font-family: 'Manrope', sans-serif;
+    }
+
+    /* Reveal Animation Classes */
+    .reveal-hidden {
+      opacity: 0;
+      transform: translateY(30px) scale(0.95);
+      transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    .reveal-visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    /* Filter Buttons Active State */
+    .filter-btn.active {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.4);
+      color: white;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+    }
+
+    /* =========================================
+       DISEÑO DE VANGUARDIA 2025 (Project Section)
+       Estética Neo-Aero & Bento Grid
+       ========================================= */
+    .modern-2025-section {
+      background: #050505;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .modern-2025-bg {
+      position: absolute;
+      inset: 0;
+      background: 
+        radial-gradient(circle at 20% 20%, rgba(99, 102, 241, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 80% 80%, rgba(168, 85, 247, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    /* Efecto de ruido/grano para textura 2025 */
+    .modern-2025-bg::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3BaseFilter id='noiseFilter'%3BfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      opacity: 0.03;
+      pointer-events: none;
+    }
+
+    .modern-2025-card {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 24px;
+      transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .modern-2025-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 255, 255, 0.06) 0%, transparent 50%);
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+    }
+
+    .modern-2025-card:hover::before {
+      opacity: 1;
+    }
+
+    .modern-2025-card:hover {
+      transform: translateY(-8px) scale(1.01);
+      border-color: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+    }
+
+    .modern-2025-tag {
+      background: rgba(255, 255, 255, 0.05);
+      color: rgba(255, 255, 255, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(4px);
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 100px;
+      transition: all 0.3s ease;
+    }
+
+    .modern-2025-card:hover .modern-2025-tag {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.2);
+      color: white;
+    }
+
+    .modern-2025-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: white;
+      backdrop-filter: blur(10px);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .modern-2025-btn:hover, .modern-2025-btn.active {
+      background: white !important;
+      color: black !important;
+      transform: scale(1.05);
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+      opacity: 1 !important;
+    }
+
+    /* Bento Grid Classes */
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .bento-grid {
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-rows: auto;
+      }
+      .bento-featured { grid-column: span 4; }
+      .bento-standard { grid-column: span 2; }
+      .bento-tall { grid-column: span 2; grid-row: span 2; }
+      .bento-wide { grid-column: span 3; }
+    }
+
+    /* 2025 Typography */
+    .text-2025-glow {
+      text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+    }
+
+    .modern-2025-section .section-title {
+      color: white;
+      text-shadow: 0 0 20px rgba(255,255,255,0.2);
+    }
+
   </style>
 </head>
-<body class="bg-neutral-50 text-gray-800 scroll-smooth">
+<body class="bg-neutral-50 text-gray-800 scroll-smooth selection:bg-indigo-500/30">
+  <!-- Cursor Aero-Glow (Solo en desktop) -->
+  <div id="cursor-glow" class="hidden lg:block fixed w-[400px] h-[400px] bg-indigo-500/10 rounded-full blur-[100px] pointer-events-none z-[9999] mix-blend-screen -translate-x-1/2 -translate-y-1/2 transition-opacity duration-300 opacity-0"></div>
+  <div id="cursor-dot" class="hidden lg:block fixed w-2 h-2 bg-white rounded-full pointer-events-none z-[10000] -translate-x-1/2 -translate-y-1/2 transition-transform duration-100 ease-out"></div>
 
-  <!-- ========================================
-       BARRA DE NAVEGACIÓN FIJA
-       Se mantiene visible al hacer scroll
-       Contiene: logo, menú de navegación y enlaces sociales
-       ======================================== -->
-  <nav class="fixed top-0 w-full bg-indigo-900/95 backdrop-blur-sm shadow-md z-50">
-    <div class="container mx-auto flex justify-between items-center py-4 px-6">
-      <!-- Logo/Marca personal -->
-      <a href="#" class="text-2xl font-bold text-white hover:text-purple-300 transition-colors">Miguel.dev</a>
-      
-      <!-- Menú de navegación interna (solo visible en pantallas medianas+) -->
-      <div class="hidden md:flex gap-6 text-white font-medium">
-        <a href="#sobre-mi" class="hover:text-purple-300 transition-colors">Sobre mí</a>
-        <a href="#educacion" class="hover:text-purple-300 transition-colors">Educación</a>
-        <a href="#habilidades" class="hover:text-purple-300 transition-colors">Habilidades</a>
-        <a href="#proyectos" class="hover:text-purple-300 transition-colors">Proyectos</a>
-        <a href="#contacto" class="hover:text-purple-300 transition-colors">Contacto</a>
-      </div>
-      
-      <!-- Botones de tema oscuro y redes sociales -->
-      <div class="flex gap-4 text-white">
-        <!-- Botón para cambiar entre tema claro y oscuro -->
-        <button id="darkModeToggle" class="hover:text-purple-300 transition-colors" aria-label="Cambiar tema">
-          <i class="ri-moon-line text-2xl"></i>
-        </button>
-        <!-- Botón para traducir automáticamente a inglés -->
-        <button id="translateToEnglish" class="hover:text-purple-300 transition-colors" aria-label="Traducir a Inglés">
-          <i class="ri-translate-2 text-2xl"></i>
-        </button>
-        <!-- Enlaces a redes sociales con atributos de accesibilidad -->
-        <a href="https://www.linkedin.com/in/miguel-angel-olivares-hernandez-3130922a9/" target="_blank" rel="noopener noreferrer" class="hover:text-purple-300 transition-colors" aria-label="LinkedIn de Miguel Olivares">
-          <i class="ri-linkedin-box-line text-2xl"></i>
-        </a>
-        <a href="https://github.com/MiguelOlivaresexe" target="_blank" rel="noopener noreferrer" class="hover:text-purple-300 transition-colors" aria-label="GitHub de Miguel Olivares">
-          <i class="ri-github-line text-2xl"></i>
-        </a>
-        <a href="mailto:utm22030690@utma.edu.mx" class="hover:text-purple-300 transition-colors" aria-label="Enviar email a Miguel Olivares">
-          <i class="ri-mail-line text-2xl"></i>
-        </a>
-      </div>
-    </div>
-  </nav>
 
-  <!-- Espaciador para compensar la navegación fija -->
+
   
 
   <!-- ========================================
        SECCIÓN HERO / ENCABEZADO PRINCIPAL
-       Primera impresión: foto, nombre y descripción
-       Incluye botones de llamado a la acción (CTA)
        ======================================== -->
-  <header class="py-20 bg-purple-600 fade-in header-textured">
-    <div class="container mx-auto px-6">
-      <div class="flex flex-col items-center text-center max-w-3xl mx-auto gap-8">
-        <!-- Foto de perfil circular con borde decorativo -->
-        <div class="avatar rounded-full overflow-hidden shadow-lg ring-4 ring-purple-100">
-          <img src="./images/mike-IA.png" alt="Miguel Angel Olivares Hernandez" class="w-full h-full object-cover object-waist avatar-img-enhanced" loading="lazy" onerror="this.src='https://ui-avatars.com/api/?name=Miguel+Olivares&size=400&background=7c3aed&color=fff&bold=true'">
+  <header class="min-h-[90vh] flex items-center justify-center relative header-textured fade-in hero-particles">
+    <!-- Elementos Decorativos Flotantes -->
+    <div class="absolute top-20 left-10 w-32 h-32 bg-white/10 rounded-full blur-3xl float-anim opacity-60"></div>
+    <div class="absolute bottom-20 right-10 w-48 h-48 bg-indigo-400/20 rounded-full blur-3xl float-anim opacity-60" style="animation-delay: 1.5s"></div>
+    <div class="absolute top-1/2 left-1/4 w-24 h-24 bg-purple-400/10 rounded-full blur-2xl float-anim opacity-40" style="animation-delay: 0.8s"></div>
+    
+    <div class="container mx-auto px-6 relative z-10">
+      <div class="flex flex-col items-center text-center max-w-5xl mx-auto">
+        <!-- Badge de Disponibilidad -->
+        <div class="mb-8 px-5 py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full inline-flex items-center gap-3 text-white text-sm font-medium animate-pulse shadow-lg">
+          <span class="relative flex h-3 w-3">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+          </span>
+          Disponible para nuevos proyectos
         </div>
+
+        <h1 class="text-5xl md:text-7xl lg:text-8xl font-extrabold mb-8 tracking-tighter leading-tight">
+          <span class="text-white opacity-90 block text-xl md:text-2xl font-medium tracking-widest uppercase mb-4">Hola, soy</span>
+          <span class="text-gradient-animate">Miguel Angel Olivares Hernandez</span>
+        </h1>
         
-        <!-- Texto de presentación centrado -->
-        <div class="header-text">
-          <h1 class="text-4xl md:text-5xl font-bold mb-4 text-white">Hola, soy Miguel Angel Olivares Hernandez</h1>
-          <!-- Descripción con fuente Ubuntu Mono -->
-          <p class="hero-description text-white mb-6 leading-relaxed"> Soy desarrollador full-stack y especialista en DevOps, con sólida experiencia en testeo, cloud y blockchain, apasionado por integrar inteligencia artificial para diseñar soluciones tecnológicas innovadoras y eficientes. Me destaco por un enfoque orientado a resultados, capaz de transformar ideas complejas en sistemas funcionales y escalables.</p>
+        <p class="hero-description text-xl md:text-2xl text-blue-100 mb-12 max-w-3xl leading-relaxed font-light">
+          Desarrollador <span class="font-semibold text-white">Full-Stack & DevOps</span> enfocado en crear soluciones tecnológicas eficientes y escalables que generan resultados reales.
+        </p>
+
+        <!-- Navegación Glassmorphism Rediseñada -->
+        <nav class="glass-nav px-6 md:px-10 py-3 rounded-[2rem] mb-12 flex flex-wrap md:flex-nowrap items-center justify-center gap-6 md:gap-10 shadow-[0_20px_50px_rgba(0,0,0,0.3)] border border-white/10 relative overflow-hidden group/nav">
+          <!-- Efecto de brillo interno al pasar el mouse por la nav -->
+          <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover/nav:animate-[shimmer_2s_infinite] pointer-events-none"></div>
+
+          <!-- Enlaces de Navegación -->
+          <div class="hidden md:flex items-center gap-8 font-medium tracking-wide text-sm uppercase">
+            <a href="#sobre-mi" class="text-white/60 hover:text-white transition-all duration-300 hover:-translate-y-0.5 relative group/link">
+              Sobre mí
+              <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover/link:w-full"></span>
+            </a>
+            <a href="#experiencia" class="text-white/60 hover:text-white transition-all duration-300 hover:-translate-y-0.5 relative group/link">
+              Experiencia
+              <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover/link:w-full"></span>
+            </a>
+            <a href="#skills-hub" class="text-white/60 hover:text-white transition-all duration-300 hover:-translate-y-0.5 relative group/link">
+              Habilidades
+              <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover/link:w-full"></span>
+            </a>
+            <a href="#proyectos" class="text-white/60 hover:text-white transition-all duration-300 hover:-translate-y-0.5 relative group/link">
+              Proyectos
+              <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover/link:w-full"></span>
+            </a>
+            <a href="#contacto" class="text-white/60 hover:text-white transition-all duration-300 hover:-translate-y-0.5 relative group/link">
+              Contacto
+              <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover/link:w-full"></span>
+            </a>
+          </div>
           
-          <!-- Botón de llamado a la acción -->
-          <a href="#proyectos" class="inline-block bg-purple-600 text-white px-6 py-3 rounded-lg font-semibold shadow-md hover:bg-purple-700 hover:scale-105 transition-transform duration-300">Ver proyectos</a>
-        </div>
+          <div class="hidden md:block h-8 w-[1px] bg-white/10"></div>
+          
+          <div class="flex items-center gap-6">
+            <!-- Controles de Interfaz -->
+            <div class="flex gap-2.5 bg-white/5 p-1.5 rounded-2xl border border-white/5 shadow-inner">
+              <button id="darkModeToggle" class="w-11 h-11 flex items-center justify-center rounded-xl bg-white/5 hover:bg-white/10 hover:scale-105 transition-all duration-300 border border-transparent hover:border-white/10" aria-label="Cambiar tema">
+                <i class="ri-moon-line text-xl text-white/70"></i>
+              </button>
+              <button id="translateToEnglish" class="w-11 h-11 flex items-center justify-center rounded-xl bg-white/5 hover:bg-white/10 hover:scale-105 transition-all duration-300 border border-transparent hover:border-white/10" aria-label="Traducir a Inglés">
+                <i class="ri-translate-2 text-xl text-white/70"></i>
+              </button>
+            </div>
+
+            <!-- Redes Sociales Simétricas -->
+            <div class="flex gap-3">
+              <a href="https://github.com/MiguelOlivaresexe" target="_blank" class="relative w-11 h-11 flex items-center justify-center rounded-xl bg-white/10 border border-white/20 overflow-hidden transition-all duration-500 hover:scale-110 hover:shadow-[0_0_20px_rgba(255,255,255,0.2)] group/icon z-[100] cursor-pointer" aria-label="GitHub">
+                <div class="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover/icon:opacity-100 transition-opacity duration-500"></div>
+                <i class="ri-github-fill text-2xl text-white group-hover/icon:text-white transition-all duration-500 relative z-10"></i>
+              </a>
+              <a href="https://www.linkedin.com/in/miguel-angel-olivares-hernandez-3130922a9/" target="_blank" class="relative w-11 h-11 flex items-center justify-center rounded-xl bg-white/10 border border-white/20 overflow-hidden transition-all duration-500 hover:scale-110 hover:shadow-[0_0_20px_rgba(0,119,181,0.3)] group/icon z-[100] cursor-pointer" aria-label="LinkedIn">
+                <div class="absolute inset-0 bg-gradient-to-br from-[#0077b5]/30 to-transparent opacity-0 group-hover/icon:opacity-100 transition-opacity duration-500"></div>
+                <i class="ri-linkedin-fill text-2xl text-white group-hover/icon:text-[#0077b5] group-hover/icon:drop-shadow-[0_0_10px_rgba(0,119,181,0.6)] transition-all duration-500 relative z-10"></i>
+              </a>
+            </div>
+          </div>
+        </nav>
       </div>
+    </div>
+
+    <!-- Indicador de Scroll -->
+    <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 text-white/50 fade-in scroll-container" style="animation-delay: 1.2s">
+      <div class="mouse-scroll"></div>
+      <span class="text-[10px] font-bold tracking-[0.3em] uppercase opacity-40">Desliza para ver más</span>
     </div>
   </header>
 
   <!-- ========================================
-       SECCIÓN: SOBRE MÍ
-       Información personal, historia y tecnologías
-       Incluye badges de tecnologías dominadas
+       SECCIÓN: SOBRE MÍ (BENTO STYLE 2025)
        ======================================== -->
-  <section id="sobre-mi" class="max-w-4xl mx-auto px-6 py-20 fade-in">
-    <h2 class="text-3xl font-semibold text-center mb-8">Sobre mí</h2>
-    <div class="flex justify-center mb-8">
-      <img src="images/hacker-cat.svg" alt="Hacker Cat" class="w-32 h-32 object-contain">
+  <section id="sobre-mi" class="relative py-32 overflow-hidden bg-white dark:bg-[#050505] transition-colors duration-500">
+    <!-- Fondos decorativos -->
+    <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-[120px] -z-10 translate-x-1/2 -translate-y-1/2"></div>
+    <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-500/5 rounded-full blur-[120px] -z-10 -translate-x-1/2 translate-y-1/2"></div>
+
+    <div class="max-w-7xl mx-auto px-6 relative">
+      <div class="text-center mb-16 reveal">
+        <h2 class="text-4xl md:text-5xl font-bold mb-4 dark:text-white">Sobre Mi</h2>
+        <div class="w-20 h-1.5 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto rounded-full"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-[180px]">
+        <!-- Card Principal: Perfil -->
+        <div class="md:col-span-8 md:row-span-2 glass-card-2025 p-8 flex flex-col md:flex-row items-center gap-8 reveal">
+          <div class="relative group shrink-0">
+            <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-3xl blur-xl opacity-20 group-hover:opacity-40 transition-opacity duration-500"></div>
+            <img src="images/hacker-cat.svg" alt="Miguel" class="w-48 h-48 object-contain relative z-10 float-anim">
+          </div>
+          <div>
+            <h3 class="text-2xl font-bold mb-4 dark:text-white">Mi Pasión por el Código</h3>
+            <p class="text-gray-600 dark:text-gray-400 leading-relaxed font-mono text-sm md:text-base">
+              Soy un desarrollador apasionado por resolver problemas complejos a través de la tecnología. Con una base sólida en <span class="text-blue-600 font-bold">DevOps</span> y desarrollo <span class="text-indigo-600 font-bold">Full-Stack</span>, me enfoco en crear sistemas que no solo funcionen, sino que escalen de manera elegante.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card: Ubicación -->
+        <div class="md:col-span-4 md:row-span-1 glass-card-2025 p-6 flex flex-col justify-between reveal" style="transition-delay: 100ms">
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center border border-blue-500/20">
+              <i class="ri-map-pin-2-fill text-2xl text-blue-500"></i>
+            </div>
+            <div>
+              <p class="text-xs text-gray-500 uppercase font-bold tracking-widest">Ubicación</p>
+              <p class="text-lg font-bold dark:text-white">México</p>
+            </div>
+          </div>
+          <p class="text-xs text-gray-500 italic mt-2">Trabajando para el mundo entero 🌎</p>
+        </div>
+
+        <!-- Card: Status -->
+        <div class="md:col-span-4 md:row-span-1 glass-card-2025 p-6 flex flex-col justify-between reveal" style="transition-delay: 200ms">
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-xl bg-green-500/10 flex items-center justify-center border border-green-500/20">
+              <i class="ri-checkbox-circle-fill text-2xl text-green-500 animate-pulse"></i>
+            </div>
+            <div>
+              <p class="text-xs text-gray-500 uppercase font-bold tracking-widest">Estado</p>
+              <p class="text-lg font-bold dark:text-white">Abierto a Proyectos</p>
+            </div>
+          </div>
+          <div class="flex gap-2 mt-4">
+            <span class="w-full h-1.5 bg-green-500/20 rounded-full overflow-hidden">
+              <span class="block h-full bg-green-500 w-full animate-[shimmer_2s_infinite]"></span>
+            </span>
+          </div>
+        </div>
+
+        <!-- Card: Aprendiendo -->
+        <div class="md:col-span-4 md:row-span-2 glass-card-2025 p-8 reveal" style="transition-delay: 300ms">
+          <h4 class="text-lg font-bold mb-6 dark:text-white flex items-center gap-2">
+            <i class="ri-lightbulb-fill text-yellow-500"></i>
+            Explorando Ahora
+          </h4>
+          <ul class="space-y-4">
+            <li class="flex items-center gap-3 group">
+              <div class="w-2 h-2 rounded-full bg-indigo-500 group-hover:scale-150 transition-transform"></div>
+              <span class="text-gray-600 dark:text-gray-400 group-hover:text-indigo-500 transition-colors">Inteligencia Artificial</span>
+            </li>
+            <li class="flex items-center gap-3 group">
+              <div class="w-2 h-2 rounded-full bg-blue-500 group-hover:scale-150 transition-transform"></div>
+              <span class="text-gray-600 dark:text-gray-400 group-hover:text-blue-500 transition-colors">Web3 & Blockchain</span>
+            </li>
+            <li class="flex items-center gap-3 group">
+              <div class="w-2 h-2 rounded-full bg-purple-500 group-hover:scale-150 transition-transform"></div>
+              <span class="text-gray-600 dark:text-gray-400 group-hover:text-purple-500 transition-colors">Sistemas Distribuidos</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Card: Educación/Certificaciones Quick View -->
+        <div class="md:col-span-8 md:row-span-1 glass-card-2025 p-8 flex items-center justify-between reveal" style="transition-delay: 400ms">
+          <div class="flex flex-col gap-1">
+            <h4 class="text-xl font-bold dark:text-white">Formación Continua</h4>
+            <p class="text-sm text-gray-500">Ingeniería en Sistemas Computacionales</p>
+          </div>
+          <div class="flex -space-x-4">
+            <div class="w-12 h-12 rounded-full bg-blue-600 border-4 border-white dark:border-[#111] flex items-center justify-center text-white font-bold z-30">ISC</div>
+            <div class="w-12 h-12 rounded-full bg-indigo-600 border-4 border-white dark:border-[#111] flex items-center justify-center text-white font-bold z-20">Dev</div>
+            <div class="w-12 h-12 rounded-full bg-purple-600 border-4 border-white dark:border-[#111] flex items-center justify-center text-white font-bold z-10">Ops</div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="bg-white rounded-2xl shadow-md p-8">
-      <!-- Párrafos narrativos sobre experiencia y pasiones -->
-      <p class="text-gray-600 leading-relaxed mb-4">
-         Mi viaje en la tecnología comenzó con la curiosidad de entender cómo funcionan las cosas. Desde entonces, he trabajado en proyectos que van desde aplicaciones móviles hasta sistemas empresariales complejos.
-      </p>
-      </p>
-      <p class="text-gray-600 leading-relaxed mb-4">
-        Me especializo en crear soluciones que no solo funcionan, sino que escalan. Mi experiencia abarca desde el desarrollo frontend con React hasta arquitecturas cloud complejas con Docker, pasando por inteligencia artificial con PyTorch y TensorFlow.
-      </p>
-      <p class="text-gray-600 leading-relaxed">
-        Actualmente me dedico a investigar tecnologías emergentes, con especial enfoque en Data Science, Deep Learning, Computer Vision y DevOps, siempre buscando integrar soluciones innovadoras que resuelvan problemas reales de manera eficiente.
-      </p>
-      
-      <!-- Badges de tecnologías: etiquetas visuales con colores -->
-      <div class="flex flex-wrap gap-2 mt-6">
-        <span class="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm font-medium">Python</span>
-        <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-medium">React</span>
-        <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-medium">Node.js</span>
-        <span class="bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-sm font-medium">TypeScript</span>
-        <span class="bg-cyan-100 text-cyan-700 px-3 py-1 rounded-full text-sm font-medium">Docker</span>
-        <span class="bg-orange-100 text-orange-700 px-3 py-1 rounded-full text-sm font-medium">TensorFlow</span>
-        <span class="bg-red-100 text-red-700 px-3 py-1 rounded-full text-sm font-medium">AWS</span>
-        <span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-sm font-medium">Blockchain</span>
-        <span class="bg-pink-100 text-pink-700 px-3 py-1 rounded-full text-sm font-medium">AI/ML</span>
-        <span class="bg-teal-100 text-teal-700 px-3 py-1 rounded-full text-sm font-medium">Swift</span>
-        <span class="bg-violet-100 text-violet-700 px-3 py-1 rounded-full text-sm font-medium">Kotlin</span>
+  </section>
+
+  <!-- ========================================
+       SECCIÓN: EXPERIENCIA PROFESIONAL
+       Timeline de trabajos anteriores y roles
+       ======================================== -->
+  <section id="experiencia" class="max-w-5xl mx-auto px-6 py-24 fade-in">
+    <div class="text-center mb-16">
+      <h2 class="section-title text-4xl inline-block">Experiencia Profesional</h2>
+      <p class="text-gray-600 mt-4 max-w-2xl mx-auto italic">"Transformando ideas en soluciones digitales a través del diseño y el código."</p>
+    </div>
+    
+    <div class="relative">
+      <!-- Linea central vertical (Gradient) -->
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-1 h-full bg-gradient-to-b from-pink-500 via-indigo-500 to-orange-500 rounded-full hidden md:block opacity-30"></div>
+
+      <!-- Item 1: UX/UI (Izquierda) -->
+      <div class="mb-12 flex flex-col md:flex-row justify-between items-center w-full">
+        <div class="order-2 md:order-1 w-full md:w-[45%]">
+          <div class="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 relative group">
+            <div class="absolute -top-3 -right-3 bg-pink-600 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest shadow-lg">Más Reciente</div>
+            <div class="flex items-center gap-4 mb-4">
+              <div class="w-12 h-12 bg-pink-50 rounded-xl flex items-center justify-center text-pink-600 group-hover:scale-110 transition-transform">
+                <i class="ri-quill-pen-line text-2xl"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-800 text-xl">UX/UI Designer & Manual Tester</h3>
+                <p class="text-pink-600 font-medium text-sm">News Mx Tv</p>
+              </div>
+            </div>
+            <p class="text-xs font-semibold text-gray-400 mb-3 flex items-center gap-1">
+              <i class="ri-calendar-line"></i> Noviembre 2025 - Mayo 2026
+            </p>
+            <ul class="space-y-2">
+              <li class="flex items-start gap-2 text-sm text-gray-600">
+                <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-pink-500 shrink-0"></span>
+                <span>Diseño de interfaces de alta fidelidad y prototipado avanzado utilizando <strong>Figma</strong>.</span>
+              </li>
+              <li class="flex items-start gap-2 text-sm text-gray-600">
+                <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-pink-500 shrink-0"></span>
+                <span><strong>Manual Testing:</strong> Ejecución de pruebas de regresión, humo y exploratorias para garantizar la estabilidad del sistema.</span>
+              </li>
+              <li class="flex items-start gap-2 text-sm text-gray-600">
+                <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-pink-500 shrink-0"></span>
+                <span>Documentación detallada de <strong>casos de prueba</strong> y reporte de incidencias críticas en herramientas de seguimiento.</span>
+              </li>
+              <li class="flex items-start gap-2 text-sm text-gray-600">
+                <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-pink-500 shrink-0"></span>
+                <span>Validación de requerimientos funcionales y aseguramiento de la consistencia visual (UI) en múltiples dispositivos.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="z-20 hidden md:flex items-center order-2 bg-white border-4 border-pink-500 shadow-xl w-10 h-10 rounded-full">
+          <div class="w-2 h-2 bg-pink-500 rounded-full mx-auto animate-pulse"></div>
+        </div>
+        <div class="hidden md:block order-3 w-[45%]"></div>
+      </div>
+
+      <!-- Item 2: Full Stack (Derecha) -->
+      <div class="mb-12 flex flex-col md:flex-row justify-between items-center w-full">
+        <div class="hidden md:block order-1 w-[45%]"></div>
+        <div class="z-20 hidden md:flex items-center order-2 bg-white border-4 border-indigo-500 shadow-xl w-10 h-10 rounded-full">
+          <div class="w-2 h-2 bg-indigo-500 rounded-full mx-auto"></div>
+        </div>
+        <div class="order-2 md:order-3 w-full md:w-[45%]">
+          <div class="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group">
+            <div class="flex items-center gap-4 mb-4">
+              <div class="w-12 h-12 bg-indigo-50 rounded-xl flex items-center justify-center text-indigo-600 group-hover:scale-110 transition-transform">
+                <i class="ri-code-box-line text-2xl"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-800 text-xl">Desarrollador Full Stack</h3>
+                <p class="text-indigo-600 font-medium text-sm">Proyecto de Estadías — Pyme Local</p>
+              </div>
+            </div>
+            <p class="text-xs font-semibold text-gray-400 mb-3 flex items-center gap-1">
+              <i class="ri-calendar-line"></i> 2024 - 2025
+            </p>
+            <ul class="space-y-2">
+              <li class="flex items-start gap-2 text-sm text-gray-600">
+                <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-indigo-500 shrink-0"></span>
+                <span>Desarrollo integral de software <strong>MRP</strong> para procesos industriales.</span>
+              </li>
+              <li class="flex items-start gap-2 text-sm text-gray-600">
+                <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-indigo-500 shrink-0"></span>
+                <span>Diseño y normalización de bases de datos para control de inventarios.</span>
+              </li>
+              <li class="flex items-start gap-2 text-sm text-gray-600">
+                <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-indigo-500 shrink-0"></span>
+                <span>Automatización de reportes de producción y gestión de proveedores.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 3: Freelance (Izquierda) -->
+      <div class="mb-12 flex flex-col md:flex-row justify-between items-center w-full text-center md:text-left">
+        <div class="order-2 md:order-1 w-full md:w-[45%]">
+          <div class="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group text-left">
+            <div class="flex items-center gap-4 mb-4">
+              <div class="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center text-orange-600 group-hover:scale-110 transition-transform">
+                <i class="ri-customer-service-2-line text-2xl"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-800 text-xl">Soporte Técnico Freelance</h3>
+                <p class="text-orange-600 font-medium text-sm">Trabajo Independiente</p>
+              </div>
+            </div>
+            <p class="text-xs font-semibold text-gray-400 mb-3 flex items-center gap-1">
+              <i class="ri-calendar-line"></i> 2021 - 2025
+            </p>
+            <ul class="space-y-2">
+              <li class="flex items-start gap-2 text-sm text-gray-600">
+                <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-orange-500 shrink-0"></span>
+                <span>Mantenimiento preventivo/correctivo y diagnóstico de hardware/software.</span>
+              </li>
+              <li class="flex items-start gap-2 text-sm text-gray-600">
+                <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-orange-500 shrink-0"></span>
+                <span>Resolución de problemas de redes y asesoría técnica personalizada.</span>
+              </li>
+              <li class="flex items-start gap-2 text-sm text-gray-600">
+                <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-orange-500 shrink-0"></span>
+                <span>Gestión de respaldos y recuperación de datos críticos.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="z-20 hidden md:flex items-center order-2 bg-white border-4 border-orange-500 shadow-xl w-10 h-10 rounded-full">
+          <div class="w-2 h-2 bg-orange-500 rounded-full mx-auto"></div>
+        </div>
+        <div class="hidden md:block order-3 w-[45%]"></div>
       </div>
     </div>
   </section>
@@ -267,115 +1034,125 @@
        Timeline de formación académica y certificaciones
        Cada tarjeta tiene hover effects interactivos
        ======================================== -->
-  <section id="educacion" class="max-w-4xl mx-auto px-6 py-20">
-    <h2 class="text-3xl font-semibold text-center mb-12">Educación</h2>
-    <div class="space-y-6">
-      
-      <!-- Tarjeta de educación 1: Ingeniería (En curso) -->
-      <div class="bg-white rounded-2xl shadow-md p-6 flex items-start gap-4 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border-l-4 border-purple-500">
-        <div class="w-12 h-12 rounded-full bg-purple-50 flex items-center justify-center text-purple-700 font-semibold text-lg">
-          <i class="ri-graduation-cap-line text-2xl"></i>
-        </div>
-        <div class="flex-1">
-          <div class="flex items-center gap-2 mb-1">
-            <div class="font-semibold text-gray-800 text-lg">Ingeniería en Tecnologías de la Información e Innovación Digital</div>
-            <span class="bg-purple-100 text-purple-700 px-2 py-1 rounded text-xs font-medium">En curso</span>
+  <section id="educacion" class="max-w-5xl mx-auto px-6 py-24 fade-in">
+    <div class="text-center mb-16">
+      <h2 class="section-title text-4xl inline-block">Formación Académica</h2>
+      <p class="text-gray-600 mt-4 max-w-2xl mx-auto">"El aprendizaje continuo es el combustible de la innovación digital."</p>
+    </div>
+
+    <div class="grid lg:grid-cols-3 gap-8">
+      <!-- Columna Principal: Grados Académicos -->
+      <div class="lg:col-span-2 space-y-8">
+        <div class="bg-white rounded-3xl shadow-xl p-8 border border-gray-100 hover:shadow-2xl transition-all duration-300 relative overflow-hidden group">
+          <div class="absolute top-0 right-0 w-32 h-32 bg-purple-50 rounded-full -mr-16 -mt-16 transition-transform group-hover:scale-110"></div>
+          <div class="relative flex flex-col md:flex-row gap-6 items-start">
+            <div class="w-16 h-16 bg-purple-600 rounded-2xl flex items-center justify-center text-white shadow-lg shrink-0">
+              <i class="ri-graduation-cap-line text-3xl"></i>
+            </div>
+            <div>
+              <div class="flex flex-wrap items-center gap-3 mb-2">
+                <h3 class="font-bold text-gray-800 text-2xl">Ingeniería en Tecnologías de la Información</h3>
+                <span class="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">En curso</span>
+              </div>
+              <p class="text-gray-600 font-medium mb-4">Universidad Tecnológica Metropolitana de Aguascalientes</p>
+              <div class="flex items-center gap-4 text-sm text-gray-400">
+                <span class="flex items-center gap-1"><i class="ri-calendar-line"></i> 2025 - 2026</span>
+                <span class="flex items-center gap-1"><i class="ri-map-pin-line"></i> Aguascalientes, México</span>
+              </div>
+              <div class="mt-6 grid grid-cols-2 md:grid-cols-3 gap-3">
+                <span class="px-3 py-2 bg-gray-50 rounded-xl text-xs text-gray-500 font-medium text-center">Innovación Digital</span>
+                <span class="px-3 py-2 bg-gray-50 rounded-xl text-xs text-gray-500 font-medium text-center">Arquitectura de Software</span>
+                <span class="px-3 py-2 bg-gray-50 rounded-xl text-xs text-gray-500 font-medium text-center">Gestión de Proyectos</span>
+              </div>
+            </div>
           </div>
-          <div class="text-sm text-gray-500 mb-2">Universidad Tecnológica Metropolitana de Aguascalientes — 2025-2026 </div>
-          <!-- Tags de especialización -->
-          <div class="flex flex-wrap gap-2">
-            <span class="bg-purple-50 text-purple-600 px-2 py-1 rounded text-xs">Data Science</span>
-            <span class="bg-purple-50 text-purple-600 px-2 py-1 rounded text-xs">Deep Learning</span>
-            <span class="bg-purple-50 text-purple-600 px-2 py-1 rounded text-xs">Machine Learning</span>
-            <span class="bg-purple-50 text-purple-600 px-2 py-1 rounded text-xs">Computer Vision</span>
-            <span class="bg-purple-50 text-purple-600 px-2 py-1 rounded text-xs">DevOps</span>
-            <span class="bg-purple-50 text-purple-600 px-2 py-1 rounded text-xs">Agile PM</span>
+        </div>
+
+        <div class="bg-white rounded-3xl shadow-xl p-8 border border-gray-100 hover:shadow-2xl transition-all duration-300 relative overflow-hidden group">
+          <div class="absolute top-0 right-0 w-32 h-32 bg-green-50 rounded-full -mr-16 -mt-16 transition-transform group-hover:scale-110"></div>
+          <div class="relative flex flex-col md:flex-row gap-6 items-start">
+            <div class="w-16 h-16 bg-green-600 rounded-2xl flex items-center justify-center text-white shadow-lg shrink-0">
+              <i class="ri-verified-badge-line text-3xl"></i>
+            </div>
+            <div>
+              <div class="flex flex-wrap items-center gap-3 mb-2">
+                <h3 class="font-bold text-gray-800 text-2xl">TSU en Desarrollo de Software Multiplataforma</h3>
+                <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-1">
+                  <i class="ri-checkbox-circle-fill"></i> Titulado
+                </span>
+              </div>
+              <p class="text-gray-600 font-medium mb-4">Universidad Tecnológica Metropolitana de Aguascalientes</p>
+              <div class="flex items-center gap-4 text-sm text-gray-400">
+                <span class="flex items-center gap-1"><i class="ri-calendar-line"></i> 2022 - 2024</span>
+                <span class="flex items-center gap-1"><i class="ri-map-pin-line"></i> Aguascalientes, México</span>
+              </div>
+              <div class="mt-6 grid grid-cols-2 md:grid-cols-3 gap-3">
+                <span class="px-3 py-2 bg-gray-50 rounded-xl text-xs text-gray-500 font-medium text-center">Desarrollo Web</span>
+                <span class="px-3 py-2 bg-gray-50 rounded-xl text-xs text-gray-500 font-medium text-center">Apps Móviles</span>
+                <span class="px-3 py-2 bg-gray-50 rounded-xl text-xs text-gray-500 font-medium text-center">Bases de Datos</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- Tarjeta de educación 2: TSU -->
-      <div class="bg-white rounded-2xl shadow-md p-6 flex items-start gap-4 hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
-        <div class="w-12 h-12 rounded-full bg-indigo-50 flex items-center justify-center text-indigo-700">
-          <i class="ri-code-box-line text-2xl"></i>
-        </div>
-        <div class="flex-1">
-          <div class="font-semibold text-gray-800 text-lg">TSU en Desarrollo de Software Multiplataforma</div>
-          <div class="text-sm text-gray-500 mb-2">Universidad Tecnológica Metropolitana de Aguascalientes — 2022-2024</div>
-          <div class="flex flex-wrap gap-2">
-            <span class="bg-indigo-50 text-indigo-600 px-2 py-1 rounded text-xs">UX/UI Design</span>
-            <span class="bg-indigo-50 text-indigo-600 px-2 py-1 rounded text-xs">Full-Stack</span>
-            <span class="bg-indigo-50 text-indigo-600 px-2 py-1 rounded text-xs">IoT</span>
-            <span class="bg-indigo-50 text-indigo-600 px-2 py-1 rounded text-xs">SQL/NoSQL</span>
-            <span class="bg-indigo-50 text-indigo-600 px-2 py-1 rounded text-xs">Blockchain</span>
-            <span class="bg-indigo-50 text-indigo-600 px-2 py-1 rounded text-xs">Networking</span>
-            <span class="bg-indigo-50 text-indigo-600 px-2 py-1 rounded text-xs">Cybersecurity</span>
+      <!-- Columna Lateral: Certificaciones y Logros -->
+      <div class="space-y-8">
+        <!-- Certificaciones -->
+        <div class="bg-gradient-to-br from-indigo-600 to-purple-700 rounded-3xl shadow-xl p-8 text-white h-full">
+          <h3 class="font-bold text-2xl mb-6 flex items-center gap-3">
+            <i class="ri-award-line text-yellow-400"></i>
+            Certificaciones
+          </h3>
+          <div class="space-y-4 max-h-[400px] overflow-y-auto pr-2 custom-scrollbar">
+            <div class="bg-white/10 backdrop-blur-md rounded-2xl p-4 hover:bg-white/20 transition-colors">
+              <p class="font-bold text-sm">Design Sprint Professional (DSPCTM)</p>
+              <p class="text-indigo-200 text-xs">2024</p>
+            </div>
+            <div class="bg-white/10 backdrop-blur-md rounded-2xl p-4 hover:bg-white/20 transition-colors">
+              <p class="font-bold text-sm">Practical Deep Learning with PyTorch</p>
+              <p class="text-indigo-200 text-xs">2024</p>
+            </div>
+            <div class="bg-white/10 backdrop-blur-md rounded-2xl p-4 hover:bg-white/20 transition-colors">
+              <p class="font-bold text-sm">Microsoft Azure - Databases</p>
+              <p class="text-indigo-200 text-xs">2024</p>
+            </div>
+            <div class="bg-white/10 backdrop-blur-md rounded-2xl p-4 hover:bg-white/20 transition-colors">
+              <p class="font-bold text-sm">Google Cloud Computing Foundations</p>
+              <p class="text-indigo-200 text-xs">2023</p>
+            </div>
+            <div class="bg-white/10 backdrop-blur-md rounded-2xl p-4 hover:bg-white/20 transition-colors">
+              <p class="font-bold text-sm">Blockchain Consultant Professional</p>
+              <p class="text-indigo-200 text-xs">2023</p>
+            </div>
+            <div class="bg-white/10 backdrop-blur-md rounded-2xl p-4 hover:bg-white/20 transition-colors">
+              <p class="font-bold text-sm">Solidity Bootcamp</p>
+              <p class="text-indigo-200 text-xs">2023</p>
+            </div>
           </div>
-        </div>
-      </div>
-
-      <!-- Certificaciones -->
-      <div class="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-2xl shadow-md p-6">
-        <h3 class="font-semibold text-xl mb-4 flex items-center gap-2">
-          <i class="ri-award-line text-purple-600"></i>
-          Certificaciones
-        </h3>
-        <div class="grid md:grid-cols-2 gap-3">
-          <div class="bg-white rounded-lg p-3 text-sm">
-            <div class="font-medium text-gray-800">Design Sprint Professional (DSPCTM)</div>
-            <div class="text-xs text-gray-500">2024</div>
-          </div>
-          <div class="bg-white rounded-lg p-3 text-sm">
-            <div class="font-medium text-gray-800">Practical Deep Learning with PyTorch</div>
-            <div class="text-xs text-gray-500">2024</div>
-          </div>
-          <div class="bg-white rounded-lg p-3 text-sm">
-            <div class="font-medium text-gray-800">Microsoft Azure - Databases</div>
-            <div class="text-xs text-gray-500">2024</div>
-          </div>
-          <div class="bg-white rounded-lg p-3 text-sm">
-            <div class="font-medium text-gray-800">Google Cloud Computing Foundations</div>
-            <div class="text-xs text-gray-500">2023</div>
-          </div>
-          <div class="bg-white rounded-lg p-3 text-sm">
-            <div class="font-medium text-gray-800">Blockchain Consultant Professional</div>
-            <div class="text-xs text-gray-500">2023</div>
-          </div>
-          <div class="bg-white rounded-lg p-3 text-sm">
-            <div class="font-medium text-gray-800">Solidity Bootcamp</div>
-            <div class="text-xs text-gray-500">2023</div>
-          </div>
-          <div class="bg-white rounded-lg p-3 text-sm">
-            <div class="font-medium text-gray-800">AI and Data Science Foundations</div>
-            <div class="text-xs text-gray-500">2023</div>
-          </div>
-          <div class="bg-white rounded-lg p-3 text-sm">
-            <div class="font-medium text-gray-800">Swift iOS App Development</div>
-            <div class="text-xs text-gray-500">2023</div>
-          </div>
-        </div>
-        
-        <!-- Enlace a Drive de Diplomas -->
-        <div class="mt-6 text-center">
-          <a href="#" class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-purple-600 text-white rounded-lg font-semibold shadow-md hover:bg-purple-700 hover:scale-105 transition-transform duration-300">
-            <i class="ri-folder-open-line text-xl"></i>
-            Ver Diplomas
+          <a href="#" class="mt-8 w-full py-4 bg-white text-indigo-700 rounded-2xl font-bold flex items-center justify-center gap-2 hover:bg-indigo-50 transition-colors shadow-lg">
+            <i class="ri-folder-open-line"></i> Ver Diplomas
           </a>
         </div>
-
       </div>
+    </div>
 
-      <!-- Logros -->
-      <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl shadow-md p-6 mt-8">
-        <h3 class="font-extrabold text-2xl mb-4 flex items-center gap-2 text-purple-800">
-          <i class="ri-trophy-line text-3xl text-purple-600"></i>
-          Mis Logros Destacados
-          <img src="images/google-cloud.svg" alt="Google Cloud" class="w-8 h-8 object-contain">
-        </h3>
-        <div class="bg-white rounded-lg p-4 text-base shadow-inner">
-          <div class="font-bold text-gray-900 mb-1">¡Un Viaje de Éxito en Google Labs!</div>
-          <p class="text-gray-700 mb-2">Desde 2023, he escalado hasta la prestigiosa Liga de Diamantes en Google Labs, un testimonio de mi dedicación y habilidad en el ecosistema de Google Cloud. Cada desafío superado y cada proyecto innovador me han impulsado a la cima, demostrando un compromiso inquebrantable con la excelencia tecnológica.</p>
-          <a href="https://www.skills.google/public_profiles/6541c325-99d6-4c2b-8289-09d291d87e36" target="_blank" class="text-purple-700 hover:text-purple-800 font-semibold text-sm flex items-center gap-1 mt-3">
+    <!-- Logro Destacado (Ancho completo abajo) -->
+    <div class="mt-12 bg-white rounded-3xl shadow-xl p-8 border border-gray-100 relative overflow-hidden group">
+      <div class="absolute top-0 right-0 w-64 h-64 bg-yellow-50 rounded-full -mr-32 -mt-32 opacity-50 group-hover:scale-110 transition-transform"></div>
+      <div class="relative flex flex-col md:flex-row items-center gap-8">
+        <div class="w-32 h-32 bg-yellow-100 rounded-3xl flex items-center justify-center shadow-inner shrink-0 rotate-3 group-hover:rotate-0 transition-transform">
+          <i class="ri-trophy-line text-6xl text-yellow-600"></i>
+        </div>
+        <div>
+          <div class="flex items-center gap-4 mb-3">
+            <h3 class="font-extrabold text-3xl text-gray-800">Logro en Google Labs</h3>
+            <img src="images/google-cloud.svg" alt="Google Cloud" class="h-8 animate-bounce">
+          </div>
+          <p class="text-gray-600 text-lg leading-relaxed mb-6">
+            Desde 2023, he escalado hasta la prestigiosa <strong class="text-indigo-600">Liga de Diamantes</strong> en Google Labs, demostrando un compromiso excepcional con la excelencia en el ecosistema de Google Cloud.
+          </p>
+          <a href="https://www.skills.google/public_profiles/6541c325-99d6-4c2b-8289-09d291d87e36" target="_blank" class="inline-flex items-center gap-2 text-indigo-600 font-bold hover:underline">
             Explora mi trayectoria en Google Skills <i class="ri-external-link-line"></i>
           </a>
         </div>
@@ -384,285 +1161,366 @@
   </section>
 
   <!-- ========================================
-       SECCIÓN: HABILIDADES
-       Grid con categorías de tecnologías
+       SECCIÓN: SKILLS HUB (MEJORADO CON TEXTURAS Y ANIMACIONES)
        ======================================== -->
-  <section id="habilidades" class="max-w-5xl mx-auto px-6 py-20">
-    <h2 class="text-3xl font-semibold text-center mb-12">Habilidades Técnicas</h2>
-    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-      
-      <!-- Tarjeta: Lenguajes -->
-      <div class="p-6 bg-white rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
-        <div class="bg-indigo-100 w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4">
-          <i class="ri-code-s-slash-line text-3xl text-indigo-600"></i>
-        </div>
-        <h3 class="font-semibold text-lg mb-3 text-center">Lenguajes</h3>
-        <div class="flex flex-wrap gap-2 justify-center text-xs">
-          <span class="bg-indigo-50 text-indigo-700 px-2 py-1 rounded">Python</span>
-          <span class="bg-indigo-50 text-indigo-700 px-2 py-1 rounded">Java</span>
-          <span class="bg-indigo-50 text-indigo-700 px-2 py-1 rounded">JavaScript</span>
-          <span class="bg-indigo-50 text-indigo-700 px-2 py-1 rounded">TypeScript</span>
-          <span class="bg-indigo-50 text-indigo-700 px-2 py-1 rounded">Swift</span>
-          <span class="bg-indigo-50 text-indigo-700 px-2 py-1 rounded">Kotlin</span>
-          <span class="bg-indigo-50 text-indigo-700 px-2 py-1 rounded">Solidity</span>
-          <span class="bg-indigo-50 text-indigo-700 px-2 py-1 rounded">PHP Laravel</span>
-        </div>
+  <section id="skills-hub" class="relative py-32 overflow-hidden bg-gradient-to-br from-indigo-950 via-blue-900 to-purple-950">
+    <!-- Capas de Textura y Fondo -->
+    <div class="skills-mesh opacity-40"></div>
+    <div class="skills-grid-pattern opacity-20"></div>
+    
+    <!-- Elementos Decorativos Flotantes -->
+    <div class="absolute top-20 left-[10%] text-white/5 animate-float hidden lg:block" style="font-size: 8rem; z-index: 0;">
+      <i class="ri-code-s-slash-line"></i>
+    </div>
+    <div class="absolute bottom-20 right-[10%] text-white/5 animate-float hidden lg:block" style="font-size: 8rem; z-index: 0; animation-delay: 1s;">
+      <i class="ri-terminal-box-line"></i>
+    </div>
+
+    <div class="relative z-10 max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-blue-400 font-bold tracking-widest uppercase text-sm mb-3">Expertise</h2>
+        <h3 class="text-4xl md:text-5xl font-manrope font-extrabold text-white section-header inline-block">
+          Habilidades & Experiencia
+        </h3>
+        <p class="text-blue-100/70 mt-4 max-w-xl mx-auto">
+          Un ecosistema de tecnologías y herramientas que domino para dar vida a ideas complejas.
+        </p>
       </div>
-      
-      <!-- Tarjeta: Frameworks -->
-      <div class="p-6 bg-white rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
-        <div class="bg-purple-100 w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4">
-          <i class="ri-stack-line text-3xl text-purple-600"></i>
-        </div>
-        <h3 class="font-semibold text-lg mb-3 text-center">Frameworks</h3>
-        <div class="flex flex-wrap gap-2 justify-center text-xs">
-          <span class="bg-purple-50 text-purple-700 px-2 py-1 rounded">React</span>
-          <span class="bg-purple-50 text-purple-700 px-2 py-1 rounded">Node.js</span>
-          <span class="bg-purple-50 text-purple-700 px-2 py-1 rounded">Flask</span>
-          <span class="bg-purple-50 text-purple-700 px-2 py-1 rounded">Next.js</span>
-          <span class="bg-purple-50 text-purple-700 px-2 py-1 rounded">TensorFlow</span>
-          <span class="bg-purple-50 text-purple-700 px-2 py-1 rounded">PyTorch</span>
-          <span class="bg-purple-50 text-purple-700 px-2 py-1 rounded">Tailwind CSS</span>
-          <span class="bg-purple-50 text-purple-700 px-2 py-1 rounded">Pandas</span>
-        </div>
-      </div>
-      
-      <!-- Tarjeta: Bases de Datos -->
-      <div class="p-6 bg-white rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
-        <div class="bg-teal-100 w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4">
-          <i class="ri-database-2-line text-3xl text-teal-600"></i>
-        </div>
-        <h3 class="font-semibold text-lg mb-3 text-center">Bases de Datos</h3>
-        <div class="flex flex-wrap gap-2 justify-center text-xs">
-          <span class="bg-teal-50 text-teal-700 px-2 py-1 rounded">MongoDB</span>
-          <span class="bg-teal-50 text-teal-700 px-2 py-1 rounded">MySQL</span>
-          <span class="bg-teal-50 text-teal-700 px-2 py-1 rounded">SQL Server</span>
-          <span class="bg-teal-50 text-teal-700 px-2 py-1 rounded">Redis</span>
-          <span class="bg-teal-50 text-teal-700 px-2 py-1 rounded">Cassandra</span>
-        </div>
-      </div>
-      
-      <!-- Tarjeta: Cloud & DevOps -->
-      <div class="p-6 bg-white rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
-        <div class="bg-orange-100 w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4">
-          <i class="ri-cloud-line text-3xl text-orange-600"></i>
-        </div>
-        <h3 class="font-semibold text-lg mb-3 text-center">Cloud & DevOps</h3>
-        <div class="flex flex-wrap gap-2 justify-center text-xs">
-          <span class="bg-orange-50 text-orange-700 px-2 py-1 rounded">Google Cloud</span>
-          <span class="bg-orange-50 text-orange-700 px-2 py-1 rounded">Azure</span>
-          <span class="bg-orange-50 text-orange-700 px-2 py-1 rounded">AWS</span>
-          <span class="bg-orange-50 text-orange-700 px-2 py-1 rounded">Docker</span>
-          <span class="bg-orange-50 text-orange-700 px-2 py-1 rounded">Linux</span>
-          <span class="bg-orange-50 text-orange-700 px-2 py-1 rounded">Windows Server</span>
+
+      <!-- Tab Navigation -->
+      <div class="flex justify-center mb-16">
+        <div class="inline-flex p-1.5 bg-white/10 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl">
+          <button onclick="switchTab('tech')" class="tab-btn active px-8 py-3 rounded-xl text-sm font-bold flex items-center gap-2 transition-all duration-300 text-white bg-white/20 shadow-lg" id="btn-tech">
+            <i class="ri-code-box-line"></i> Tecnologías
+          </button>
+          <button onclick="switchTab('soft')" class="tab-btn px-8 py-3 rounded-xl text-sm font-bold flex items-center gap-2 transition-all duration-300 text-white/60 hover:text-white hover:bg-white/10" id="btn-soft">
+            <i class="ri-user-heart-line"></i> Soft Skills
+          </button>
+          <button onclick="switchTab('lang')" class="tab-btn px-8 py-3 rounded-xl text-sm font-bold flex items-center gap-2 transition-all duration-300 text-white/60 hover:text-white hover:bg-white/10" id="btn-lang">
+            <i class="ri-translate-2"></i> Idiomas
+          </button>
         </div>
       </div>
 
-      <!-- Tarjeta: Automatización -->
-      <div class="p-6 bg-white rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
-        <div class="bg-yellow-100 w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4">
-          <i class="ri-robot-3-fill text-3xl text-yellow-600"></i>
+      <!-- Tab Content: Technologies -->
+      <div id="tab-tech" class="tab-content">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          
+          <!-- Lenguajes -->
+          <div class="skill-card bg-white/5 backdrop-blur-md p-8 rounded-3xl border border-white/10 group shadow-2xl hover:border-blue-400/50 transition-all duration-500 hover:-translate-y-2">
+            <div class="flex items-center gap-4 mb-6">
+              <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-blue-500/20">
+                <i class="ri-code-s-slash-line text-2xl"></i>
+              </div>
+              <h4 class="text-xl font-bold text-white">Lenguajes</h4>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span class="skill-badge px-3 py-1.5 bg-white/5 text-blue-100/80 rounded-lg text-sm border border-white/5 group-hover:bg-blue-500/10 group-hover:text-blue-300 transition-colors">Python</span>
+              <span class="skill-badge px-3 py-1.5 bg-white/5 text-blue-100/80 rounded-lg text-sm border border-white/5 group-hover:bg-blue-500/10 group-hover:text-blue-300 transition-colors">Java</span>
+              <span class="skill-badge px-3 py-1.5 bg-white/5 text-blue-100/80 rounded-lg text-sm border border-white/5 group-hover:bg-blue-500/10 group-hover:text-blue-300 transition-colors">JavaScript</span>
+              <span class="skill-badge px-3 py-1.5 bg-white/5 text-blue-100/80 rounded-lg text-sm border border-white/5 group-hover:bg-blue-500/10 group-hover:text-blue-300 transition-colors">TypeScript</span>
+              <span class="skill-badge px-3 py-1.5 bg-white/5 text-blue-100/80 rounded-lg text-sm border border-white/5 group-hover:bg-blue-500/10 group-hover:text-blue-300 transition-colors">Swift</span>
+              <span class="skill-badge px-3 py-1.5 bg-white/5 text-blue-100/80 rounded-lg text-sm border border-white/5 group-hover:bg-blue-500/10 group-hover:text-blue-300 transition-colors">Kotlin</span>
+              <span class="skill-badge px-3 py-1.5 bg-white/5 text-blue-100/80 rounded-lg text-sm border border-white/5 group-hover:bg-blue-500/10 group-hover:text-blue-300 transition-colors">Solidity</span>
+              <span class="skill-badge px-3 py-1.5 bg-white/5 text-blue-100/80 rounded-lg text-sm border border-white/5 group-hover:bg-blue-500/10 group-hover:text-blue-300 transition-colors">PHP Laravel</span>
+            </div>
+          </div>
+
+          <!-- Frameworks & Tools -->
+          <div class="skill-card bg-white/5 backdrop-blur-md p-8 rounded-3xl border border-white/10 group shadow-2xl hover:border-purple-400/50 transition-all duration-500 hover:-translate-y-2">
+            <div class="flex items-center gap-4 mb-6">
+              <div class="w-12 h-12 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-purple-500/20">
+                <i class="ri-stack-line text-2xl"></i>
+              </div>
+              <h4 class="text-xl font-bold text-white">Frameworks</h4>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span class="skill-badge px-3 py-1.5 bg-white/5 text-blue-100/80 rounded-lg text-sm border border-white/5 group-hover:bg-purple-500/10 group-hover:text-purple-300 transition-colors">React</span>
+              <span class="skill-badge px-3 py-1.5 bg-white/5 text-blue-100/80 rounded-lg text-sm border border-white/5 group-hover:bg-purple-500/10 group-hover:text-purple-300 transition-colors">Node.js</span>
+              <span class="skill-badge px-3 py-1.5 bg-white/5 text-blue-100/80 rounded-lg text-sm border border-white/5 group-hover:bg-purple-500/10 group-hover:text-purple-300 transition-colors">Flask</span>
+              <span class="skill-badge px-3 py-1.5 bg-white/5 text-blue-100/80 rounded-lg text-sm border border-white/5 group-hover:bg-purple-500/10 group-hover:text-purple-300 transition-colors">Next.js</span>
+              <span class="skill-badge px-3 py-1.5 bg-white/5 text-blue-100/80 rounded-lg text-sm border border-white/5 group-hover:bg-purple-500/10 group-hover:text-purple-300 transition-colors">TensorFlow</span>
+              <span class="skill-badge px-3 py-1.5 bg-white/5 text-blue-100/80 rounded-lg text-sm border border-white/5 group-hover:bg-purple-500/10 group-hover:text-purple-300 transition-colors">PyTorch</span>
+              <span class="skill-badge px-3 py-1.5 bg-white/5 text-blue-100/80 rounded-lg text-sm border border-white/5 group-hover:bg-purple-500/10 group-hover:text-purple-300 transition-colors">Tailwind CSS</span>
+              <span class="skill-badge px-3 py-1.5 bg-white/5 text-blue-100/80 rounded-lg text-sm border border-white/5 group-hover:bg-purple-500/10 group-hover:text-purple-300 transition-colors">Pandas</span>
+            </div>
+          </div>
+
+          <!-- Bases de Datos -->
+          <div class="skill-card bg-white/5 backdrop-blur-md p-8 rounded-3xl border border-white/10 group shadow-2xl hover:border-indigo-400/50 transition-all duration-500 hover:-translate-y-2">
+            <div class="flex items-center gap-4 mb-6">
+              <div class="w-12 h-12 bg-gradient-to-br from-blue-600 to-indigo-800 rounded-xl flex items-center justify-center text-white shadow-lg shadow-indigo-500/20">
+                <i class="ri-database-2-line text-2xl"></i>
+              </div>
+              <h4 class="text-xl font-bold text-white">Bases de Datos</h4>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span class="skill-badge px-3 py-1.5 bg-white/5 text-blue-100/80 rounded-lg text-sm border border-white/5 group-hover:bg-indigo-500/10 group-hover:text-indigo-300 transition-colors">MongoDB</span>
+              <span class="skill-badge px-3 py-1.5 bg-white/5 text-blue-100/80 rounded-lg text-sm border border-white/5 group-hover:bg-indigo-500/10 group-hover:text-indigo-300 transition-colors">MySQL</span>
+              <span class="skill-badge px-3 py-1.5 bg-white/5 text-blue-100/80 rounded-lg text-sm border border-white/5 group-hover:bg-indigo-500/10 group-hover:text-indigo-300 transition-colors">SQL Server</span>
+              <span class="skill-badge px-3 py-1.5 bg-white/5 text-blue-100/80 rounded-lg text-sm border border-white/5 group-hover:bg-indigo-500/10 group-hover:text-indigo-300 transition-colors">Redis</span>
+              <span class="skill-badge px-3 py-1.5 bg-white/5 text-blue-100/80 rounded-lg text-sm border border-white/5 group-hover:bg-indigo-500/10 group-hover:text-indigo-300 transition-colors">Cassandra</span>
+            </div>
+          </div>
+
+          <!-- Cloud & DevOps -->
+          <div class="skill-card bg-white/5 backdrop-blur-md p-8 rounded-3xl border border-white/10 group shadow-2xl hover:border-indigo-400/50 transition-all duration-500 hover:-translate-y-2">
+            <div class="flex items-center gap-4 mb-6">
+              <div class="w-12 h-12 bg-gradient-to-br from-indigo-700 to-purple-800 rounded-xl flex items-center justify-center text-white shadow-lg shadow-indigo-500/20">
+                <i class="ri-cloud-line text-2xl"></i>
+              </div>
+              <h4 class="text-xl font-bold text-white">Cloud & DevOps</h4>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span class="skill-badge px-3 py-1.5 bg-white/5 text-blue-100/80 rounded-lg text-sm border border-white/5 group-hover:bg-indigo-500/10 group-hover:text-indigo-300 transition-colors">Google Cloud</span>
+              <span class="skill-badge px-3 py-1.5 bg-white/5 text-blue-100/80 rounded-lg text-sm border border-white/5 group-hover:bg-indigo-500/10 group-hover:text-indigo-300 transition-colors">Azure</span>
+              <span class="skill-badge px-3 py-1.5 bg-white/5 text-blue-100/80 rounded-lg text-sm border border-white/5 group-hover:bg-indigo-500/10 group-hover:text-indigo-300 transition-colors">AWS</span>
+              <span class="skill-badge px-3 py-1.5 bg-white/5 text-blue-100/80 rounded-lg text-sm border border-white/5 group-hover:bg-indigo-500/10 group-hover:text-indigo-300 transition-colors">Docker</span>
+              <span class="skill-badge px-3 py-1.5 bg-white/5 text-blue-100/80 rounded-lg text-sm border border-white/5 group-hover:bg-indigo-500/10 group-hover:text-indigo-300 transition-colors">Linux</span>
+              <span class="skill-badge px-3 py-1.5 bg-white/5 text-blue-100/80 rounded-lg text-sm border border-white/5 group-hover:bg-indigo-500/10 group-hover:text-indigo-300 transition-colors">Windows Server</span>
+            </div>
+          </div>
+
+          <!-- Automatización -->
+          <div class="skill-card bg-white/5 backdrop-blur-md p-8 rounded-3xl border border-white/10 group shadow-2xl hover:border-blue-400/50 transition-all duration-500 hover:-translate-y-2">
+            <div class="flex items-center gap-4 mb-6">
+              <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-blue-500/20">
+                <i class="ri-robot-3-line text-2xl"></i>
+              </div>
+              <h4 class="text-xl font-bold text-white">Automatización</h4>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span class="skill-badge px-3 py-1.5 bg-white/5 text-blue-100/80 rounded-lg text-sm border border-white/5 group-hover:bg-blue-500/10 group-hover:text-blue-300 transition-colors">n8n</span>
+              <span class="skill-badge px-3 py-1.5 bg-white/5 text-blue-100/80 rounded-lg text-sm border border-white/5 group-hover:bg-blue-500/10 group-hover:text-blue-300 transition-colors">Apache Airflow</span>
+            </div>
+          </div>
+
         </div>
-        <h3 class="font-semibold text-lg mb-3 text-center">Automatización</h3>
-        <div class="flex flex-wrap gap-2 justify-center text-xs">
-          <span class="bg-blue-50 text-blue-700 px-2 py-1 rounded">n8n</span>
-          <span class="bg-blue-50 text-blue-700 px-2 py-1 rounded">Apache Airflow</span>
+      </div>
+
+      <!-- Tab Content: Soft Skills -->
+      <div id="tab-soft" class="tab-content hidden opacity-0">
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="skill-card bg-white/5 backdrop-blur-md p-8 rounded-3xl border border-white/10 text-center shadow-2xl group hover:border-orange-400/50 transition-all duration-500 hover:-translate-y-2">
+            <div class="w-16 h-16 bg-gradient-to-br from-orange-400 to-yellow-500 rounded-2xl flex items-center justify-center text-white mx-auto mb-6 shadow-lg shadow-orange-500/30 group-hover:scale-110 transition-transform">
+              <i class="ri-rocket-2-line text-3xl"></i>
+            </div>
+            <h4 class="text-xl font-bold mb-4 text-white">Creatividad</h4>
+            <p class="text-blue-100/70 text-sm leading-relaxed">Capacidad para generar ideas innovadoras y soluciones originales a problemas complejos.</p>
+          </div>
+          <div class="skill-card bg-white/5 backdrop-blur-md p-8 rounded-3xl border border-white/10 text-center shadow-2xl group hover:border-pink-400/50 transition-all duration-500 hover:-translate-y-2">
+            <div class="w-16 h-16 bg-gradient-to-br from-pink-500 to-rose-500 rounded-2xl flex items-center justify-center text-white mx-auto mb-6 shadow-lg shadow-pink-500/30 group-hover:scale-110 transition-transform">
+              <i class="ri-puzzle-2-line text-3xl"></i>
+            </div>
+            <h4 class="text-xl font-bold mb-4 text-white">Pensamiento Crítico</h4>
+            <p class="text-blue-100/70 text-sm leading-relaxed">Habilidad para analizar información de manera objetiva, identificar sesgos y tomar decisiones fundamentadas.</p>
+          </div>
+          <div class="skill-card bg-white/5 backdrop-blur-md p-8 rounded-3xl border border-white/10 text-center shadow-2xl group hover:border-emerald-400/50 transition-all duration-500 hover:-translate-y-2">
+            <div class="w-16 h-16 bg-gradient-to-br from-emerald-400 to-teal-600 rounded-2xl flex items-center justify-center text-white mx-auto mb-6 shadow-lg shadow-emerald-500/30 group-hover:scale-110 transition-transform">
+              <i class="ri-medal-line text-3xl"></i>
+            </div>
+            <h4 class="text-xl font-bold mb-4 text-white">Responsabilidad</h4>
+            <p class="text-blue-100/70 text-sm leading-relaxed">Compromiso con las tareas asignadas, cumplimiento de plazos y asunción de las consecuencias de las acciones.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab Content: Languages -->
+      <div id="tab-lang" class="tab-content hidden opacity-0">
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="skill-card bg-white/5 backdrop-blur-md p-8 rounded-3xl border border-white/10 flex items-center gap-6 shadow-2xl hover:border-blue-400/50 transition-all duration-500 hover:-translate-y-2">
+            <div class="w-16 h-16 rounded-full overflow-hidden shadow-md shrink-0 border-4 border-white/20">
+              <img src="images/spain.svg" alt="Español" class="w-full h-full object-cover">
+            </div>
+            <div>
+              <h4 class="font-bold text-white text-lg">Español</h4>
+              <p class="text-blue-400 text-sm font-bold uppercase tracking-wider">Nativo</p>
+            </div>
+          </div>
+          <div class="skill-card bg-white/5 backdrop-blur-md p-8 rounded-3xl border border-white/10 flex items-center gap-6 shadow-2xl hover:border-blue-400/50 transition-all duration-500 hover:-translate-y-2">
+            <div class="w-16 h-16 rounded-full overflow-hidden shadow-md shrink-0 border-4 border-white/20">
+              <img src="images/united-kingdom-svgrepo-com.svg" alt="Inglés" class="w-full h-full object-cover">
+            </div>
+            <div>
+              <h4 class="font-bold text-white text-lg">Inglés</h4>
+              <p class="text-blue-400 text-sm font-bold uppercase tracking-wider">B1 (Certificado ITEP)</p>
+            </div>
+          </div>
+          <div class="skill-card bg-white/5 backdrop-blur-md p-8 rounded-3xl border border-white/10 flex items-center gap-6 shadow-2xl hover:border-blue-400/50 transition-all duration-500 hover:-translate-y-2">
+            <div class="w-16 h-16 rounded-full overflow-hidden shadow-md shrink-0 border-4 border-white/20">
+              <img src="images/france.svg" alt="Francés" class="w-full h-full object-cover">
+            </div>
+            <div>
+              <h4 class="font-bold text-white text-lg">Francés</h4>
+              <p class="text-blue-400 text-sm font-bold uppercase tracking-wider">Nivel B1 (DELF/DALF en proceso)</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="soft-skills" class="max-w-5xl mx-auto px-6 py-20">
-    <h2 class="text-3xl font-semibold text-center mb-12">Habilidades Blandas</h2>
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-      
-      <!-- Tarjeta: Creatividad -->
-      <div class="p-6 bg-white rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
-        <div class="bg-yellow-100 w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4">
-          <i class="ri-lightbulb-line text-3xl text-yellow-600"></i>
-        </div>
-        <h3 class="font-semibold text-lg mb-3 text-center">Creatividad</h3>
-        <p class="text-gray-600 text-center text-sm">Capacidad para generar ideas innovadoras y soluciones originales a problemas complejos.</p>
-      </div>
-      
-      <!-- Tarjeta: Pensamiento Crítico -->
-      <div class="p-6 bg-white rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
-        <div class="bg-green-100 w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4">
-          <i class="ri-brain-line text-3xl text-green-600"></i>
-        </div>
-        <h3 class="font-semibold text-lg mb-3 text-center">Pensamiento Crítico</h3>
-        <p class="text-gray-600 text-center text-sm">Habilidad para analizar información de manera objetiva, identificar sesgos y tomar decisiones fundamentadas.</p>
-      </div>
-      
-      <!-- Tarjeta: Responsabilidad -->
-      <div class="p-6 bg-white rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
-        <div class="bg-red-100 w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4">
-          <i class="ri-checkbox-circle-line text-3xl text-red-600"></i>
-        </div>
-        <h3 class="font-semibold text-lg mb-3 text-center">Responsabilidad</h3>
-        <p class="text-gray-600 text-center text-sm">Compromiso con las tareas asignadas, cumplimiento de plazos y asunción de las consecuencias de las acciones.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- SECCIÓN: IDIOMAS -->
-  <section id="languages" class="max-w-5xl mx-auto px-6 py-20">
-    <h2 class="text-3xl font-semibold text-center mb-12">Idiomas</h2>
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-      
-      <!-- Tarjeta: Inglés -->
-      <div class="p-6 bg-white rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
-        <div class="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4">
-          <img src="images/united-kingdom-svgrepo-com.svg" alt="Bandera de Reino Unido" class="w-full h-full object-contain">
-        </div>
-        <h3 class="font-semibold text-lg mb-3 text-center">Inglés</h3>
-        <p class="text-gray-600 text-center text-sm">Nivel B1 (Certificado ITEP)</p>
-      </div>
-      
-      <!-- Tarjeta: Francés -->
-      <div class="p-6 bg-white rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
-        <div class="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4">
-          <img src="images/france.svg" alt="Bandera de Francia" class="w-full h-full object-contain">
-        </div>
-        <h3 class="font-semibold text-lg mb-3 text-center">Francés</h3>
-        <p class="text-gray-600 text-center text-sm">Nivel B1 (Certificación DELF y DALF en proceso)</p>
-      </div>
-
-      <!-- Tarjeta: Español -->
-      <div class="p-6 bg-white rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
-        <div class="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4">
-          <img src="images/spain.svg" alt="Bandera de España" class="w-full h-full object-contain">
-        </div>
-        <h3 class="font-semibold text-lg mb-3 text-center">Español</h3>
-        <p class="text-gray-600 text-center text-sm">Nativo</p>
-      </div>
-    </div>
-  </section>
 
   <!-- ========================================
        SECCIÓN: PROYECTOS DESTACADOS
        Portafolio de trabajos realizados
        ======================================== -->
-  <section id="proyectos" class="max-w-5xl mx-auto px-6 py-20">
-    <h2 class="text-3xl font-semibold text-center mb-12">Proyectos Destacados</h2>
-    <div class="grid md:grid-cols-3 gap-8">
-      
-      <!-- Proyecto 1: MRP Platform -->
-      <div class="p-6 bg-white rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
-        <div class="bg-blue-100 w-14 h-14 rounded-xl flex items-center justify-center mb-4">
-          <i class="ri-bar-chart-box-line text-3xl text-blue-600"></i>
+  <!-- ========================================
+       SECCIÓN: PROYECTOS (DISEÑO 2025 BENTO GRID)
+       ======================================== -->
+  <section id="proyectos" class="modern-2025-section py-32">
+    <div class="modern-2025-bg"></div>
+    
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
+        <div class="max-w-2xl">
+          <h2 class="section-title text-5xl md:text-6xl font-black tracking-tight mb-6">Proyectos <span class="text-indigo-400">Destacados</span></h2>
+          <p class="text-gray-400 text-lg leading-relaxed">Una selección de trabajos que combinan arquitectura robusta con experiencias de usuario intuitivas y modernas.</p>
         </div>
-        <h3 class="font-semibold text-xl mb-2">Plataforma MRP de Gestión de Inventarios</h3>
-        <p class="text-gray-500 text-sm mb-4">Sistema completo de gestión de inventarios que automatiza reportes y seguimiento de movimientos internos. Desarrollado durante mi internship en Pallet Tarimas y Cajones, logrando una reducción del 40% en tiempos de procesamiento.</p>
-        <div class="flex flex-wrap gap-2 mb-4">
-          <span class="bg-blue-50 text-blue-700 px-2 py-1 rounded text-xs">React</span>
-          <span class="bg-blue-50 text-blue-700 px-2 py-1 rounded text-xs">MongoDB</span>
-          <span class="bg-blue-50 text-blue-700 px-2 py-1 rounded text-xs">Flask</span>
-          <span class="bg-blue-50 text-blue-700 px-2 py-1 rounded text-xs">Electron</span>
-          <span class="bg-blue-50 text-blue-700 px-2 py-1 rounded text-xs">Tailwind</span>
-        </div>
-        <div class="flex gap-3">
-          <a href="#" class="text-purple-600 hover:text-purple-700 font-medium text-sm flex items-center gap-1">
-            Ver más <i class="ri-arrow-right-line"></i>
-          </a>
-        </div>
-      </div>
-      
-      <!-- Nuevo Proyecto: App de Rescate de Mascotas -->
-      <div class="p-6 bg-white rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
-        <div class="bg-green-100 w-14 h-14 rounded-xl flex items-center justify-center mb-4">
-          <i class="ri-heart-line text-3xl text-green-600"></i> <!-- Icono de corazón para mascotas -->
-        </div>
-        <h3 class="font-semibold text-xl mb-2">App de Apoyo Rescate de Mascotas</h3>
-        <p class="text-gray-500 text-sm mb-4">Aplicación diseñada para facilitar el rescate y la gestión de mascotas, conectando voluntarios con animales necesitados. Desarrollada con un enfoque en la eficiencia y la usabilidad para maximizar el impacto.</p>
-        <div class="flex flex-wrap gap-2 mb-4">
-          <span class="bg-green-50 text-green-700 px-2 py-1 rounded text-xs flex items-center gap-1"><i class="ri-code-s-slash-line"></i> .NET</span>
-          <span class="bg-green-50 text-green-700 px-2 py-1 rounded text-xs flex items-center gap-1"><i class="ri-tailwind-css-fill"></i> Tailwind CSS</span>
-          <span class="bg-green-50 text-green-700 px-2 py-1 rounded text-xs flex items-center gap-1"><i class="ri-php-fill"></i> PHP</span>
-        </div>
-        <div class="flex gap-3">
-          <a href="#" class="text-purple-600 hover:text-purple-700 font-medium text-sm flex items-center gap-1">
-            Ver más <i class="ri-arrow-right-line"></i>
-          </a>
-        </div>
-      </div>
-      
-      <!-- Proyecto 2: Chatbot Swift -->
-      <div class="p-6 bg-white rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
-        <div class="bg-yellow-100 w-14 h-14 rounded-xl flex items-center justify-center mb-4">
-          <i class="ri-chat-3-line text-3xl text-yellow-600"></i> <!-- Icono de chat para Chatbot Swift -->
-        </div>
-        <h3 class="font-semibold text-xl mb-2">Chatbot Swift</h3>
-        <p class="text-gray-500 text-sm mb-4">Desarrollo de un chatbot interactivo utilizando Swift, enfocado en la eficiencia y la experiencia de usuario. Ideal para automatización de respuestas y soporte al cliente.</p>
-        <div class="flex flex-wrap gap-2 mb-4">
-          <span class="bg-yellow-50 text-yellow-700 px-2 py-1 rounded text-xs flex items-center gap-1"><i class="ri-swift-fill"></i> Swift</span>
-          <span class="bg-yellow-50 text-yellow-700 px-2 py-1 rounded text-xs flex items-center gap-1"><i class="ri-apple-fill"></i> iOS</span>
-          <span class="bg-yellow-50 text-yellow-700 px-2 py-1 rounded text-xs flex items-center gap-1"><i class="ri-chat-smile-2-line"></i> NLP</span>
-        </div>
-        <div class="flex gap-3">
-          <a href="#" class="text-purple-600 hover:text-purple-700 font-medium text-sm flex items-center gap-1">
-            Ver más <i class="ri-arrow-right-line"></i>
-          </a>
-        </div>
-      </div>
-      
-      <!-- Nuevo Proyecto: API de Árbol de Decisión -->
-      <div class="p-6 bg-white rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
-        <div class="bg-red-100 w-14 h-14 rounded-xl flex items-center justify-center mb-4">
-          <i class="ri-node-tree text-3xl text-red-600"></i> <!-- Icono de árbol de decisión -->
-        </div>
-        <h3 class="font-semibold text-xl mb-2">API de Árbol de Decisión</h3>
-        <p class="text-gray-500 text-sm mb-4">Implementación de una API RESTful para la toma de decisiones automatizada basada en modelos de árbol de decisión. Ideal para sistemas de recomendación, diagnóstico o clasificación de datos.</p>
-        <div class="flex flex-wrap gap-2 mb-4">
-          <span class="bg-red-50 text-red-700 px-2 py-1 rounded text-xs flex items-center gap-1"><i class="ri-python-fill"></i> Python</span>
-          <span class="bg-red-50 text-red-700 px-2 py-1 rounded text-xs flex items-center gap-1"><i class="ri-flask-fill"></i> Flask</span>
-          <span class="bg-red-50 text-red-700 px-2 py-1 rounded text-xs flex items-center gap-1"><i class="ri-database-2-line"></i> Scikit-learn</span>
-        </div>
-        <div class="flex gap-3">
-          <a href="#" class="text-purple-600 hover:text-purple-700 font-medium text-sm flex items-center gap-1">
-            Ver más <i class="ri-arrow-right-line"></i>
-          </a>
+        
+        <!-- Filtros Estilo 2025 -->
+        <div class="flex flex-wrap gap-3 bg-white/5 p-2 rounded-2xl backdrop-blur-xl border border-white/10">
+          <button data-filter="all" class="filter-btn active modern-2025-btn px-6 py-2 rounded-xl text-sm font-bold transition-all">Todos</button>
+          <button data-filter="web" class="filter-btn modern-2025-btn px-6 py-2 rounded-xl text-sm font-bold transition-all">Web</button>
+          <button data-filter="ai" class="filter-btn modern-2025-btn px-6 py-2 rounded-xl text-sm font-bold transition-all">AI</button>
+          <button data-filter="social" class="filter-btn modern-2025-btn px-6 py-2 rounded-xl text-sm font-bold transition-all">Social</button>
         </div>
       </div>
 
-      <!-- Nuevo Proyecto: App de Apoyo Emocional -->
-      <div class="p-6 bg-white rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
-        <div class="bg-pink-100 w-14 h-14 rounded-xl flex items-center justify-center mb-4">
-          <i class="ri-psychotherapy-line text-3xl text-pink-600"></i> <!-- Icono de psicoterapia para App de Apoyo Emocional -->
+      <div class="bento-grid" id="projects-grid">
+        
+        <!-- Proyecto 1: MRP Platform (FEATURED - LARGE) -->
+        <div class="modern-2025-card bento-featured group p-10" data-category="web">
+          <div class="flex flex-col md:flex-row gap-10 h-full">
+            <div class="flex-1 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center gap-4 mb-8">
+                  <div class="w-12 h-12 bg-indigo-500/20 rounded-xl flex items-center justify-center text-indigo-400 border border-indigo-500/30">
+                    <i class="ri-bar-chart-box-line text-2xl"></i>
+                  </div>
+                  <span class="modern-2025-tag">Featured Project</span>
+                </div>
+                <h3 class="text-3xl font-bold text-white mb-4 group-hover:text-indigo-400 transition-colors">Plataforma MRP Industrial</h3>
+                <p class="text-gray-400 text-lg mb-8">Revolucionando la gestión de inventarios con automatización inteligente. Reducción del 40% en latencia operativa y optimización de recursos en tiempo real.</p>
+              </div>
+              <div class="flex flex-wrap gap-2">
+                <span class="modern-2025-tag">React</span>
+                <span class="modern-2025-tag">Node.js</span>
+                <span class="modern-2025-tag">MongoDB</span>
+                <span class="modern-2025-tag">AWS</span>
+              </div>
+            </div>
+            <div class="flex-1 relative rounded-2xl overflow-hidden bg-gradient-to-br from-indigo-500/10 to-purple-500/10 border border-white/5 flex items-center justify-center p-6 min-h-[250px]">
+               <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20"></div>
+               <i class="ri-dashboard-3-line text-8xl text-indigo-500/20 group-hover:scale-110 transition-transform duration-700"></i>
+               <div class="absolute bottom-4 right-4">
+                 <a href="#" class="w-12 h-12 bg-white text-black rounded-full flex items-center justify-center hover:scale-110 transition-all">
+                   <i class="ri-arrow-right-up-line text-xl"></i>
+                 </a>
+               </div>
+            </div>
+          </div>
         </div>
-        <h3 class="font-semibold text-xl mb-2">App de Apoyo Emocional</h3>
-        <p class="text-gray-500 text-sm mb-4">Aplicación web desarrollada con React para brindar apoyo emocional y herramientas de bienestar. Incluye funcionalidades como diario de gratitud, ejercicios de mindfulness y recursos de autoayuda.</p>
-        <div class="flex flex-wrap gap-2 mb-4">
-          <span class="bg-green-50 text-green-700 px-2 py-1 rounded text-xs flex items-center gap-1"><i class="ri-reactjs-fill"></i> React</span>
-          <span class="bg-green-50 text-green-700 px-2 py-1 rounded text-xs flex items-center gap-1"><i class="ri-nodejs-fill"></i> Node.js</span>
-          <span class="bg-green-50 text-green-700 px-2 py-1 rounded text-xs flex items-center gap-1"><i class="ri-database-2-line"></i> MongoDB</span>
+        
+        <!-- Proyecto 2: Pet Rescue App (STANDARD) -->
+        <div class="modern-2025-card bento-standard group p-8" data-category="social">
+          <div class="flex flex-col justify-between h-full">
+            <div>
+              <div class="w-12 h-12 bg-emerald-500/20 rounded-xl flex items-center justify-center text-emerald-400 border border-emerald-500/30 mb-6">
+                <i class="ri-heart-line text-2xl"></i>
+              </div>
+              <h3 class="text-2xl font-bold text-white mb-3">Pet Rescue</h3>
+              <p class="text-gray-400 text-sm mb-6">Plataforma social de rescate animal con geolocalización avanzada.</p>
+            </div>
+            <div class="flex flex-col gap-4">
+              <div class="flex flex-wrap gap-2">
+                <span class="modern-2025-tag">.NET</span>
+                <span class="modern-2025-tag">Tailwind</span>
+              </div>
+              <a href="#" class="text-white font-bold text-sm flex items-center gap-2 hover:translate-x-2 transition-transform">
+                Explorar <i class="ri-arrow-right-line"></i>
+              </a>
+            </div>
+          </div>
         </div>
-        <div class="flex gap-3">
-          <a href="#" class="text-purple-600 hover:text-purple-700 font-medium text-sm flex items-center gap-1">
-            Ver más <i class="ri-arrow-right-line"></i>
-          </a>
+        
+        <!-- Proyecto 3: Chatbot Swift (TALL) -->
+        <div class="modern-2025-card bento-tall group p-8" data-category="ai">
+          <div class="flex flex-col justify-between h-full">
+            <div>
+              <div class="w-12 h-12 bg-amber-500/20 rounded-xl flex items-center justify-center text-amber-400 border border-amber-500/30 mb-6">
+                <i class="ri-robot-line text-2xl"></i>
+              </div>
+              <h3 class="text-2xl font-bold text-white mb-4">SwiftAI Assistant</h3>
+              <p class="text-gray-400 text-sm mb-6 leading-relaxed">Asistente inteligente nativo para iOS. Procesamiento de lenguaje natural optimizado para dispositivos móviles.</p>
+              <ul class="space-y-3 mb-8">
+                <li class="flex items-center gap-2 text-xs text-gray-500"><i class="ri-checkbox-circle-fill text-amber-500"></i> Integración NLP</li>
+                <li class="flex items-center gap-2 text-xs text-gray-500"><i class="ri-checkbox-circle-fill text-amber-500"></i> 100% Nativo Swift</li>
+                <li class="flex items-center gap-2 text-xs text-gray-500"><i class="ri-checkbox-circle-fill text-amber-500"></i> iCloud Sync</li>
+              </ul>
+            </div>
+            <div class="mt-auto">
+              <div class="flex flex-wrap gap-2 mb-6">
+                <span class="modern-2025-tag">Swift</span>
+                <span class="modern-2025-tag">CoreML</span>
+              </div>
+              <a href="#" class="w-full py-3 bg-white/5 border border-white/10 rounded-xl text-white text-center font-bold hover:bg-white hover:text-black transition-all block">
+                Ver Proyecto
+              </a>
+            </div>
+          </div>
         </div>
-      </div>
-      
-      <!-- Nuevo Proyecto: Por Desbloquear -->
-      <div class="p-6 bg-white rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
-        <div class="bg-gray-100 w-14 h-14 rounded-xl flex items-center justify-center mb-4">
-          <i class="ri-lock-line text-3xl text-gray-600"></i> <!-- Icono de candado para proyecto bloqueado -->
+
+        <!-- Proyecto 4: Decision Tree API (WIDE) -->
+        <div class="modern-2025-card bento-wide group p-8" data-category="ai">
+          <div class="flex items-start justify-between">
+            <div class="max-w-[60%]">
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-10 h-10 bg-red-500/20 rounded-lg flex items-center justify-center text-red-400 border border-red-500/30">
+                  <i class="ri-node-tree text-xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-white">Decision Tree API</h3>
+              </div>
+              <p class="text-gray-400 text-sm mb-6">Motor predictivo basado en ML para toma de decisiones corporativas.</p>
+              <div class="flex flex-wrap gap-2">
+                <span class="modern-2025-tag">Python</span>
+                <span class="modern-2025-tag">Scikit-Learn</span>
+              </div>
+            </div>
+            <div class="text-right">
+               <span class="text-3xl font-black text-white/10 group-hover:text-red-500/20 transition-colors">04</span>
+            </div>
+          </div>
         </div>
-        <h3 class="font-semibold text-xl mb-2">Proyecto Secreto / En Desarrollo</h3>
-        <p class="text-gray-500 text-sm mb-4">Actualmente estoy trabajando en varios proyectos innovadores y cursos avanzados. ¡Pronto revelaré más detalles! Mantente atento a las actualizaciones.</p>
-        <div class="flex flex-wrap gap-2 mb-4">
-          <span class="bg-gray-50 text-gray-700 px-2 py-1 rounded text-xs">Confidencial</span>
-          <span class="bg-gray-50 text-gray-700 px-2 py-1 rounded text-xs">Próximamente</span>
+
+        <!-- Proyecto 5: Mindful App (WIDE) -->
+        <div class="modern-2025-card bento-wide group p-8" data-category="social">
+           <div class="flex items-start justify-between h-full">
+            <div class="max-w-[60%] flex flex-col justify-between h-full">
+              <div>
+                <div class="flex items-center gap-3 mb-4">
+                  <div class="w-10 h-10 bg-pink-500/20 rounded-lg flex items-center justify-center text-pink-400 border border-pink-500/30">
+                    <i class="ri-psychotherapy-line text-xl"></i>
+                  </div>
+                  <h3 class="text-xl font-bold text-white">Mindful Wellness</h3>
+                </div>
+                <p class="text-gray-400 text-sm mb-6">Ecosistema de salud mental y bienestar emocional.</p>
+              </div>
+              <div class="flex flex-wrap gap-2">
+                <span class="modern-2025-tag">React Native</span>
+                <span class="modern-2025-tag">Firebase</span>
+              </div>
+            </div>
+            <div class="relative w-24 h-24 bg-pink-500/5 rounded-full flex items-center justify-center group-hover:rotate-12 transition-transform duration-500">
+               <i class="ri-leaf-line text-4xl text-pink-500/20"></i>
+            </div>
+          </div>
         </div>
-        <div class="flex gap-3">
-          <a href="#" class="text-gray-600 hover:text-gray-700 font-medium text-sm flex items-center gap-1 opacity-50 cursor-not-allowed">
-            Ver más <i class="ri-forbid-line"></i>
-          </a>
-        </div>
+        
       </div>
     </div>
   </section>
+
 
   <!-- ========================================
        SECCIÓN: CONTACTO MEJORADA
@@ -694,6 +1552,38 @@
       </div>
     </div>
   </section>
+
+  <script>
+    function switchTab(tabId) {
+      // Ocultar todos los contenidos de pestañas
+      const contents = document.querySelectorAll('.tab-content');
+      contents.forEach(tab => {
+        tab.classList.add('hidden', 'opacity-0');
+        tab.classList.remove('opacity-100');
+      });
+      
+      // Desactivar todos los botones de pestañas
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('active', 'bg-white', 'dark:bg-gray-700', 'shadow-sm', 'text-blue-600', 'dark:text-blue-400');
+        btn.classList.add('text-gray-500', 'hover:text-gray-700', 'dark:hover:text-gray-300');
+      });
+      
+      // Mostrar la pestaña seleccionada
+      const activeTab = document.getElementById('tab-' + tabId);
+      activeTab.classList.remove('hidden');
+      
+      // Animación de entrada suave
+      setTimeout(() => {
+        activeTab.classList.remove('opacity-0');
+        activeTab.classList.add('opacity-100', 'transition-all', 'duration-500');
+      }, 50);
+      
+      // Activar el botón seleccionado
+      const activeBtn = document.getElementById('btn-' + tabId);
+      activeBtn.classList.add('active', 'bg-white', 'dark:bg-gray-700', 'shadow-sm', 'text-blue-600', 'dark:text-blue-400');
+      activeBtn.classList.remove('text-gray-500', 'hover:text-gray-700', 'dark:hover:text-gray-300');
+    }
+   </script>
 
   <script src="./script.js" defer></script>
   <!-- Contenedor oculto para Google Translate Element -->

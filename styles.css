@@ -11,19 +11,20 @@
 }
 
 header, section {
-  animation: fadeInUp 0.8s ease forwards;
+  animation: none;
 }
 
 /* Efecto de gradiente en botones */
 .btn-gradient {
-  background: linear-gradient(135deg, #7F5AF0, #657DF0);
+  background: var(--accent-start);
   color: white;
   font-weight: 600;
-  transition: transform 0.3s, box-shadow 0.3s;
+  border-radius: var(--radius-md);
+  transition: background-color var(--duration-250) ease, box-shadow var(--duration-250) ease;
 }
 .btn-gradient:hover {
-  transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+  box-shadow: var(--shadow-lg);
+  filter: brightness(1.05);
 }
 
 /* Hover suave en tarjetas */
@@ -59,7 +60,7 @@ header, section {
 
 /* Texto destacado */
 .text-gradient {
-  background: linear-gradient(90deg, #7F5AF0, #657DF0);
+  background: linear-gradient(90deg, var(--accent-start), var(--accent-end));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -67,4 +68,257 @@ header, section {
   background: linear-gradient(90deg, #F07F5A, #F0657D);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+/* Acento sutil bajo los títulos de sección */
+.section-title {
+  position: relative;
+}
+.section-title::after {
+  content: "";
+  display: block;
+  width: 72px;
+  height: 3px;
+  margin: 0.75rem auto 0;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, var(--accent-start), var(--accent-end));
+}
+
+/* Fondo con patrón sutil para secciones */
+.section-pattern-bg {
+  background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%237F7F7F' fill-opacity='0.3' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zm1 5v1H5zM6 0H5v1z'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Offset para anclas cuando hay navbar fijo */
+.section-anchor {
+  scroll-margin-top: 6rem; /* Compensa navbar fixed */
+}
+
+/* Títulos de sección: consistentes y centrados */
+.section-title {
+  text-align: center;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  margin-bottom: var(--space-32);
+}
+
+/* Enlaces del navbar con subrayado animado */
+.nav-link {
+  position: relative;
+  display: inline-block;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 2px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  transition: color 200ms ease, background-size 300ms ease;
+}
+.nav-link:hover {
+  color: var(--accent-text);
+  background-size: 100% 2px;
+}
+.nav-link-active {
+  color: var(--accent-text);
+  background-size: 100% 2px;
+}
+
+/* Estados de foco accesibles */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid transparent;
+  box-shadow: 0 0 0 3px rgba(127, 90, 240, 0.5);
+  border-radius: var(--radius-md);
+}
+
+/* Kit de componentes base (sin tocar HTML) */
+.btn-primary {
+  background: var(--accent-start);
+  color: #fff;
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+  transition: filter 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-primary:hover {
+  filter: brightness(1.05);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.16);
+}
+.btn-ghost {
+  background: transparent;
+  color: var(--neutral-900);
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+}
+.dark-mode .btn-ghost {
+  color: #fff;
+  border-color: rgba(255,255,255,0.15);
+}
+.card {
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: var(--shadow-md);
+  transition: box-shadow var(--duration-250) ease;
+}
+.card:hover { box-shadow: var(--shadow-lg); }
+.dark-mode .card {
+  border-color: rgba(255,255,255,0.06);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.35);
+}
+
+/* Respeto a usuarios con motion reducido */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
+/* Espaciado vertical uniforme para secciones */
+section[id] {
+  padding-top: var(--section-py);
+  padding-bottom: var(--section-py);
+}
+
+/* Microinteracciones para badges en "Sobre mí" */
+.tech-badges span {
+  transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+.tech-badges span:hover {
+  transform: translateY(-2px);
+  background-color: #d1d5db; /* gray-300 */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+}
+
+/* Desplazamiento suave global */
+html { scroll-behavior: smooth; }
+
+/* Separadores sutiles entre secciones */
+section[id] { position: relative; }
+section[id]::before { display: none; }
+
+/* Elevación y hover consistentes para cards en secciones clave */
+#habilidades .rounded-xl,
+#soft-skills .rounded-xl,
+#languages .rounded-xl,
+#proyectos .rounded-xl {
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+}
+#habilidades .rounded-xl:hover,
+#soft-skills .rounded-xl:hover,
+#languages .rounded-xl:hover,
+#proyectos .rounded-xl:hover {
+  transform: none;
+  box-shadow: 0 10px 18px rgba(0,0,0,0.10);
+}
+.dark-mode #habilidades .rounded-xl,
+.dark-mode #soft-skills .rounded-xl,
+.dark-mode #languages .rounded-xl,
+.dark-mode #proyectos .rounded-xl {
+  box-shadow: 0 6px 14px rgba(0,0,0,0.35);
+  background-color: rgba(255,255,255,0.04);
+}
+.dark-mode #habilidades .rounded-xl:hover,
+.dark-mode #soft-skills .rounded-xl:hover,
+.dark-mode #languages .rounded-xl:hover,
+.dark-mode #proyectos .rounded-xl:hover {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.45);
+}
+
+/* Botón flotante “volver arriba” */
+.back-to-top {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  width: 44px;
+  height: 44px;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent-start);
+  color: #fff;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.16);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+  z-index: 50;
+}
+.back-to-top.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.back-to-top:hover {
+  transform: translateY(-2px);
+}
+
+/* Animación de aparición controlada */
+.fade-in {
+  opacity: 0;
+  transform: translateY(16px);
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+/* Variables globales para acentos */
+:root {
+  --accent-start: #7F5AF0;
+  --accent-end: #657DF0;
+  --accent-text: #d8b4fe; /* tono claro para texto activo/hover */
+  --neutral-900: #0F1218;
+  --neutral-800: #1C1F26;
+  --neutral-700: #2A2E36;
+  --neutral-100: #F3F4F6;
+  --neutral-200: #E5E7EB;
+  /* Tipografía */
+  --font-heading: "DM Sans", sans-serif;
+  --font-body: "Lato", sans-serif;
+  --size-h1: clamp(2.25rem, 4vw, 3rem);
+  --size-h2: clamp(1.75rem, 3vw, 2.25rem);
+  --size-h3: clamp(1.25rem, 2.5vw, 1.5rem);
+  --size-body: 1rem;
+  --lh-heading: 1.25;
+  --lh-body: 1.7;
+  /* Espaciado */
+  --space-8: 0.5rem;
+  --space-12: 0.75rem;
+  --space-16: 1rem;
+  --space-24: 1.5rem;
+  --space-32: 2rem;
+  --space-48: 3rem;
+  --space-64: 4rem;
+  --section-py: clamp(3rem, 6vw, 5rem);
+  /* Sombra y radio */
+  --radius-sm: 8px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --shadow-sm: 0 4px 10px rgba(0,0,0,0.08);
+  --shadow-md: 0 6px 14px rgba(0,0,0,0.10);
+  --shadow-lg: 0 10px 20px rgba(0,0,0,0.16);
+  /* Duraciones */
+  --duration-200: 0.2s;
+  --duration-250: 0.25s;
+}
+.dark-mode {
+  --accent-text: #c7b3ff; /* leve ajuste en dark para contraste */
+}
+/* Base tipográfica */
+body {
+  font-family: var(--font-body);
+  font-size: var(--size-body);
+  line-height: var(--lh-body);
+}
+h1, h2, h3, h4, h5, h6, .section-title {
+  font-family: var(--font-heading);
+  line-height: var(--lh-heading);
+}
+h1 { font-size: var(--size-h1); }
+h2 { font-size: var(--size-h2); }
+h3 { font-size: var(--size-h3); }
+p, li, span, a, div {
+  font-family: var(--font-body);
+  line-height: var(--lh-body);
+}
+.section-title {
+  font-size: var(--size-h2);
 }
