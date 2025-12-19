@@ -184,6 +184,28 @@
       }
     }, { passive: true });
 
+    // 4. Efecto Tilt para el Avatar del Perfil Profesional
+    const profileAvatar = document.querySelector('#sobre-mi .group');
+    if (profileAvatar) {
+      profileAvatar.addEventListener('mousemove', (e) => {
+        const rect = profileAvatar.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        
+        const rotateX = (y - centerY) / 10;
+        const rotateY = (centerX - x) / 10;
+        
+        profileAvatar.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+      });
+      
+      profileAvatar.addEventListener('mouseleave', () => {
+        profileAvatar.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)`;
+      });
+    }
+
     // Botón “volver arriba”
     const backBtn = document.createElement('button');
     backBtn.className = 'back-to-top';
@@ -254,12 +276,12 @@
     });
 
     // 3. Animación de Revelado (Intersection Observer)
-    const revealObserver = new IntersectionObserver((entries) => {
+    const projectObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.style.opacity = '1';
           entry.target.style.transform = 'translateY(0)';
-          revealObserver.unobserve(entry.target);
+          projectObserver.unobserve(entry.target);
         }
       });
     }, { threshold: 0.1 });
@@ -268,7 +290,7 @@
       card.style.opacity = '0';
       card.style.transform = 'translateY(20px)';
       card.style.transition = 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
-      revealObserver.observe(card);
+      projectObserver.observe(card);
     });
   }
 
