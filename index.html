@@ -93,6 +93,40 @@
       }
     }
 
+    /* Glitch Aesthetic Animations */
+    @keyframes glitch {
+      0% { transform: translate(0); }
+      20% { transform: translate(-2px, 2px); }
+      40% { transform: translate(-2px, -2px); }
+      60% { transform: translate(2px, 2px); }
+      80% { transform: translate(2px, -2px); }
+      100% { transform: translate(0); }
+    }
+
+    .glitch-hover:hover {
+      animation: glitch 0.3s cubic-bezier(.25,.46,.45,.94) both infinite;
+      text-shadow: 2px 0 #ff00c1, -2px 0 #00fff9;
+    }
+
+    .technical-grid {
+      background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+      background-size: 30px 30px;
+    }
+
+    @keyframes scanline {
+      0% { transform: translateY(-100%); }
+      100% { transform: translateY(100%); }
+    }
+
+    .scanline::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent, rgba(79, 70, 229, 0.1), transparent);
+      animation: scanline 4s linear infinite;
+      pointer-events: none;
+    }
+
     @keyframes shimmer {
       0% { transform: translateX(-100%); }
       100% { transform: translateX(100%); }
@@ -798,115 +832,94 @@
   <!-- ========================================
        SECCIÓN: PERFIL PROFESIONAL (TECH-FUTURISTA)
        ======================================== -->
-  <section id="sobre-mi" class="relative py-32 overflow-hidden bg-white dark:bg-[#0a0a0a] transition-colors duration-500">
-    <!-- Fondos decorativos abstractos -->
+  <section id="sobre-mi" class="relative py-32 overflow-hidden bg-emerald-50/30 dark:bg-[#021612] transition-colors duration-500">
+    <!-- Fondos decorativos sutiles -->
     <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-      <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-500/10 blur-[120px] rounded-full animate-pulse"></div>
-      <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-purple-500/10 blur-[120px] rounded-full animate-pulse" style="animation-delay: 2s"></div>
+      <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-emerald-500/10 blur-[120px] rounded-full"></div>
+      <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-green-500/10 blur-[120px] rounded-full"></div>
       
-      <!-- Partículas decorativas (SVG) -->
-      <svg class="absolute inset-0 w-full h-full opacity-[0.03] dark:opacity-[0.07]" xmlns="http://www.w3.org/2000/svg">
+      <!-- Patrón de puntos discreto -->
+      <svg class="absolute inset-0 w-full h-full opacity-[0.02] dark:opacity-[0.05]" xmlns="http://www.w3.org/2000/svg">
         <defs>
-          <pattern id="grid-tech" width="40" height="40" patternUnits="userSpaceOnUse">
-            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" stroke-width="1"/>
-            <circle cx="0" cy="0" r="1" fill="currentColor"/>
+          <pattern id="grid-simple" width="40" height="40" patternUnits="userSpaceOnUse">
+            <circle cx="2" cy="2" r="1" fill="currentColor"/>
           </pattern>
         </defs>
-        <rect width="100%" height="100%" fill="url(#grid-tech)" />
+        <rect width="100%" height="100%" fill="url(#grid-simple)" />
       </svg>
     </div>
 
     <div class="max-w-7xl mx-auto px-6 relative">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         
-        <!-- Lado Izquierdo: Avatar 3D y Stats Rápidos -->
+        <!-- Lado Izquierdo: Imagen de Perfil -->
         <div class="lg:col-span-5 relative group">
-          <!-- Anillo de Neón Rotativo -->
-          <div class="absolute inset-0 scale-110 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-            <div class="absolute inset-0 border-2 border-dashed border-blue-500/50 rounded-full animate-[spin_10s_linear_infinite]"></div>
-            <div class="absolute inset-0 border border-blue-400/30 rounded-full animate-[spin_15s_linear_infinite_reverse]"></div>
-          </div>
-          
-          <!-- Contenedor del Avatar -->
-          <div class="relative z-10 bg-white/5 dark:bg-white/5 backdrop-blur-2xl rounded-full p-8 border border-white/10 shadow-2xl transition-transform duration-500 group-hover:scale-105">
-            <div class="relative rounded-full overflow-hidden aspect-square bg-gradient-to-br from-blue-600/20 to-purple-600/20">
-              <img src="images/hacker-cat.svg" alt="Hacker Cat" class="w-full h-full object-contain float-anim p-4">
-              <!-- Overlay de escaneo -->
-              <div class="absolute inset-0 bg-gradient-to-b from-transparent via-blue-400/10 to-transparent h-1/2 w-full animate-[scan_3s_ease-in-out_infinite]"></div>
+          <!-- Marco minimalista -->
+          <div class="relative z-10 bg-gray-50 dark:bg-white/5 rounded-3xl p-4 border border-gray-100 dark:border-white/10 shadow-xl transition-all duration-500">
+            <div class="relative rounded-2xl overflow-hidden aspect-square bg-gray-100 dark:bg-white/5">
+              <img src="images/hacker-cat.svg" alt="Miguel Ángel" class="w-full h-full object-contain p-8">
             </div>
-          </div>
-
-          <!-- Floating Data Points -->
-          <div class="absolute -top-4 -right-4 bg-blue-600 text-white px-4 py-2 rounded-xl text-sm font-bold shadow-lg animate-bounce">
-            <i class="ri-code-s-slash-line mr-2"></i>Full Stack
-          </div>
-          <div class="absolute top-1/2 -right-12 -translate-y-1/2 bg-emerald-600 text-white px-4 py-2 rounded-xl text-sm font-bold shadow-lg animate-pulse z-20">
-            <i class="ri-bit-coin-line mr-2"></i>Blockchain
-          </div>
-          <div class="absolute top-1/4 -left-12 bg-orange-500 text-white px-4 py-2 rounded-xl text-sm font-bold shadow-lg animate-pulse z-20">
-            <i class="ri-cloud-line mr-2"></i>Cloud Architect
-          </div>
-          <div class="absolute -bottom-4 -left-4 bg-purple-600 text-white px-4 py-2 rounded-xl text-sm font-bold shadow-lg animate-bounce" style="animation-delay: 1s">
-            <i class="ri-settings-4-line mr-2"></i>DevOps
           </div>
         </div>
 
-        <!-- Lado Derecho: Contenido y Specs -->
+        <!-- Lado Derecho: Contenido -->
         <div class="lg:col-span-7 space-y-8">
           <div>
-            <h2 class="text-5xl md:text-6xl font-bold mb-6 tracking-tight dark:text-white">
-              Perfil <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-orange-500 to-emerald-500">Imparable</span>
+            <h2 class="text-4xl md:text-5xl font-bold mb-6 tracking-tight text-gray-900 dark:text-white">
+              Sobre <span class="text-emerald-600">Mí</span>
             </h2>
-            <div class="h-1.5 w-24 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full mb-8"></div>
+            <div class="h-1 w-20 bg-emerald-600 rounded-full mb-8"></div>
             
-            <p class="text-xl text-gray-600 dark:text-gray-300 leading-relaxed mb-10">
-              No soy solo un desarrollador; soy la <span class="text-orange-500 font-black">fuerza técnica definitiva</span> detrás de infraestructuras globales. Mi dominio absoluto sobre el <span class="text-blue-500 font-bold">Cloud Computing</span>, la arquitectura <span class="text-emerald-500 font-bold">Blockchain</span> y la automatización <span class="text-purple-500 font-bold">DevOps</span> me posiciona en la cúspide de la ingeniería de software. Diseñador de sistemas inquebrantables, ejecutor de soluciones disruptivas y estratega de la Web3. Si es imposible para otros, para mí es solo el lunes por la mañana.
+            <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed mb-10">
+              Soy un desarrollador apasionado por crear soluciones tecnológicas eficientes y escalables. Con una sólida base en <span class="text-gray-900 dark:text-white font-semibold">Desarrollo Full Stack</span> y especial interés en la arquitectura de sistemas, me enfoco en entregar software de alta calidad que aporte valor real al usuario final.
+              <br><br>
+              Mi enfoque combina la curiosidad técnica con la responsabilidad profesional, buscando siempre el equilibrio entre la innovación y la estabilidad. Me motiva resolver problemas complejos mediante el uso de tecnologías modernas como <span class="text-emerald-600 font-medium">Cloud Computing</span> y <span class="text-emerald-600 font-medium">DevOps</span>, siempre bajo una mentalidad de aprendizaje continuo y colaboración.
             </p>
 
-            <!-- Specs Grid -->
+            <!-- Specs Grid: Sobrio -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
               <!-- Spec 1: Cloud -->
-              <div class="bg-white/5 dark:bg-white/5 backdrop-blur-lg border border-white/10 p-5 rounded-2xl hover:border-orange-500/50 transition-colors group/spec">
+              <div class="p-5 rounded-2xl border border-gray-100 dark:border-white/10 bg-gray-50/50 dark:bg-white/5 hover:bg-white dark:hover:bg-white/10 transition-all group/spec">
                 <div class="flex items-center gap-3 mb-3">
-                  <div class="w-8 h-8 rounded-lg bg-orange-500/20 flex items-center justify-center text-orange-500 group-hover/spec:scale-110 transition-transform">
+                  <div class="w-8 h-8 rounded-lg bg-emerald-100 dark:bg-emerald-500/20 flex items-center justify-center text-emerald-600 dark:text-emerald-400">
                     <i class="ri-cloud-line text-lg"></i>
                   </div>
-                  <h4 class="font-bold text-sm dark:text-white">Cloud Supremacy</h4>
+                  <h4 class="font-bold text-sm text-gray-900 dark:text-white">Arquitectura Cloud</h4>
                 </div>
-                <p class="text-xs text-gray-500 dark:text-gray-400">Arquitecturas AWS/Azure que no conocen la caída. Escalabilidad infinita para proyectos de impacto global.</p>
+                <p class="text-xs text-gray-500 dark:text-gray-400">Implementación de infraestructuras escalables y seguras en entornos AWS y Azure.</p>
               </div>
 
               <!-- Spec 2: Blockchain -->
-              <div class="bg-white/5 dark:bg-white/5 backdrop-blur-lg border border-white/10 p-5 rounded-2xl hover:border-emerald-500/50 transition-colors group/spec">
+              <div class="p-5 rounded-2xl border border-gray-100 dark:border-white/10 bg-gray-50/50 dark:bg-white/5 hover:bg-white dark:hover:bg-white/10 transition-all group/spec">
                 <div class="flex items-center gap-3 mb-3">
-                  <div class="w-8 h-8 rounded-lg bg-emerald-500/20 flex items-center justify-center text-emerald-500 group-hover/spec:scale-110 transition-transform">
+                  <div class="w-8 h-8 rounded-lg bg-emerald-100 dark:bg-emerald-500/20 flex items-center justify-center text-emerald-600 dark:text-emerald-400">
                     <i class="ri-shield-keyhole-line text-lg"></i>
                   </div>
-                  <h4 class="font-bold text-sm dark:text-white">Blockchain Elite</h4>
+                  <h4 class="font-bold text-sm text-gray-900 dark:text-white">Blockchain & Web3</h4>
                 </div>
-                <p class="text-xs text-gray-500 dark:text-gray-400">Smart Contracts inquebrantables. Liderando la revolución de la Web3 con seguridad de grado militar.</p>
+                <p class="text-xs text-gray-500 dark:text-gray-400">Exploración y desarrollo de soluciones descentralizadas con enfoque en seguridad.</p>
               </div>
 
               <!-- Spec 3: DevOps -->
-              <div class="bg-white/5 dark:bg-white/5 backdrop-blur-lg border border-white/10 p-5 rounded-2xl hover:border-purple-500/50 transition-colors group/spec">
+              <div class="p-5 rounded-2xl border border-gray-100 dark:border-white/10 bg-gray-50/50 dark:bg-white/5 hover:bg-white dark:hover:bg-white/10 transition-all group/spec">
                 <div class="flex items-center gap-3 mb-3">
-                  <div class="w-8 h-8 rounded-lg bg-purple-500/20 flex items-center justify-center text-purple-500 group-hover/spec:scale-110 transition-transform">
+                  <div class="w-8 h-8 rounded-lg bg-emerald-100 dark:bg-emerald-500/20 flex items-center justify-center text-emerald-600 dark:text-emerald-400">
                     <i class="ri-loop-left-line text-lg"></i>
                   </div>
-                  <h4 class="font-bold text-sm dark:text-white">DevOps Absolute</h4>
+                  <h4 class="font-bold text-sm text-gray-900 dark:text-white">DevOps & CI/CD</h4>
                 </div>
-                <p class="text-xs text-gray-500 dark:text-gray-400">Automatización total. Pipelines que despliegan perfección en segundos, eliminando el error humano.</p>
+                <p class="text-xs text-gray-500 dark:text-gray-400">Optimización de flujos de trabajo mediante automatización y despliegue continuo.</p>
               </div>
 
               <!-- Spec 4: Full Stack -->
-              <div class="bg-white/5 dark:bg-white/5 backdrop-blur-lg border border-white/10 p-5 rounded-2xl hover:border-blue-500/50 transition-colors group/spec">
+              <div class="p-5 rounded-2xl border border-gray-100 dark:border-white/10 bg-gray-50/50 dark:bg-white/5 hover:bg-white dark:hover:bg-white/10 transition-all group/spec">
                 <div class="flex items-center gap-3 mb-3">
-                  <div class="w-8 h-8 rounded-lg bg-blue-500/20 flex items-center justify-center text-blue-500 group-hover/spec:scale-110 transition-transform">
+                  <div class="w-8 h-8 rounded-lg bg-emerald-100 dark:bg-emerald-500/20 flex items-center justify-center text-emerald-600 dark:text-emerald-400">
                     <i class="ri-code-s-line text-lg"></i>
                   </div>
-                  <h4 class="font-bold text-sm dark:text-white">Full Stack Master</h4>
+                  <h4 class="font-bold text-sm text-gray-900 dark:text-white">Desarrollo Full Stack</h4>
                 </div>
-                <p class="text-xs text-gray-500 dark:text-gray-400">Dominio del frontend y backend. Interfaces sublimes con cerebros algorítmicos imparables.</p>
+                <p class="text-xs text-gray-500 dark:text-gray-400">Creación de aplicaciones web completas con tecnologías modernas y robustas.</p>
               </div>
             </div>
           </div>
@@ -914,277 +927,338 @@
 
       </div>
     </div>
-
-    <!-- Estilos locales para animaciones específicas -->
-    <style>
-      @keyframes scan {
-        0%, 100% { transform: translateY(-100%); }
-        50% { transform: translateY(200%); }
-      }
-    </style>
   </section>
 
   <!-- ========================================
        SECCIÓN: EXPERIENCIA PROFESIONAL
        Timeline de trabajos anteriores y roles
        ======================================== -->
-  <section id="experiencia" class="max-w-5xl mx-auto px-6 py-24 fade-in">
-    <div class="text-center mb-16">
-      <h2 class="section-title text-4xl inline-block">Experiencia Profesional</h2>
-      <p class="text-gray-600 mt-4 max-w-2xl mx-auto italic">"Transformando ideas en soluciones digitales a través del diseño y el código."</p>
+  <section id="experiencia" class="relative py-32 overflow-hidden bg-[#0a0a0c] technical-grid scanline transition-colors duration-700">
+    <!-- Fondo Corporativo Aesthetic -->
+    <div class="absolute inset-0 pointer-events-none">
+      <!-- Grid de datos decorativo -->
+      <div class="absolute inset-0 opacity-[0.03]" 
+           style="background-image: linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px); background-size: 50px 50px;"></div>
+      
+      <!-- Luces de acento glitch -->
+      <div class="absolute top-[-10%] right-[-5%] w-[400px] h-[400px] bg-cyan-500/10 blur-[120px] rounded-full"></div>
+      <div class="absolute bottom-[-10%] left-[-5%] w-[400px] h-[400px] bg-magenta-500/10 blur-[120px] rounded-full" style="background-color: rgba(255, 0, 193, 0.05);"></div>
+      
+      <!-- Código en cascada sutil -->
+      <div class="absolute top-0 right-10 text-[10px] font-mono text-white/5 select-none pointer-events-none leading-tight hidden md:block">
+        &lt;SYSTEM_LOG&gt;<br/>
+        STATUS: OPERATIONAL<br/>
+        ENCRYPTION: AES-256<br/>
+        LOCATION: 0x442A<br/>
+        ----------------<br/>
+        &gt; FETCHING_DATA...<br/>
+        &gt; EXPERIENCE_LOADED
+      </div>
     </div>
-    
-    <div class="relative">
-      <!-- Linea central vertical (Gradient) -->
-      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-1 h-full bg-gradient-to-b from-pink-500 via-indigo-500 to-orange-500 rounded-full hidden md:block opacity-30"></div>
 
-      <!-- Item 1: UX/UI (Izquierda) -->
-      <div class="mb-12 flex flex-col md:flex-row justify-between items-center w-full">
-        <div class="order-2 md:order-1 w-full md:w-[45%]">
-          <div class="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 relative group">
-            <div class="absolute -top-3 -right-3 bg-pink-600 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest shadow-lg">Más Reciente</div>
-            <div class="flex items-center gap-4 mb-4">
-              <div class="w-12 h-12 bg-pink-50 rounded-xl flex items-center justify-center text-pink-600 group-hover:scale-110 transition-transform">
-                <i class="ri-quill-pen-line text-2xl"></i>
-              </div>
-              <div>
-                <h3 class="font-bold text-gray-800 text-xl">UX/UI Designer & Manual Tester</h3>
-                <p class="text-pink-600 font-medium text-sm">News Mx Tv</p>
-              </div>
-            </div>
-            <p class="text-xs font-semibold text-gray-400 mb-3 flex items-center gap-1">
-              <i class="ri-calendar-line"></i> Noviembre 2025 - Mayo 2026
-            </p>
-            <ul class="space-y-2">
-              <li class="flex items-start gap-2 text-sm text-gray-600">
-                <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-pink-500 shrink-0"></span>
-                <span>Diseño de interfaces de alta fidelidad y prototipado avanzado utilizando <strong>Figma</strong>.</span>
-              </li>
-              <li class="flex items-start gap-2 text-sm text-gray-600">
-                <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-pink-500 shrink-0"></span>
-                <span><strong>Manual Testing:</strong> Ejecución de pruebas de regresión, humo y exploratorias para garantizar la estabilidad del sistema.</span>
-              </li>
-              <li class="flex items-start gap-2 text-sm text-gray-600">
-                <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-pink-500 shrink-0"></span>
-                <span>Documentación detallada de <strong>casos de prueba</strong> y reporte de incidencias críticas en herramientas de seguimiento.</span>
-              </li>
-              <li class="flex items-start gap-2 text-sm text-gray-600">
-                <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-pink-500 shrink-0"></span>
-                <span>Validación de requerimientos funcionales y aseguramiento de la consistencia visual (UI) en múltiples dispositivos.</span>
-              </li>
-            </ul>
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+      <!-- Cabecera Corporativa Glitch -->
+      <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-12 mb-32">
+        <div class="reveal relative">
+          <div class="absolute -left-8 top-0 w-[2px] h-full bg-cyan-500/50"></div>
+          <h2 class="text-6xl md:text-8xl font-black text-white tracking-tighter leading-[0.85] glitch-hover transition-all">
+            EXPERIENCIA<br/>
+            <span class="text-transparent" style="-webkit-text-stroke: 1px rgba(255,255,255,0.2);">SISTEMAS</span>
+          </h2>
+          <div class="mt-4 flex items-center gap-4">
+            <div class="h-[1px] w-12 bg-white/20"></div>
+            <span class="text-[10px] font-mono uppercase tracking-[0.4em] text-white/40">History_Log_v2.0</span>
           </div>
         </div>
-        <div class="z-20 hidden md:flex items-center order-2 bg-white border-4 border-pink-500 shadow-xl w-10 h-10 rounded-full">
-          <div class="w-2 h-2 bg-pink-500 rounded-full mx-auto animate-pulse"></div>
-        </div>
-        <div class="hidden md:block order-3 w-[45%]"></div>
-      </div>
-
-      <!-- Item 2: Full Stack (Derecha) -->
-      <div class="mb-12 flex flex-col md:flex-row justify-between items-center w-full">
-        <div class="hidden md:block order-1 w-[45%]"></div>
-        <div class="z-20 hidden md:flex items-center order-2 bg-white border-4 border-indigo-500 shadow-xl w-10 h-10 rounded-full">
-          <div class="w-2 h-2 bg-indigo-500 rounded-full mx-auto"></div>
-        </div>
-        <div class="order-2 md:order-3 w-full md:w-[45%]">
-          <div class="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group">
-            <div class="flex items-center gap-4 mb-4">
-              <div class="w-12 h-12 bg-indigo-50 rounded-xl flex items-center justify-center text-indigo-600 group-hover:scale-110 transition-transform">
-                <i class="ri-code-box-line text-2xl"></i>
-              </div>
-              <div>
-                <h3 class="font-bold text-gray-800 text-xl">Desarrollador Full Stack</h3>
-                <p class="text-indigo-600 font-medium text-sm">Proyecto de Estadías — Pyme Local</p>
-              </div>
+        
+        <div class="reveal delay-200">
+          <div class="border border-white/10 bg-white/5 backdrop-blur-md px-8 py-6 rounded-sm relative group overflow-hidden">
+            <div class="absolute top-0 left-0 w-1 h-full bg-cyan-500 transform -translate-x-full group-hover:translate-x-0 transition-transform"></div>
+            <div class="flex flex-col gap-2">
+              <span class="text-[10px] font-mono text-cyan-400">STATUS: ACTIVE</span>
+              <span class="text-sm font-bold text-white tracking-widest uppercase">DISPONIBLE_PARA_PROYECTOS</span>
             </div>
-            <p class="text-xs font-semibold text-gray-400 mb-3 flex items-center gap-1">
-              <i class="ri-calendar-line"></i> 2024 - 2025
-            </p>
-            <ul class="space-y-2">
-              <li class="flex items-start gap-2 text-sm text-gray-600">
-                <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-indigo-500 shrink-0"></span>
-                <span>Desarrollo integral de software <strong>MRP</strong> para procesos industriales.</span>
-              </li>
-              <li class="flex items-start gap-2 text-sm text-gray-600">
-                <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-indigo-500 shrink-0"></span>
-                <span>Diseño y normalización de bases de datos para control de inventarios.</span>
-              </li>
-              <li class="flex items-start gap-2 text-sm text-gray-600">
-                <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-indigo-500 shrink-0"></span>
-                <span>Automatización de reportes de producción y gestión de proveedores.</span>
-              </li>
-            </ul>
           </div>
         </div>
       </div>
 
-      <!-- Item 3: Freelance (Izquierda) -->
-      <div class="mb-12 flex flex-col md:flex-row justify-between items-center w-full text-center md:text-left">
-        <div class="order-2 md:order-1 w-full md:w-[45%]">
-          <div class="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group text-left">
-            <div class="flex items-center gap-4 mb-4">
-              <div class="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center text-orange-600 group-hover:scale-110 transition-transform">
-                <i class="ri-customer-service-2-line text-2xl"></i>
+      <!-- Grid Técnico de Experiencia -->
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+        
+        <!-- Item 1: Full Stack (Corporate Style) -->
+        <div class="md:col-span-12 lg:col-span-8 relative group mb-12">
+          <div class="reveal">
+            <div class="bg-[#111114] border border-white/10 p-8 md:p-12 rounded-sm relative overflow-hidden group-hover:border-cyan-500/50 transition-colors duration-500">
+              <!-- Esquinas decorativas -->
+              <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-white/30"></div>
+              <div class="absolute top-0 right-0 w-2 h-2 border-t border-r border-white/30"></div>
+              <div class="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-white/30"></div>
+              <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-white/30"></div>
+
+              <div class="flex flex-col md:flex-row md:items-center justify-between gap-8 mb-12">
+                <div class="flex items-center gap-6">
+                  <div class="w-14 h-14 border border-white/10 flex items-center justify-center font-mono text-cyan-400 bg-white/5">
+                    01
+                  </div>
+                  <div>
+                    <h3 class="text-2xl md:text-3xl font-bold text-white uppercase tracking-tight">Full Stack Developer</h3>
+                    <p class="text-[10px] font-mono text-white/40 uppercase tracking-widest mt-1">PYME LOCAL // 2024 — PRESENT</p>
+                  </div>
+                </div>
+                <div class="text-right hidden md:block">
+                  <span class="text-[10px] font-mono text-white/20">MODULE: PRODUCTION_SYSTEM</span>
+                </div>
               </div>
-              <div>
-                <h3 class="font-bold text-gray-800 text-xl">Soporte Técnico Freelance</h3>
-                <p class="text-orange-600 font-medium text-sm">Trabajo Independiente</p>
+              
+              <div class="grid md:grid-cols-2 gap-12">
+                <div class="space-y-6">
+                  <p class="text-slate-400 leading-relaxed text-sm">
+                    Implementación de infraestructuras críticas para el control de producción industrial mediante sistemas MRP automatizados.
+                  </p>
+                  <ul class="space-y-4 font-mono text-[11px] text-white/60">
+                    <li class="flex items-center gap-3">
+                      <span class="text-cyan-500">&gt;</span>
+                      SISTEMA MRP DE ALTO RENDIMIENTO
+                    </li>
+                    <li class="flex items-center gap-3">
+                      <span class="text-cyan-500">&gt;</span>
+                      ARQUITECTURA SQL NORMALIZADA (LEVEL 3)
+                    </li>
+                  </ul>
+                </div>
+                <div class="flex flex-col justify-end gap-4">
+                  <div class="flex flex-wrap gap-2">
+                    <span class="px-3 py-1 bg-white/5 border border-white/10 text-[9px] font-mono text-white/50">C#_NET_CORE</span>
+                    <span class="px-3 py-1 bg-white/5 border border-white/10 text-[9px] font-mono text-white/50">SQL_SERVER</span>
+                    <span class="px-3 py-1 bg-white/5 border border-white/10 text-[9px] font-mono text-white/50">TAILWIND_CSS</span>
+                  </div>
+                </div>
               </div>
             </div>
-            <p class="text-xs font-semibold text-gray-400 mb-3 flex items-center gap-1">
-              <i class="ri-calendar-line"></i> 2021 - 2025
-            </p>
-            <ul class="space-y-2">
-              <li class="flex items-start gap-2 text-sm text-gray-600">
-                <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-orange-500 shrink-0"></span>
-                <span>Mantenimiento preventivo/correctivo y diagnóstico de hardware/software.</span>
-              </li>
-              <li class="flex items-start gap-2 text-sm text-gray-600">
-                <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-orange-500 shrink-0"></span>
-                <span>Resolución de problemas de redes y asesoría técnica personalizada.</span>
-              </li>
-              <li class="flex items-start gap-2 text-sm text-gray-600">
-                <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-orange-500 shrink-0"></span>
-                <span>Gestión de respaldos y recuperación de datos críticos.</span>
-              </li>
-            </ul>
           </div>
         </div>
-        <div class="z-20 hidden md:flex items-center order-2 bg-white border-4 border-orange-500 shadow-xl w-10 h-10 rounded-full">
-          <div class="w-2 h-2 bg-orange-500 rounded-full mx-auto"></div>
+
+        <!-- Item 2: Freelance (Corporate Style) -->
+        <div class="md:col-span-12 lg:col-span-8 lg:col-start-5 relative group">
+          <div class="reveal">
+            <div class="bg-[#111114] border border-white/10 p-8 md:p-12 rounded-sm relative overflow-hidden group-hover:border-magenta-500/50 transition-colors duration-500">
+              <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-white/30"></div>
+              <div class="absolute top-0 right-0 w-2 h-2 border-t border-r border-white/30"></div>
+              <div class="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-white/30"></div>
+              <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-white/30"></div>
+
+              <div class="flex flex-col md:flex-row md:items-center justify-between gap-8 mb-12">
+                <div class="flex items-center gap-6">
+                  <div class="w-14 h-14 border border-white/10 flex items-center justify-center font-mono text-magenta-400 bg-white/5" style="color: #ff00c1;">
+                    02
+                  </div>
+                  <div>
+                    <h3 class="text-2xl md:text-3xl font-bold text-white uppercase tracking-tight">Soporte Especializado</h3>
+                    <p class="text-[10px] font-mono text-white/40 uppercase tracking-widest mt-1">FREELANCE // 2021 — 2025</p>
+                  </div>
+                </div>
+                <div class="text-right hidden md:block">
+                  <span class="text-[10px] font-mono text-white/20">MODULE: INFRASTRUCTURE_SUPPORT</span>
+                </div>
+              </div>
+
+              <div class="grid md:grid-cols-2 gap-12">
+                <div class="space-y-6">
+                  <p class="text-slate-400 leading-relaxed text-sm">
+                    Gestión de infraestructuras críticas de IT y consultoría de seguridad para entornos empresariales y particulares.
+                  </p>
+                  <ul class="space-y-4 font-mono text-[11px] text-white/60">
+                    <li class="flex items-center gap-3">
+                      <span style="color: #ff00c1;">&gt;</span>
+                      OPTIMIZACIÓN DE REDES EMPRESARIALES
+                    </li>
+                    <li class="flex items-center gap-3">
+                      <span style="color: #ff00c1;">&gt;</span>
+                      PROTOCOLOS DRP (DISASTER RECOVERY)
+                    </li>
+                  </ul>
+                </div>
+                <div class="flex flex-col justify-end gap-4">
+                  <div class="flex flex-wrap gap-2 lg:justify-end">
+                    <span class="px-3 py-1 bg-white/5 border border-white/10 text-[9px] font-mono text-white/50">NETWORKING</span>
+                    <span class="px-3 py-1 bg-white/5 border border-white/10 text-[9px] font-mono text-white/50">SECURITY</span>
+                    <span class="px-3 py-1 bg-white/5 border border-white/10 text-[9px] font-mono text-white/50">HARDWARE</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="hidden md:block order-3 w-[45%]"></div>
+
       </div>
     </div>
   </section>
 
   <!-- ========================================
-       SECCIÓN: EDUCACIÓN
-       Timeline de formación académica y certificaciones
-       Cada tarjeta tiene hover effects interactivos
+       SECCIÓN: FORMACIÓN (SWISS INTERNATIONAL STYLE)
+       Estilo: Swiss Design (Grid rígido, Helvetica-style, líneas de 1px, funcionalismo).
        ======================================== -->
-  <section id="educacion" class="max-w-5xl mx-auto px-6 py-24 fade-in">
-    <div class="text-center mb-16">
-      <h2 class="section-title text-4xl inline-block">Formación Académica</h2>
-      <p class="text-gray-600 mt-4 max-w-2xl mx-auto">"El aprendizaje continuo es el combustible de la innovación digital."</p>
-    </div>
-
-    <div class="grid lg:grid-cols-3 gap-8">
-      <!-- Columna Principal: Grados Académicos -->
-      <div class="lg:col-span-2 space-y-8">
-        <div class="bg-white rounded-3xl shadow-xl p-8 border border-gray-100 hover:shadow-2xl transition-all duration-300 relative overflow-hidden group">
-          <div class="absolute top-0 right-0 w-32 h-32 bg-purple-50 rounded-full -mr-16 -mt-16 transition-transform group-hover:scale-110"></div>
-          <div class="relative flex flex-col md:flex-row gap-6 items-start">
-            <div class="w-16 h-16 bg-purple-600 rounded-2xl flex items-center justify-center text-white shadow-lg shrink-0">
-              <i class="ri-graduation-cap-line text-3xl"></i>
+  <section id="educacion" class="relative py-32 bg-[#050505] text-white overflow-hidden font-sans border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+      
+      <!-- Encabezado: Poster Suizo Minimalista -->
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-0 border-b border-white/20">
+        <div class="md:col-span-12 py-12">
+          <div class="flex flex-col md:flex-row md:items-end justify-between gap-8">
+            <h2 class="text-7xl md:text-[12rem] font-black uppercase tracking-tighter leading-[0.8] m-0">
+              Educación<span class="text-blue-500">_</span>
+            </h2>
+            <div class="text-[10px] font-bold uppercase tracking-[0.5em] text-white/40 mb-2">
+              <p>Academic_Records_v.2.0</p>
+              <p class="mt-1 text-white/20">International_Standard_Grid</p>
             </div>
-            <div>
-              <div class="flex flex-wrap items-center gap-3 mb-2">
-                <h3 class="font-bold text-gray-800 text-2xl">Ingeniería en Tecnologías de la Información</h3>
-                <span class="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">En curso</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid lg:grid-cols-12 gap-0">
+        <!-- Columna Izquierda: Grados -->
+        <div class="lg:col-span-8 border-r border-white/20">
+          
+          <!-- Grado 1 -->
+          <div class="grid md:grid-cols-8 gap-0 border-b border-white/20 group cursor-default">
+            <div class="md:col-span-2 p-8 border-r border-white/20 flex flex-col justify-between group-hover:bg-blue-500 group-hover:text-white transition-colors duration-300">
+              <span class="text-4xl font-black">01</span>
+              <div class="text-[9px] font-bold uppercase tracking-widest leading-none">
+                <p class="opacity-50">Status</p>
+                <p class="mt-1">In Progress</p>
               </div>
-              <p class="text-gray-600 font-medium mb-4">Universidad Tecnológica Metropolitana de Aguascalientes</p>
-              <div class="flex items-center gap-4 text-sm text-gray-400">
-                <span class="flex items-center gap-1"><i class="ri-calendar-line"></i> 2025 - 2026</span>
-                <span class="flex items-center gap-1"><i class="ri-map-pin-line"></i> Aguascalientes, México</span>
+            </div>
+            <div class="md:col-span-6 p-12">
+              <p class="text-[10px] font-bold text-white/30 mb-4 tracking-[0.2em]">2025 — 2026 / DEGREE_01</p>
+              <h3 class="text-4xl md:text-5xl font-black uppercase tracking-tighter mb-8 leading-none">
+                Ingeniería en Tecnologías de la Información
+              </h3>
+              <p class="text-base text-white/50 font-medium max-w-xl mb-12 leading-relaxed">
+                Universidad Tecnológica Metropolitana de Aguascalientes. Enfoque en sistemas distribuidos, escalabilidad y liderazgo técnico.
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1 border border-white/10 text-[9px] font-bold uppercase tracking-widest text-white/40 group-hover:border-white/30 group-hover:text-white/60 transition-colors">Innovación Digital</span>
+                <span class="px-3 py-1 border border-white/10 text-[9px] font-bold uppercase tracking-widest text-white/40 group-hover:border-white/30 group-hover:text-white/60 transition-colors">Arquitectura SW</span>
+                <span class="px-3 py-1 border border-white/10 text-[9px] font-bold uppercase tracking-widest text-white/40 group-hover:border-white/30 group-hover:text-white/60 transition-colors">Gestión Proyectos</span>
               </div>
-              <div class="mt-6 grid grid-cols-2 md:grid-cols-3 gap-3">
-                <span class="px-3 py-2 bg-gray-50 rounded-xl text-xs text-gray-500 font-medium text-center">Innovación Digital</span>
-                <span class="px-3 py-2 bg-gray-50 rounded-xl text-xs text-gray-500 font-medium text-center">Arquitectura de Software</span>
-                <span class="px-3 py-2 bg-gray-50 rounded-xl text-xs text-gray-500 font-medium text-center">Gestión de Proyectos</span>
+            </div>
+          </div>
+
+          <!-- Grado 2 -->
+          <div class="grid md:grid-cols-8 gap-0 border-b border-white/20 group cursor-default">
+            <div class="md:col-span-2 p-8 border-r border-white/20 flex flex-col justify-between group-hover:bg-purple-500 group-hover:text-white transition-colors duration-300">
+              <span class="text-4xl font-black">02</span>
+              <div class="text-[9px] font-bold uppercase tracking-widest leading-none">
+                <p class="opacity-50">Status</p>
+                <p class="mt-1">Graduated</p>
+              </div>
+            </div>
+            <div class="md:col-span-6 p-12">
+              <p class="text-[10px] font-bold text-white/30 mb-4 tracking-[0.2em]">2022 — 2024 / DEGREE_02</p>
+              <h3 class="text-4xl md:text-5xl font-black uppercase tracking-tighter mb-8 leading-none">
+                TSU en Desarrollo de Software Multiplataforma
+              </h3>
+              <p class="text-base text-white/50 font-medium max-w-xl mb-12 leading-relaxed">
+                Universidad Tecnológica Metropolitana de Aguascalientes. Especialización en desarrollo de aplicaciones y fundamentos de ingeniería de software.
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1 border border-white/10 text-[9px] font-bold uppercase tracking-widest text-white/40 group-hover:border-white/30 group-hover:text-white/60 transition-colors">Desarrollo Web</span>
+                <span class="px-3 py-1 border border-white/10 text-[9px] font-bold uppercase tracking-widest text-white/40 group-hover:border-white/30 group-hover:text-white/60 transition-colors">Apps Móviles</span>
+                <span class="px-3 py-1 border border-white/10 text-[9px] font-bold uppercase tracking-widest text-white/40 group-hover:border-white/30 group-hover:text-white/60 transition-colors">Bases de Datos</span>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="bg-white rounded-3xl shadow-xl p-8 border border-gray-100 hover:shadow-2xl transition-all duration-300 relative overflow-hidden group">
-          <div class="absolute top-0 right-0 w-32 h-32 bg-green-50 rounded-full -mr-16 -mt-16 transition-transform group-hover:scale-110"></div>
-          <div class="relative flex flex-col md:flex-row gap-6 items-start">
-            <div class="w-16 h-16 bg-green-600 rounded-2xl flex items-center justify-center text-white shadow-lg shrink-0">
-              <i class="ri-verified-badge-line text-3xl"></i>
+        <!-- Columna Derecha: Cursos -->
+        <div class="lg:col-span-4 flex flex-col">
+          <div class="p-8 border-b border-white/20 bg-white/5">
+            <h4 class="text-[10px] font-black uppercase tracking-[0.4em] text-white/60">INDEX_CERTIFICATIONS</h4>
+          </div>
+          <div class="flex-1">
+            <!-- Curso Item -->
+            <div class="grid grid-cols-4 border-b border-white/10 group cursor-default hover:bg-white/5 transition-colors">
+              <div class="col-span-1 p-6 border-r border-white/10 text-[9px] font-bold text-blue-500">2024</div>
+              <div class="col-span-3 p-6">
+                <p class="text-xs font-bold uppercase tracking-tight leading-tight group-hover:text-blue-400 transition-colors">Design Sprint Professional (DSPCTM)</p>
+              </div>
             </div>
-            <div>
-              <div class="flex flex-wrap items-center gap-3 mb-2">
-                <h3 class="font-bold text-gray-800 text-2xl">TSU en Desarrollo de Software Multiplataforma</h3>
-                <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-1">
-                  <i class="ri-checkbox-circle-fill"></i> Titulado
-                </span>
+            <div class="grid grid-cols-4 border-b border-white/10 group cursor-default hover:bg-white/5 transition-colors">
+              <div class="col-span-1 p-6 border-r border-white/10 text-[9px] font-bold text-blue-500">2024</div>
+              <div class="col-span-3 p-6">
+                <p class="text-xs font-bold uppercase tracking-tight leading-tight group-hover:text-blue-400 transition-colors">Practical Deep Learning with PyTorch</p>
               </div>
-              <p class="text-gray-600 font-medium mb-4">Universidad Tecnológica Metropolitana de Aguascalientes</p>
-              <div class="flex items-center gap-4 text-sm text-gray-400">
-                <span class="flex items-center gap-1"><i class="ri-calendar-line"></i> 2022 - 2024</span>
-                <span class="flex items-center gap-1"><i class="ri-map-pin-line"></i> Aguascalientes, México</span>
+            </div>
+            <div class="grid grid-cols-4 border-b border-white/10 group cursor-default hover:bg-white/5 transition-colors">
+              <div class="col-span-1 p-6 border-r border-white/10 text-[9px] font-bold text-blue-500">2024</div>
+              <div class="col-span-3 p-6">
+                <p class="text-xs font-bold uppercase tracking-tight leading-tight group-hover:text-blue-400 transition-colors">Microsoft Azure - Databases</p>
               </div>
-              <div class="mt-6 grid grid-cols-2 md:grid-cols-3 gap-3">
-                <span class="px-3 py-2 bg-gray-50 rounded-xl text-xs text-gray-500 font-medium text-center">Desarrollo Web</span>
-                <span class="px-3 py-2 bg-gray-50 rounded-xl text-xs text-gray-500 font-medium text-center">Apps Móviles</span>
-                <span class="px-3 py-2 bg-gray-50 rounded-xl text-xs text-gray-500 font-medium text-center">Bases de Datos</span>
+            </div>
+            <div class="grid grid-cols-4 border-b border-white/10 group cursor-default hover:bg-white/5 transition-colors">
+              <div class="col-span-1 p-6 border-r border-white/10 text-[9px] font-bold text-blue-500">2023</div>
+              <div class="col-span-3 p-6">
+                <p class="text-xs font-bold uppercase tracking-tight leading-tight group-hover:text-blue-400 transition-colors">Google Cloud Computing Foundations</p>
+              </div>
+            </div>
+            <div class="grid grid-cols-4 border-b border-white/10 group cursor-default hover:bg-white/5 transition-colors">
+              <div class="col-span-1 p-6 border-r border-white/10 text-[9px] font-bold text-blue-500">2023</div>
+              <div class="col-span-3 p-6">
+                <p class="text-xs font-bold uppercase tracking-tight leading-tight group-hover:text-blue-400 transition-colors">Blockchain Consultant Professional</p>
+              </div>
+            </div>
+            <div class="grid grid-cols-4 border-b border-white/10 group cursor-default hover:bg-white/5 transition-colors">
+              <div class="col-span-1 p-6 border-r border-white/10 text-[9px] font-bold text-blue-500">2023</div>
+              <div class="col-span-3 p-6">
+                <p class="text-xs font-bold uppercase tracking-tight leading-tight group-hover:text-blue-400 transition-colors">Solidity Bootcamp</p>
+              </div>
+            </div>
+            <!-- Archive Minimal -->
+            <div class="p-8 space-y-6">
+              <p class="text-[9px] font-black uppercase tracking-[0.3em] text-white/20">HISTORICAL_ARCHIVE</p>
+              <div class="grid grid-cols-2 gap-y-4 gap-x-8">
+                <p class="text-[9px] font-bold text-white/40 uppercase hover:text-white cursor-default">C# .NET CORE</p>
+                <p class="text-[9px] font-bold text-white/40 uppercase hover:text-white cursor-default">SQL SERVER ADV</p>
+                <p class="text-[9px] font-bold text-white/40 uppercase hover:text-white cursor-default">FULL STACK WEB</p>
+                <p class="text-[9px] font-bold text-white/40 uppercase hover:text-white cursor-default">MOBILE APP DEV</p>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Columna Lateral: Certificaciones y Logros -->
-      <div class="space-y-8">
-        <!-- Certificaciones -->
-        <div class="bg-gradient-to-br from-indigo-600 to-purple-700 rounded-3xl shadow-xl p-8 text-white h-full">
-          <h3 class="font-bold text-2xl mb-6 flex items-center gap-3">
-            <i class="ri-award-line text-yellow-400"></i>
-            Certificaciones
-          </h3>
-          <div class="space-y-4 max-h-[400px] overflow-y-auto pr-2 custom-scrollbar">
-            <div class="bg-white/10 backdrop-blur-md rounded-2xl p-4 hover:bg-white/20 transition-colors">
-              <p class="font-bold text-sm">Design Sprint Professional (DSPCTM)</p>
-              <p class="text-indigo-200 text-xs">2024</p>
-            </div>
-            <div class="bg-white/10 backdrop-blur-md rounded-2xl p-4 hover:bg-white/20 transition-colors">
-              <p class="font-bold text-sm">Practical Deep Learning with PyTorch</p>
-              <p class="text-indigo-200 text-xs">2024</p>
-            </div>
-            <div class="bg-white/10 backdrop-blur-md rounded-2xl p-4 hover:bg-white/20 transition-colors">
-              <p class="font-bold text-sm">Microsoft Azure - Databases</p>
-              <p class="text-indigo-200 text-xs">2024</p>
-            </div>
-            <div class="bg-white/10 backdrop-blur-md rounded-2xl p-4 hover:bg-white/20 transition-colors">
-              <p class="font-bold text-sm">Google Cloud Computing Foundations</p>
-              <p class="text-indigo-200 text-xs">2023</p>
-            </div>
-            <div class="bg-white/10 backdrop-blur-md rounded-2xl p-4 hover:bg-white/20 transition-colors">
-              <p class="font-bold text-sm">Blockchain Consultant Professional</p>
-              <p class="text-indigo-200 text-xs">2023</p>
-            </div>
-            <div class="bg-white/10 backdrop-blur-md rounded-2xl p-4 hover:bg-white/20 transition-colors">
-              <p class="font-bold text-sm">Solidity Bootcamp</p>
-              <p class="text-indigo-200 text-xs">2023</p>
+      <!-- Swiss Footer: Google Labs (Poster Style) -->
+      <div class="border-t border-white/20">
+        <div class="grid md:grid-cols-12 gap-0">
+          <div class="md:col-span-4 p-12 border-r border-white/20 flex flex-col justify-between bg-cyan-500 text-black group hover:bg-white transition-colors duration-500">
+            <h3 class="text-6xl font-black uppercase tracking-tighter leading-[0.85] mb-20">
+              Google <br> Labs <br> Expert
+            </h3>
+            <div class="text-[10px] font-black uppercase tracking-[0.4em]">
+              Diamond League / 2024
             </div>
           </div>
-          <a href="#" class="mt-8 w-full py-4 bg-white text-indigo-700 rounded-2xl font-bold flex items-center justify-center gap-2 hover:bg-indigo-50 transition-colors shadow-lg">
-            <i class="ri-folder-open-line"></i> Ver Diplomas
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Logro Destacado (Ancho completo abajo) -->
-    <div class="mt-12 bg-white rounded-3xl shadow-xl p-8 border border-gray-100 relative overflow-hidden group">
-      <div class="absolute top-0 right-0 w-64 h-64 bg-yellow-50 rounded-full -mr-32 -mt-32 opacity-50 group-hover:scale-110 transition-transform"></div>
-      <div class="relative flex flex-col md:flex-row items-center gap-8">
-        <div class="w-32 h-32 bg-yellow-100 rounded-3xl flex items-center justify-center shadow-inner shrink-0 rotate-3 group-hover:rotate-0 transition-transform">
-          <i class="ri-trophy-line text-6xl text-yellow-600"></i>
-        </div>
-        <div>
-          <div class="flex items-center gap-4 mb-3">
-            <h3 class="font-extrabold text-3xl text-gray-800">Logro en Google Labs</h3>
-            <img src="images/google-cloud.svg" alt="Google Cloud" class="h-8 animate-bounce">
+          <div class="md:col-span-8 p-12 flex flex-col justify-between group cursor-default relative overflow-hidden">
+            <div class="absolute top-0 right-0 p-8 text-9xl font-black text-white/[0.03]">03</div>
+            <div class="max-w-2xl relative z-10">
+              <p class="text-[10px] font-black text-cyan-400 uppercase tracking-[0.3em] mb-8">
+                ACHIEVEMENT_REPORT_G.LABS
+              </p>
+              <p class="text-3xl font-bold uppercase tracking-tighter leading-tight mb-12 text-white/80">
+                Reconocimiento por la excelencia técnica y contribución innovadora en el ecosistema de inteligencia artificial de Google Labs.
+              </p>
+              <a href="https://www.skills.google/public_profiles/6541c325-99d6-4c2b-8289-09d291d87e36" target="_blank" class="inline-flex items-center gap-6 group/link">
+                <span class="text-[10px] font-black uppercase tracking-[0.5em] border-b-2 border-white group-hover/link:border-cyan-400 group-hover/link:text-cyan-400 transition-all pb-1">Verify Profile</span>
+                <i class="ri-arrow-right-line text-2xl group-hover/link:translate-x-4 transition-transform group-hover/link:text-cyan-400"></i>
+              </a>
+            </div>
+            <div class="flex items-center gap-8 mt-12 opacity-20 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-700">
+              <img src="images/google-cloud.svg" alt="Google Cloud" class="h-8">
+              <div class="h-6 w-[1px] bg-white/20"></div>
+              <span class="text-[9px] font-bold uppercase tracking-widest">Expertise Verified</span>
+            </div>
           </div>
-          <p class="text-gray-600 text-lg leading-relaxed mb-6">
-            Desde 2023, he escalado hasta la prestigiosa <strong class="text-indigo-600">Liga de Diamantes</strong> en Google Labs, demostrando un compromiso excepcional con la excelencia en el ecosistema de Google Cloud.
-          </p>
-          <a href="https://www.skills.google/public_profiles/6541c325-99d6-4c2b-8289-09d291d87e36" target="_blank" class="inline-flex items-center gap-2 text-indigo-600 font-bold hover:underline">
-            Explora mi trayectoria en Google Skills <i class="ri-external-link-line"></i>
-          </a>
         </div>
       </div>
     </div>
@@ -1392,157 +1466,253 @@
 
 
   <!-- ========================================
-       SECCIÓN: PROYECTOS DESTACADOS
-       Portafolio de trabajos realizados
+       SECCIÓN: PROYECTOS (Y2K / DIGITAL NOSTALGIA)
+       Estilo: Retro-Computing, Scanlines, Beveled Windows, Neon Accents.
        ======================================== -->
-  <!-- ========================================
-       SECCIÓN: PROYECTOS (DISEÑO 2025 BENTO GRID)
-       ======================================== -->
-  <section id="proyectos" class="modern-2025-section py-32">
-    <div class="modern-2025-bg"></div>
-    
+  <section id="proyectos" class="relative py-32 bg-[#000510] overflow-hidden font-mono">
+    <!-- Retro Background Effects -->
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute inset-0 opacity-10" style="background-image: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06)); background-size: 100% 2px, 3px 100%;"></div>
+      <div class="absolute inset-0 opacity-[0.05]" style="background-image: radial-gradient(#fff 1px, transparent 1px); background-size: 20px 20px;"></div>
+      <div class="absolute top-0 left-0 w-full h-1 bg-cyan-500/20 shadow-[0_0_15px_cyan] animate-pulse"></div>
+    </div>
+
     <div class="max-w-7xl mx-auto px-6 relative z-10">
-      <div class="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
+      <div class="flex flex-col md:flex-row items-start justify-between mb-24 gap-12 border-b-2 border-dashed border-white/20 pb-12">
         <div class="max-w-2xl">
-          <h2 class="section-title text-5xl md:text-6xl font-black tracking-tight mb-6">Proyectos <span class="text-indigo-400">Destacados</span></h2>
-          <p class="text-gray-400 text-lg leading-relaxed">Una selección de trabajos que combinan arquitectura robusta con experiencias de usuario intuitivas y modernas.</p>
+          <div class="inline-block px-3 py-1 bg-cyan-500 text-black text-[10px] font-black uppercase mb-4 shadow-[4px_4px_0px_rgba(0,255,255,0.3)]">
+            System_Directory / Projects
+          </div>
+          <h2 class="text-5xl md:text-7xl font-black text-white uppercase tracking-tighter mb-6">
+            Proyectos<span class="text-magenta-500 animate-pulse" style="color: #ff00c1;">.exe</span>
+          </h2>
+          <p class="text-cyan-400/60 text-sm leading-relaxed max-w-xl">
+            Explorando la frontera digital a través de aplicaciones robustas y sistemas experimentales. Cargando base de datos de soluciones...
+          </p>
         </div>
         
-        <!-- Filtros Estilo 2025 -->
-        <div class="flex flex-wrap gap-3 bg-white/5 p-2 rounded-2xl backdrop-blur-xl border border-white/10">
-          <button data-filter="all" class="filter-btn active modern-2025-btn px-6 py-2 rounded-xl text-sm font-bold transition-all">Todos</button>
-          <button data-filter="web" class="filter-btn modern-2025-btn px-6 py-2 rounded-xl text-sm font-bold transition-all">Web</button>
-          <button data-filter="ai" class="filter-btn modern-2025-btn px-6 py-2 rounded-xl text-sm font-bold transition-all">AI</button>
-          <button data-filter="social" class="filter-btn modern-2025-btn px-6 py-2 rounded-xl text-sm font-bold transition-all">Social</button>
+        <!-- Retro Filter Menu -->
+        <div class="flex flex-wrap gap-2 p-2 bg-white/5 border border-white/10 backdrop-blur-sm relative overflow-hidden group">
+          <div class="absolute inset-0 bg-cyan-500/5 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
+          <button data-filter="all" class="filter-btn active px-4 py-2 text-[10px] font-bold uppercase border-2 border-transparent hover:border-cyan-500 hover:text-cyan-400 transition-all hover-glitch">ALL_FILES</button>
+          <button data-filter="web" class="filter-btn px-4 py-2 text-[10px] font-bold uppercase border-2 border-transparent hover:border-magenta-500 hover:text-magenta-400 transition-all hover-glitch">WEB_APPS</button>
+          <button data-filter="ai" class="filter-btn px-4 py-2 text-[10px] font-bold uppercase border-2 border-transparent hover:border-lime-500 hover:text-lime-400 transition-all hover-glitch">AI_MODELS</button>
+          <button data-filter="social" class="filter-btn px-4 py-2 text-[10px] font-bold uppercase border-2 border-transparent hover:border-yellow-500 hover:text-yellow-400 transition-all hover-glitch">SOCIAL_NET</button>
         </div>
       </div>
 
-      <div class="bento-grid" id="projects-grid">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8" id="projects-grid">
         
-        <!-- Proyecto 1: MRP Platform (FEATURED - LARGE) -->
-        <div class="modern-2025-card bento-featured group p-10" data-category="web">
-          <div class="flex flex-col md:flex-row gap-10 h-full">
-            <div class="flex-1 flex flex-col justify-between">
-              <div>
-                <div class="flex items-center gap-4 mb-8">
-                  <div class="w-12 h-12 bg-indigo-500/20 rounded-xl flex items-center justify-center text-indigo-400 border border-indigo-500/30">
-                    <i class="ri-bar-chart-box-line text-2xl"></i>
-                  </div>
-                  <span class="modern-2025-tag">Featured Project</span>
+        <!-- Proyecto 1: MRP Platform (Window Style - LARGE) -->
+        <div class="md:col-span-12 lg:col-span-8 group" data-category="web">
+          <div class="bg-[#0a0a0f] border-2 border-white/20 shadow-[8px_8px_0px_rgba(255,255,255,0.05)] overflow-hidden transition-all hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[12px_12px_0px_rgba(0,255,255,0.1)]">
+            <!-- Window Title Bar -->
+            <div class="bg-white/10 px-4 py-2 flex items-center justify-between border-b-2 border-white/20">
+              <div class="flex items-center gap-3">
+                <i class="ri-window-line text-cyan-400"></i>
+                <span class="text-[10px] font-bold text-white/70 uppercase tracking-widest">mrp_platform_v2.sys</span>
+              </div>
+              <div class="flex gap-1.5">
+                <div class="w-2.5 h-2.5 border border-white/40"></div>
+                <div class="w-2.5 h-2.5 border border-white/40"></div>
+                <div class="w-2.5 h-2.5 border border-white/40 bg-white/40"></div>
+              </div>
+            </div>
+            <!-- Window Content -->
+            <div class="p-8 md:p-12 flex flex-col md:flex-row gap-12">
+              <div class="flex-1 space-y-8">
+                <div>
+                  <h3 class="text-3xl font-black text-white uppercase mb-4 group-hover:text-cyan-400 transition-colors">Plataforma MRP Industrial</h3>
+                  <p class="text-sm text-white/50 leading-relaxed">
+                    Sistema de gestión de recursos de manufactura de alto rendimiento. Automatización de inventarios con arquitectura escalable.
+                  </p>
                 </div>
-                <h3 class="text-3xl font-bold text-white mb-4 group-hover:text-indigo-400 transition-colors">Plataforma MRP Industrial</h3>
-                <p class="text-gray-400 text-lg mb-8">Revolucionando la gestión de inventarios con automatización inteligente. Reducción del 40% en latencia operativa y optimización de recursos en tiempo real.</p>
+                <div class="grid grid-cols-2 gap-4">
+                  <div class="p-4 bg-white/5 border border-white/10">
+                    <p class="text-[9px] text-cyan-400 uppercase mb-1">Performance</p>
+                    <p class="text-xl font-bold text-white">-40% Latency</p>
+                  </div>
+                  <div class="p-4 bg-white/5 border border-white/10">
+                    <p class="text-[9px] text-magenta-400 uppercase mb-1">Architecture</p>
+                    <p class="text-xl font-bold text-white">Cloud Native</p>
+                  </div>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                  <span class="px-2 py-1 bg-white/5 border border-white/10 text-[9px] text-white/40">REACT_JS</span>
+                  <span class="px-2 py-1 bg-white/5 border border-white/10 text-[9px] text-white/40">NODE_JS</span>
+                  <span class="px-2 py-1 bg-white/5 border border-white/10 text-[9px] text-white/40">MONGODB</span>
+                  <span class="px-2 py-1 bg-white/5 border border-white/10 text-[9px] text-white/40">AWS_EC2</span>
+                </div>
               </div>
-              <div class="flex flex-wrap gap-2">
-                <span class="modern-2025-tag">React</span>
-                <span class="modern-2025-tag">Node.js</span>
-                <span class="modern-2025-tag">MongoDB</span>
-                <span class="modern-2025-tag">AWS</span>
+              <div class="flex-1 relative aspect-video md:aspect-auto bg-white/5 border border-white/10 flex items-center justify-center group/img overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <i class="ri-cpu-line text-7xl text-white/5 group-hover:text-cyan-500/20 transition-all group-hover:scale-125"></i>
+                <div class="absolute bottom-6 right-6">
+                  <a href="#" class="w-14 h-14 bg-cyan-500 text-black flex items-center justify-center hover:bg-white transition-colors shadow-[4px_4px_0px_white]">
+                    <i class="ri-external-link-line text-2xl"></i>
+                  </a>
+                </div>
               </div>
-            </div>
-            <div class="flex-1 relative rounded-2xl overflow-hidden bg-gradient-to-br from-indigo-500/10 to-purple-500/10 border border-white/5 flex items-center justify-center p-6 min-h-[250px]">
-               <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20"></div>
-               <i class="ri-dashboard-3-line text-8xl text-indigo-500/20 group-hover:scale-110 transition-transform duration-700"></i>
-               <div class="absolute bottom-4 right-4">
-                 <a href="#" class="w-12 h-12 bg-white text-black rounded-full flex items-center justify-center hover:scale-110 transition-all">
-                   <i class="ri-arrow-right-up-line text-xl"></i>
-                 </a>
-               </div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Proyecto 2: Pet Rescue App (STANDARD) -->
-        <div class="modern-2025-card bento-standard group p-8" data-category="social">
-          <div class="flex flex-col justify-between h-full">
-            <div>
-              <div class="w-12 h-12 bg-emerald-500/20 rounded-xl flex items-center justify-center text-emerald-400 border border-emerald-500/30 mb-6">
-                <i class="ri-heart-line text-2xl"></i>
-              </div>
-              <h3 class="text-2xl font-bold text-white mb-3">Pet Rescue</h3>
-              <p class="text-gray-400 text-sm mb-6">Plataforma social de rescate animal con geolocalización avanzada.</p>
-            </div>
-            <div class="flex flex-col gap-4">
-              <div class="flex flex-wrap gap-2">
-                <span class="modern-2025-tag">.NET</span>
-                <span class="modern-2025-tag">Tailwind</span>
-              </div>
-              <a href="#" class="text-white font-bold text-sm flex items-center gap-2 hover:translate-x-2 transition-transform">
-                Explorar <i class="ri-arrow-right-line"></i>
-              </a>
             </div>
           </div>
         </div>
         
-        <!-- Proyecto 3: Chatbot Swift (TALL) -->
-        <div class="modern-2025-card bento-tall group p-8" data-category="ai">
-          <div class="flex flex-col justify-between h-full">
-            <div>
-              <div class="w-12 h-12 bg-amber-500/20 rounded-xl flex items-center justify-center text-amber-400 border border-amber-500/30 mb-6">
-                <i class="ri-robot-line text-2xl"></i>
+        <!-- Proyecto 2: Pet Rescue App (Window Style - STANDARD) -->
+        <div class="md:col-span-6 lg:col-span-4 group" data-category="social">
+          <div class="h-full bg-[#0a0a0f] border-2 border-white/20 shadow-[8px_8px_0px_rgba(255,255,255,0.05)] overflow-hidden transition-all hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[12px_12px_0px_rgba(255,0,193,0.1)]">
+            <div class="bg-white/10 px-4 py-2 flex items-center justify-between border-b-2 border-white/20">
+              <div class="flex items-center gap-3">
+                <i class="ri-folder-user-line text-magenta-400"></i>
+                <span class="text-[10px] font-bold text-white/70 uppercase tracking-widest">pet_rescue.app</span>
               </div>
-              <h3 class="text-2xl font-bold text-white mb-4">SwiftAI Assistant</h3>
-              <p class="text-gray-400 text-sm mb-6 leading-relaxed">Asistente inteligente nativo para iOS. Procesamiento de lenguaje natural optimizado para dispositivos móviles.</p>
-              <ul class="space-y-3 mb-8">
-                <li class="flex items-center gap-2 text-xs text-gray-500"><i class="ri-checkbox-circle-fill text-amber-500"></i> Integración NLP</li>
-                <li class="flex items-center gap-2 text-xs text-gray-500"><i class="ri-checkbox-circle-fill text-amber-500"></i> 100% Nativo Swift</li>
-                <li class="flex items-center gap-2 text-xs text-gray-500"><i class="ri-checkbox-circle-fill text-amber-500"></i> iCloud Sync</li>
-              </ul>
+              <div class="flex gap-1.5">
+                <div class="w-2.5 h-2.5 border border-white/40"></div>
+                <div class="w-2.5 h-2.5 border border-white/40 bg-white/40"></div>
+              </div>
             </div>
-            <div class="mt-auto">
-              <div class="flex flex-wrap gap-2 mb-6">
-                <span class="modern-2025-tag">Swift</span>
-                <span class="modern-2025-tag">CoreML</span>
+            <div class="p-8 flex flex-col justify-between h-[calc(100%-38px)]">
+              <div>
+                <h3 class="text-2xl font-black text-white uppercase mb-4 group-hover:text-magenta-500 transition-colors">Pet Rescue</h3>
+                <p class="text-xs text-white/40 leading-relaxed mb-8">
+                  Red social para el rescate y adopción de mascotas con geolocalización en tiempo real.
+                </p>
+                <div class="space-y-3 mb-8">
+                  <div class="flex items-center justify-between text-[10px] text-white/30 border-b border-white/5 pb-2">
+                    <span>Platform</span>
+                    <span class="text-white/60">Cross-Platform</span>
+                  </div>
+                  <div class="flex items-center justify-between text-[10px] text-white/30 border-b border-white/5 pb-2">
+                    <span>Database</span>
+                    <span class="text-white/60">SQL_Server</span>
+                  </div>
+                </div>
               </div>
-              <a href="#" class="w-full py-3 bg-white/5 border border-white/10 rounded-xl text-white text-center font-bold hover:bg-white hover:text-black transition-all block">
-                Ver Proyecto
-              </a>
+              <div class="space-y-6">
+                <div class="flex flex-wrap gap-2">
+                  <span class="px-2 py-1 bg-white/5 border border-white/10 text-[9px] text-white/40">.NET_CORE</span>
+                  <span class="px-2 py-1 bg-white/5 border border-white/10 text-[9px] text-white/40">TAILWIND</span>
+                </div>
+                <a href="#" class="flex items-center justify-center gap-3 w-full py-3 border-2 border-magenta-500 text-magenta-400 text-[10px] font-bold uppercase hover:bg-magenta-500 hover:text-black transition-all">
+                  Open_Project <i class="ri-arrow-right-line"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Proyecto 3: Chatbot Swift (Window Style - TALL) -->
+        <div class="md:col-span-6 lg:col-span-4 group" data-category="ai">
+          <div class="h-full bg-[#0a0a0f] border-2 border-white/20 shadow-[8px_8px_0px_rgba(255,255,255,0.05)] overflow-hidden transition-all hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[12px_12px_0px_rgba(163,230,53,0.1)]">
+            <div class="bg-white/10 px-4 py-2 flex items-center justify-between border-b-2 border-white/20">
+              <div class="flex items-center gap-3">
+                <i class="ri-robot-line text-lime-400"></i>
+                <span class="text-[10px] font-bold text-white/70 uppercase tracking-widest">swift_ai.bin</span>
+              </div>
+              <div class="flex gap-1.5">
+                <div class="w-2.5 h-2.5 border border-white/40 bg-white/40"></div>
+              </div>
+            </div>
+            <div class="p-8 flex flex-col justify-between h-[calc(100%-38px)]">
+              <div class="space-y-8">
+                <div>
+                  <h3 class="text-2xl font-black text-white uppercase mb-4 group-hover:text-lime-400 transition-colors">SwiftAI Assistant</h3>
+                  <p class="text-xs text-white/40 leading-relaxed">
+                    Asistente de IA nativo para iOS con procesamiento de lenguaje natural en el dispositivo.
+                  </p>
+                </div>
+                <ul class="space-y-4">
+                  <li class="flex items-center gap-4 text-[10px] text-white/50">
+                    <span class="w-2 h-2 bg-lime-500"></span>
+                    CORE_ML_INTEGRATION
+                  </li>
+                  <li class="flex items-center gap-4 text-[10px] text-white/50">
+                    <span class="w-2 h-2 bg-lime-500"></span>
+                    NATIVE_SWIFT_UI
+                  </li>
+                  <li class="flex items-center gap-4 text-[10px] text-white/50">
+                    <span class="w-2 h-2 bg-lime-500"></span>
+                    OFFLINE_PROCESSING
+                  </li>
+                </ul>
+              </div>
+              <div class="space-y-6">
+                <div class="flex flex-wrap gap-2">
+                  <span class="px-2 py-1 bg-white/5 border border-white/10 text-[9px] text-white/40">SWIFT</span>
+                  <span class="px-2 py-1 bg-white/5 border border-white/10 text-[9px] text-white/40">CORE_ML</span>
+                </div>
+                <a href="#" class="flex items-center justify-center gap-3 w-full py-4 bg-lime-500 text-black text-[10px] font-black uppercase hover:bg-white transition-all shadow-[4px_4px_0px_rgba(255,255,255,0.2)]">
+                  Execute_Application
+                </a>
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- Proyecto 4: Decision Tree API (WIDE) -->
-        <div class="modern-2025-card bento-wide group p-8" data-category="ai">
-          <div class="flex items-start justify-between">
-            <div class="max-w-[60%]">
-              <div class="flex items-center gap-3 mb-4">
-                <div class="w-10 h-10 bg-red-500/20 rounded-lg flex items-center justify-center text-red-400 border border-red-500/30">
-                  <i class="ri-node-tree text-xl"></i>
-                </div>
-                <h3 class="text-xl font-bold text-white">Decision Tree API</h3>
+        <!-- Proyecto 4: Decision Tree API (Window Style - MINI) -->
+        <div class="md:col-span-6 lg:col-span-4 group" data-category="ai">
+          <div class="bg-[#0a0a0f] border-2 border-white/20 shadow-[6px_6px_0px_rgba(255,255,255,0.05)] overflow-hidden transition-all hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[10px_10px_0px_rgba(239,68,68,0.1)]">
+            <div class="bg-white/5 px-3 py-1.5 flex items-center justify-between border-b border-white/10">
+              <div class="flex items-center gap-2">
+                <i class="ri-terminal-box-line text-red-500 text-xs"></i>
+                <span class="text-[9px] font-bold text-white/50 uppercase tracking-tighter">decision_tree.api</span>
               </div>
-              <p class="text-gray-400 text-sm mb-6">Motor predictivo basado en ML para toma de decisiones corporativas.</p>
-              <div class="flex flex-wrap gap-2">
-                <span class="modern-2025-tag">Python</span>
-                <span class="modern-2025-tag">Scikit-Learn</span>
-              </div>
+              <div class="w-2 h-2 bg-red-500/30"></div>
             </div>
-            <div class="text-right">
-               <span class="text-3xl font-black text-white/10 group-hover:text-red-500/20 transition-colors">04</span>
+            <div class="p-6">
+              <div class="flex items-start justify-between mb-4">
+                <div>
+                  <h4 class="text-lg font-bold text-white uppercase group-hover:text-red-500 transition-colors">Decision Tree API</h4>
+                  <p class="text-[9px] text-white/30 uppercase">Python_ML_Engine</p>
+                </div>
+                <a href="#" class="text-white/20 hover:text-red-500 transition-colors">
+                  <i class="ri-external-link-line text-xl"></i>
+                </a>
+              </div>
+              <div class="bg-white/5 p-3 border-l-2 border-red-500/50">
+                <p class="text-[10px] text-white/40 leading-tight">Implementación de árboles de decisión para análisis predictivo.</p>
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- Proyecto 5: Mindful App (WIDE) -->
-        <div class="modern-2025-card bento-wide group p-8" data-category="social">
-           <div class="flex items-start justify-between h-full">
-            <div class="max-w-[60%] flex flex-col justify-between h-full">
-              <div>
-                <div class="flex items-center gap-3 mb-4">
-                  <div class="w-10 h-10 bg-pink-500/20 rounded-lg flex items-center justify-center text-pink-400 border border-pink-500/30">
-                    <i class="ri-psychotherapy-line text-xl"></i>
-                  </div>
-                  <h3 class="text-xl font-bold text-white">Mindful Wellness</h3>
-                </div>
-                <p class="text-gray-400 text-sm mb-6">Ecosistema de salud mental y bienestar emocional.</p>
+        <!-- Proyecto 5: Mindful App (Window Style - MINI) -->
+        <div class="md:col-span-6 lg:col-span-4 group" data-category="social">
+          <div class="bg-[#0a0a0f] border-2 border-white/20 shadow-[6px_6px_0px_rgba(255,255,255,0.05)] overflow-hidden transition-all hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[10px_10px_0px_rgba(236,72,153,0.1)]">
+            <div class="bg-white/5 px-3 py-1.5 flex items-center justify-between border-b border-white/10">
+              <div class="flex items-center gap-2">
+                <i class="ri-heart-pulse-line text-pink-500 text-xs"></i>
+                <span class="text-[9px] font-bold text-white/50 uppercase tracking-tighter">mindful_wellness.app</span>
               </div>
-              <div class="flex flex-wrap gap-2">
-                <span class="modern-2025-tag">React Native</span>
-                <span class="modern-2025-tag">Firebase</span>
+              <div class="w-2 h-2 bg-pink-500/30"></div>
+            </div>
+            <div class="p-6">
+              <div class="flex items-start justify-between mb-4">
+                <div>
+                  <h4 class="text-lg font-bold text-white uppercase group-hover:text-pink-500 transition-colors">Mindful Wellness</h4>
+                  <p class="text-[9px] text-white/30 uppercase">Health_Eco_System</p>
+                </div>
+                <a href="#" class="text-white/20 hover:text-pink-500 transition-colors">
+                  <i class="ri-external-link-line text-xl"></i>
+                </a>
+              </div>
+              <div class="bg-white/5 p-3 border-l-2 border-pink-500/50">
+                <p class="text-[10px] text-white/40 leading-tight">Ecosistema digital para el bienestar mental y físico.</p>
               </div>
             </div>
-            <div class="relative w-24 h-24 bg-pink-500/5 rounded-full flex items-center justify-center group-hover:rotate-12 transition-transform duration-500">
-               <i class="ri-leaf-line text-4xl text-pink-500/20"></i>
+          </div>
+        </div>
+
+        <!-- Project 6: More Info (Retro Style) -->
+        <div class="md:col-span-12 lg:col-span-4">
+          <div class="h-full border-2 border-dashed border-white/10 p-8 flex flex-col justify-center items-center text-center group bg-white/[0.02] hover:bg-cyan-500/5 transition-all">
+            <div class="w-16 h-16 border-2 border-white/10 flex items-center justify-center mb-6 group-hover:border-cyan-500 group-hover:rotate-90 transition-all duration-500">
+              <i class="ri-add-line text-3xl text-white/10 group-hover:text-cyan-500"></i>
+            </div>
+            <p class="text-[10px] text-white/20 uppercase tracking-[0.3em] group-hover:text-white/40 transition-colors">Load_More_Data...</p>
+            <div class="mt-4 flex gap-1">
+              <div class="w-1 h-1 bg-white/10"></div>
+              <div class="w-1 h-1 bg-white/10"></div>
+              <div class="w-1 h-1 bg-white/10"></div>
             </div>
           </div>
         </div>

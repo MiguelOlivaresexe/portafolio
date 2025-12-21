@@ -302,6 +302,55 @@ section[id]::before { display: none; }
 .dark-mode {
   --accent-text: #c7b3ff; /* leve ajuste en dark para contraste */
 }
+/* Y2K / Digital Nostalgia Utilities */
+:root {
+  --y2k-cyan: #00f3ff;
+  --y2k-magenta: #ff00c1;
+  --y2k-lime: #a3e635;
+  --y2k-yellow: #fbbf24;
+}
+
+.y2k-scanlines {
+  position: relative;
+  overflow: hidden;
+}
+.y2k-scanlines::after {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+  z-index: 2;
+  background-size: 100% 2px, 3px 100%;
+  pointer-events: none;
+}
+
+@keyframes glitch {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+  100% { transform: translate(0); }
+}
+
+.hover-glitch:hover {
+  animation: glitch 0.2s cubic-bezier(.25,.46,.45,.94) both infinite;
+}
+
+.pixel-grid {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Tipografía Mono para Y2K */
+.font-mono-tech {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
 /* Base tipográfica */
 body {
   font-family: var(--font-body);

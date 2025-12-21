@@ -223,59 +223,56 @@
     });
 
     // ========================================
-    // LÓGICA DE PROYECTOS: FILTRADO Y GLOW
+    // LÓGICA DE PROYECTOS: Y2K / DIGITAL NOSTALGIA
     // ========================================
-    const projectCards = document.querySelectorAll('.modern-2025-card');
+    const projectCards = document.querySelectorAll('#projects-grid > div[data-category]');
     const filterBtns = document.querySelectorAll('.filter-btn');
 
-    // 1. Efecto de Brillo Interactivo (Mouse Tracking)
-    projectCards.forEach(card => {
-      card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        card.style.setProperty('--x', `${x}px`);
-        card.style.setProperty('--y', `${y}px`);
-      });
-    });
-
-    // 2. Sistema de Filtrado de Proyectos
+    // 1. Sistema de Filtrado con Efecto "Terminal"
     filterBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         const filter = btn.getAttribute('data-filter');
         
         // Actualizar estado de botones
-        filterBtns.forEach(b => {
-          b.classList.remove('active');
-          b.style.background = 'transparent';
-          b.style.color = 'white';
-        });
-        
+        filterBtns.forEach(b => b.classList.remove('active', 'border-cyan-500', 'text-cyan-400', 'border-magenta-500', 'text-magenta-400', 'border-lime-500', 'text-lime-400', 'border-yellow-500', 'text-yellow-400'));
         btn.classList.add('active');
-        btn.style.background = 'white';
-        btn.style.color = 'black';
 
-        // Filtrar tarjetas
-        projectCards.forEach(card => {
-          const category = card.getAttribute('data-category');
-          if (filter === 'all' || category === filter) {
-            card.style.display = 'flex'; // Usamos flex porque las cards son flex
-            setTimeout(() => {
-              card.style.opacity = '1';
-              card.style.transform = 'scale(1)';
-            }, 10);
-          } else {
-            card.style.opacity = '0';
-            card.style.transform = 'scale(0.95)';
-            setTimeout(() => {
-              card.style.display = 'none';
-            }, 300);
-          }
-        });
+        // Simular "procesamiento" terminal
+        const grid = document.getElementById('projects-grid');
+        grid.style.opacity = '0.5';
+        grid.style.pointerEvents = 'none';
+
+        setTimeout(() => {
+          // Filtrar tarjetas
+          projectCards.forEach(card => {
+            const category = card.getAttribute('data-category');
+            if (filter === 'all' || category === filter) {
+              card.style.display = 'block';
+              setTimeout(() => {
+                card.style.opacity = '1';
+                card.style.transform = 'scale(1)';
+              }, 10);
+            } else {
+              card.style.opacity = '0';
+              card.style.transform = 'scale(0.98)';
+              setTimeout(() => {
+                card.style.display = 'none';
+              }, 200);
+            }
+          });
+          grid.style.opacity = '1';
+          grid.style.pointerEvents = 'auto';
+        }, 300);
       });
     });
 
-    // 3. Animación de Revelado (Intersection Observer)
+    // 2. Animación de Revelado Y2K
+    projectCards.forEach(card => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(10px)';
+      card.style.transition = 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)';
+    });
+
     const projectObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -286,12 +283,7 @@
       });
     }, { threshold: 0.1 });
 
-    projectCards.forEach(card => {
-      card.style.opacity = '0';
-      card.style.transform = 'translateY(20px)';
-      card.style.transition = 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
-      projectObserver.observe(card);
-    });
+    projectCards.forEach(card => projectObserver.observe(card));
   }
 
   // Inicialización del widget de Google Translate
