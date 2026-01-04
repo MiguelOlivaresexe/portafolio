@@ -198,13 +198,26 @@
         const rotateX = (y - centerY) / 10;
         const rotateY = (centerX - x) / 10;
         
-        profileAvatar.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+        profileAvatar.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
       });
-      
+
       profileAvatar.addEventListener('mouseleave', () => {
-        profileAvatar.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)`;
+        profileAvatar.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg)`;
       });
     }
+
+    // 5. Spotlight effect for Skill Cards
+    const skillCards = document.querySelectorAll('.skill-card');
+    skillCards.forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
+      });
+    });
 
     // Botón “volver arriba”
     const backBtn = document.createElement('button');
@@ -297,6 +310,48 @@
     }
   };
 
+  // Define switchTab in global scope
+  window.switchTab = function(tabId) {
+    // Ocultar todos los contenidos de pestañas
+    const contents = document.querySelectorAll('.tab-content');
+    contents.forEach(tab => {
+      tab.classList.add('hidden', 'opacity-0', 'translate-y-4');
+      tab.classList.remove('opacity-100', 'translate-y-0');
+    });
+    
+    // Desactivar todos los botones de pestañas
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.classList.remove('active', 'bg-white/5', 'text-white');
+      btn.classList.add('text-white/40');
+      btn.setAttribute('aria-selected', 'false');
+      
+      // Reset indicator line
+      const indicator = btn.querySelector('.absolute.bottom-0');
+      if (indicator) indicator.classList.replace('scale-x-100', 'scale-x-0');
+    });
+    
+    // Mostrar la pestaña seleccionada
+    const activeTab = document.getElementById('tab-' + tabId);
+    activeTab.classList.remove('hidden');
+    
+    // Animación de entrada suave
+    setTimeout(() => {
+      activeTab.classList.remove('opacity-0', 'translate-y-4');
+      activeTab.classList.add('opacity-100', 'translate-y-0');
+    }, 50);
+    
+    // Activar el botón seleccionado
+    const activeBtn = document.getElementById('btn-' + tabId);
+    activeBtn.classList.add('active', 'bg-white/5', 'text-white');
+    activeBtn.classList.remove('text-white/40');
+    activeBtn.setAttribute('aria-selected', 'true');
+    
+    // Show indicator line
+    const activeIndicator = activeBtn.querySelector('.absolute.bottom-0');
+    if (activeIndicator) activeIndicator.classList.replace('scale-x-0', 'scale-x-100');
+  };
+
+  // Run init on DOM content loaded
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else {

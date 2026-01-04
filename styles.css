@@ -188,7 +188,95 @@ section[id] {
 /* Desplazamiento suave global */
 html { scroll-behavior: smooth; }
 
+@keyframes scroll-line {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(500%); }
+}
+
+.animate-scroll-line {
+  animation: scroll-line 4s linear infinite;
+}
+
 /* Separadores sutiles entre secciones */
+
+/* ========================================
+   SKILLS HUB PREMIUM STYLES
+   ======================================== */
+
+.skill-card {
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+  position: relative;
+  background: rgba(255, 255, 255, 0.01);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.skill-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    600px circle at var(--mouse-x) var(--mouse-y),
+    rgba(255, 255, 255, 0.05),
+    transparent 40%
+  );
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.skill-card:hover::before {
+  opacity: 1;
+}
+
+.skill-tag {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.skill-card:hover .skill-tag {
+  transform: translateY(-2px);
+}
+
+/* Staggered entrance for skill tags on card hover */
+.skill-card:hover .skill-tag:nth-child(1) { transition-delay: 50ms; }
+.skill-card:hover .skill-tag:nth-child(2) { transition-delay: 100ms; }
+.skill-card:hover .skill-tag:nth-child(3) { transition-delay: 150ms; }
+.skill-card:hover .skill-tag:nth-child(4) { transition-delay: 200ms; }
+.skill-card:hover .skill-tag:nth-child(5) { transition-delay: 250ms; }
+.skill-card:hover .skill-tag:nth-child(6) { transition-delay: 300ms; }
+.skill-card:hover .skill-tag:nth-child(7) { transition-delay: 350ms; }
+.skill-card:hover .skill-tag:nth-child(8) { transition-delay: 400ms; }
+
+/* Reveal Animation Enhancement */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.tab-content {
+  transform-origin: top;
+}
+
+.tab-btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: white;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.tab-btn:active::after {
+  opacity: 0.1;
+}
 section[id] { position: relative; }
 section[id]::before { display: none; }
 
@@ -349,6 +437,32 @@ section[id]::before { display: none; }
 /* Tipografía Mono para Y2K */
 .font-mono-tech {
   font-family: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+@keyframes glitch-1 {
+  0% { transform: translate(0); clip-path: inset(40% 0 61% 0); }
+  20% { transform: translate(-3px, 3px); clip-path: inset(92% 0 1% 0); }
+  40% { transform: translate(3px, -3px); clip-path: inset(43% 0 1% 0); }
+  60% { transform: translate(-3px, 3px); clip-path: inset(25% 0 58% 0); }
+  80% { transform: translate(3px, -3px); clip-path: inset(54% 0 7% 0); }
+  100% { transform: translate(0); clip-path: inset(58% 0 43% 0); }
+}
+
+@keyframes glitch-2 {
+  0% { transform: translate(0); clip-path: inset(24% 0 29% 0); }
+  20% { transform: translate(3px, -3px); clip-path: inset(39% 0 1% 0); }
+  40% { transform: translate(-3px, 3px); clip-path: inset(45% 0 34% 0); }
+  60% { transform: translate(3px, -3px); clip-path: inset(62% 0 33% 0); }
+  80% { transform: translate(-3px, 3px); clip-path: inset(34% 0 14% 0); }
+  100% { transform: translate(0); clip-path: inset(11% 0 35% 0); }
+}
+
+.animate-glitch-1 {
+  animation: glitch-1 2s infinite linear alternate-reverse;
+}
+
+.animate-glitch-2 {
+  animation: glitch-2 3s infinite linear alternate-reverse;
 }
 
 /* Base tipográfica */
