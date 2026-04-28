@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-html5" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M20 4l-2 14.5l-6 2l-6 -2l-2 -14.5z"></path>
+   <path d="M12 8h-2a2 2 0 0 0 -2 2v4h4v-2h2a2 2 0 0 0 2 -2v-2a2 2 0 0 0 -2 -2z"></path>
+   <path d="M8 12h2v2h-2z"></path>
+</svg>
